@@ -12,4 +12,20 @@
     <color name="bottom_nav_unselected">#666687</color>
 
 
+    <color name="blue">#0D90EF</color>
+
+    <color name="red">#F52725</color>
+
+    <color name="toolbar_txt">#212134</color>
+
+    <color name="grey1">#666687</color>
+    <color name="grey2">#8E8EA9</color>
+
+    <color name="black1">#212134</color>
+    <color name="black3">#4A4A6A</color>
+
+
+    <color name="yellow">#FD9E19</color>
+
+
 </resources>
