@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/main_toolbar" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentMain"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -16,7 +20,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:navGraph="@navigation/main_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -30,19 +34,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu" />
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/spin_kit"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@color/login_loader"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:gravity="center"-->
-<!--        android:visibility="gone">-->
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/spin_kit"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="@color/login_loader"-->
+    <!--        android:clickable="true"-->
+    <!--        android:focusable="true"-->
+    <!--        android:gravity="center"-->
+    <!--        android:visibility="gone">-->
 
-<!--        <ProgressBar-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content" />-->
-<!--    </LinearLayout>-->
+    <!--        <ProgressBar-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content" />-->
+    <!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
