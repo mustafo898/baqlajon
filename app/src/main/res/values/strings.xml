@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Baqlajon</string>
+    <string name="home">Home</string>
+    <string name="my_courses">My courses</string>
+    <string name="balance">Balance</string>
+    <string name="profile">Profile</string>
+</resources>
