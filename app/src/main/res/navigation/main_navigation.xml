@@ -3,11 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation.xml"
-    app:startDestination="@id/homeFragment2">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/homeFragment2"
+        android:id="@+id/homeFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/myCoursesFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.MyCoursesFragment"
+        android:label="@string/my_courses"
+        tools:layout="@layout/fragment_my_courses" />
+    <fragment
+        android:id="@+id/balanceFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.balance.BalanceFragment"
+        android:label="@string/balance"
+        tools:layout="@layout/fragment_balance" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
