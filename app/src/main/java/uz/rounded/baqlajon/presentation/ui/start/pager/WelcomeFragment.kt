@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager.widget.ViewPager
 import uz.rounded.baqlajon.R
+import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentWelcomeBinding
 import uz.rounded.baqlajon.presentation.ui.start.pager.adapter.PagerModel
 import uz.rounded.baqlajon.presentation.ui.start.pager.adapter.WelcomeAdapter
@@ -12,6 +14,7 @@ import uz.roundedllc.tmkeld.presentation.BaseFragment
 
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>() {
     private lateinit var adapter: WelcomeAdapter
+    private var pos = 0
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -20,8 +23,25 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>() {
     override fun created(view: View, savedInstanceState: Bundle?) {
         setViewPager()
         binding.skip.setOnClickListener {
-
+            navigate(R.id.action_welcomeFragment_to_authFragment)
         }
+        binding.next.setOnClickListener {
+            binding.viewPager.setCurrentItem(++pos, true)
+        }
+        binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                pos = position
+            }
+
+            override fun onPageSelected(position: Int) = Unit
+
+            override fun onPageScrollStateChanged(state: Int) = Unit
+
+        })
     }
 
     private fun setViewPager() {

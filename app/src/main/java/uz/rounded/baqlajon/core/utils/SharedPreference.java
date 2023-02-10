@@ -44,14 +44,14 @@ public class SharedPreference {
         return prefs.getBoolean("hasLang", false);
     }
 
-    public void setHasToken(String token) {
+    public void setHasToken(Boolean token) {
         editor = prefs.edit();
-        editor.putString("hasToken", token);
+        editor.putBoolean("hasToken", token);
         editor.apply();
     }
 
-    public String getHasToken() {
-        return prefs.getString("hasToken", "");
+    public Boolean getHasToken() {
+        return prefs.getBoolean("hasToken", false);
     }
 
     public void setToken(String token) {
