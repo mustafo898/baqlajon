@@ -6,4 +6,9 @@
     <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+    <string name="find_your_favorite_course">Find your favorite course</string>
+    <string name="learn_with_fun">Learn with fun</string>
+    <string name="get_good_results">Get good results</string>
+    <string name="sub_label">Our new videos make it easy for you to learn anywhere, there are new videos that will be ready to help you</string>
 </resources>

@@ -2,6 +2,7 @@ package uz.rounded.baqlajon.core.extensions
 
 import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.ColorRes
@@ -17,5 +18,12 @@ fun getColor(context: Context, color: Int): Int {
     return ContextCompat.getColor(
         context,
         color
+    )
+}
+
+fun getImage(context: Context, string: Int): Drawable? {
+    return ContextCompat.getDrawable(
+        context,
+        string
     )
 }

@@ -1,6 +1,7 @@
 package uz.rounded.baqlajon
 
 import android.app.Application
+import android.content.Context
 import android.content.res.Resources
 import dagger.hilt.android.HiltAndroidApp
 
