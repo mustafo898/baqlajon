@@ -20,8 +20,10 @@
 
     <color name="grey1">#666687</color>
     <color name="grey2">#8E8EA9</color>
+    <color name="grey7">#F6F6F9</color>
 
     <color name="black1">#212134</color>
+    <color name="black2">#32324D</color>
     <color name="black3">#4A4A6A</color>
 
 

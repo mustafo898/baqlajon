@@ -26,7 +26,12 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>() {
             navigate(R.id.action_welcomeFragment_to_authFragment)
         }
         binding.next.setOnClickListener {
-            binding.viewPager.setCurrentItem(++pos, true)
+            if (pos < 3) {
+                binding.viewPager.setCurrentItem(++pos, true)
+            }
+            if (pos == 2) {
+                navigate(R.id.action_welcomeFragment_to_authFragment)
+            }
         }
         binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
