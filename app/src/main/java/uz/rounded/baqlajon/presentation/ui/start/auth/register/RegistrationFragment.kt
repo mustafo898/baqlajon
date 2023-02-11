@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import uz.rounded.baqlajon.R
+import uz.rounded.baqlajon.core.extensions.popBackStack
 import uz.rounded.baqlajon.databinding.FragmentRegistrationBinding
 import uz.roundedllc.tmkeld.presentation.BaseFragment
 
@@ -19,6 +20,9 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
     override fun created(view: View, savedInstanceState: Bundle?) {
 
+        binding.login.setOnClickListener {
+            popBackStack()
+        }
     }
 
 }

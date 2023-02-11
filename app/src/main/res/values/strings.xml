@@ -13,6 +13,14 @@
 
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="phone_number">Phone number</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="do_not_have_acc">Don’t have an account?</string>
+    <string name="already_have_acc">Already have an account?</string>
+
+    <string name="full_name">Full name<font color="#F52725">*</font></string>
+    <string name="phone_number_with_star">Phone number<font color="#F52725">*</font></string>
+    <string name="referral_code">Referral code</string>
 </resources>

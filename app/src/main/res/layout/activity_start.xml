@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/main_toolbar" />
+        layout="@layout/start_toolbar" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentStart"

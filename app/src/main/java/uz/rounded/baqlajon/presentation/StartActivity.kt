@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.animateToolBarTittle
 import uz.rounded.baqlajon.core.extensions.gone
+import uz.rounded.baqlajon.core.extensions.invisible
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.ActivityStartBinding
@@ -36,21 +37,22 @@ class StartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStartBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentStart) as NavHostFragment
+        navController = navHostFragment.findNavController()
         lifecycleScope.launch {
             delay(1000)
             if (sharedPreference.hasToken) {
                 startActivity(Intent(this@StartActivity, MainActivity::class.java))
             }
         }
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentStart) as NavHostFragment
-        navController = navHostFragment.findNavController()
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.toolbar.title.text = navController.currentDestination?.label.toString()
             animateToolBarTittle(binding.toolbar.title)
             if (isToolBarGone.contains(destination.id)
             ) {
-                binding.toolbar.toolbar.gone()
+                binding.toolbar.toolbar.invisible()
             } else {
                 binding.toolbar.toolbar.visible()
             }
