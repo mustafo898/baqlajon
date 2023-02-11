@@ -23,4 +23,9 @@
     <string name="full_name">Full name<font color="#F52725">*</font></string>
     <string name="phone_number_with_star">Phone number<font color="#F52725">*</font></string>
     <string name="referral_code">Referral code</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="confirm">Confirm</string>
 </resources>
