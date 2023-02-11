@@ -47,6 +47,7 @@
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp"
                     app:hintAnimationEnabled="false"
+                    app:hintEnabled="false"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/grey2">
 
@@ -57,6 +58,7 @@
                         android:background="@color/grey7"
                         android:fontFamily="@font/regular_400"
                         android:hint="@string/password"
+                        android:gravity="center_vertical"
                         android:inputType="textPassword"
                         android:paddingHorizontal="16dp"
                         android:paddingVertical="12dp"
