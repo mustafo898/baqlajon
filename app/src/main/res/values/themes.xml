@@ -25,4 +25,8 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/white</item>
     </style>
+
+    <style name="corner_circle">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
