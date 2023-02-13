@@ -12,40 +12,42 @@ import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCourseSecondAda
 import uz.roundedllc.tmkeld.presentation.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+
+    private val adapter by lazy {
+        HomeCourseAdapter {
+
+        }
+    }
+
+    private val adapterCategory by lazy {
+        HomeCategoryAdapter {
+
+        }
+    }
+
+    private val adapterList by lazy {
+        HomeCourseSecondAdapter {
+
+        }
+    }
+
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentHomeBinding = FragmentHomeBinding.inflate(inflater)
 
-    private val adapter by lazy {
-        HomeCourseAdapter()
-    }
-
-    private val adapterCategory by lazy {
-        HomeCategoryAdapter()
-    }
-
-    private val adapterList by lazy {
-        HomeCourseSecondAdapter()
-    }
-
     override fun created(view: View, savedInstanceState: Bundle?) {
+        setAdapter()
+
+    }
+
+    private fun setAdapter() = binding.apply {
         val snapper = LinearSnapHelper()
         snapper.attachToRecyclerView(binding.courseList)
 
-        binding.courseList.adapter = adapter
-        binding.list.adapter = adapterList
-        binding.categoryList.adapter = adapterCategory
-
-        val list = mutableListOf<String>()
-        for (i in 0 until 10) {
-            list.add("")
-        }
-
-        adapter.setList(list)
-        adapterList.setList(list)
-        adapterCategory.setList(list)
+        courseList.adapter = adapter
+        list.adapter = adapterList
+        categoryList.adapter = adapterCategory
     }
-
 
 }

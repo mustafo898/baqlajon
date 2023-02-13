@@ -2,35 +2,57 @@ package uz.rounded.baqlajon.presentation.ui.main.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import uz.rounded.baqlajon.databinding.ItemHomeListBinding
 
-class HomeCourseSecondAdapter : RecyclerView.Adapter<HomeCourseSecondAdapter.ViewHolder>() {
+class HomeCourseSecondAdapter(
+    private val onItemClick: ((data: String) -> Unit)
+) :
+    ListAdapter<String, HomeCourseSecondAdapter.MyViewHolder>(TaskDiffCallBack()) {
 
-    private val list = mutableListOf<String>()
+    class TaskDiffCallBack : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(
+            oldItem: String,
+            newItem: String
+        ): Boolean {
+            return oldItem == newItem
+        }
 
-    fun setList(data: List<String>) {
-        list.clear()
-        list.addAll(data)
-        notifyDataSetChanged()
-    }
-
-    inner class ViewHolder(private val binding: ItemHomeListBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: String) {
-
+        override fun areContentsTheSame(
+            oldItem: String,
+            newItem: String
+        ): Boolean {
+            return oldItem == newItem
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemHomeListBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+    inner class MyViewHolder(var itemBinding: ItemHomeListBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
+
+        fun onBind(data: String) {
+            itemBinding.apply {
+
+            }
+            itemView.setOnClickListener {
+
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        return MyViewHolder(
+            ItemHomeListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
-    )
+    }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(list[position])
-
-    override fun getItemCount() = list.size
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val data = getItem(position)
+        holder.onBind(data)
+    }
 }
