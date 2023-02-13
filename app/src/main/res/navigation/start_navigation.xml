@@ -39,5 +39,14 @@
         android:id="@+id/registrationFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.register.RegistrationFragment"
         android:label="Let’s Sign Up"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_smsVerifyFragment"
+            app:destination="@id/smsVerifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/smsVerifyFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.start.auth.sms.SmsVerifyFragment"
+        android:label="Verification code"
+        tools:layout="@layout/fragment_sms_verify" />
 </navigation>
