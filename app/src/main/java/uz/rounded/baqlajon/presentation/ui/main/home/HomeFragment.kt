@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearSnapHelper
+import uz.rounded.baqlajon.R
+import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentHomeBinding
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCategoryAdapter
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCourseAdapter
@@ -38,6 +40,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun created(view: View, savedInstanceState: Bundle?) {
         setAdapter()
+
+        binding.search.setOnClickListener {
+            navigate(R.id.action_homeFragment_to_searchFragment)
+        }
 
     }
 
