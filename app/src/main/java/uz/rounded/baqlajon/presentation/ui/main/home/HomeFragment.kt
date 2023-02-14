@@ -41,6 +41,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun created(view: View, savedInstanceState: Bundle?) {
         setAdapter()
 
+        val list = mutableListOf<String>()
+        for (i in 0 until 10) {
+            list.add("")
+        }
+
+        adapter.submitList(list)
+        adapterList.submitList(list)
+        adapterCategory.submitList(list)
+
         binding.search.setOnClickListener {
             navigate(R.id.action_homeFragment_to_searchFragment)
         }
