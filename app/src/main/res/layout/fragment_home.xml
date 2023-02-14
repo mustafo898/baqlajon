@@ -60,7 +60,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
-            android:padding="10dp"
+            android:padding="8dp"
             android:src="@drawable/bell"
             app:layout_constraintBottom_toBottomOf="@id/user_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,6 +81,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/search"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="8dp"

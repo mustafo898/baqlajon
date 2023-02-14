@@ -1,59 +1,61 @@
 package uz.rounded.baqlajon.presentation.ui.main.home.adapter
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import uz.rounded.baqlajon.R
-import uz.rounded.baqlajon.core.extensions.getColor
 import uz.rounded.baqlajon.databinding.ItemCategoryBinding
+import uz.rounded.baqlajon.databinding.ItemHomeCourseBinding
+import java.text.SimpleDateFormat
 
-class HomeCategoryAdapter(private val context: Context) :
-    RecyclerView.Adapter<HomeCategoryAdapter.ViewHolder>() {
+class HomeCategoryAdapter(
+    private val onItemClick: ((data: String) -> Unit)
+) :
+    ListAdapter<String, HomeCategoryAdapter.MyViewHolder>(TaskDiffCallBack()) {
 
-    private val list = mutableListOf<CategoryModel>()
+    class TaskDiffCallBack : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(
+            oldItem: String,
+            newItem: String
+        ): Boolean {
+            return oldItem == newItem
+        }
 
-    fun setList(data: List<CategoryModel>) {
-        list.clear()
-        list.addAll(data)
-        notifyDataSetChanged()
+        override fun areContentsTheSame(
+            oldItem: String,
+            newItem: String
+        ): Boolean {
+            return oldItem == newItem
+        }
     }
 
-    private var selected = 0
+    inner class MyViewHolder(var itemBinding: ItemCategoryBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
 
-    inner class ViewHolder(private val binding: ItemCategoryBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: CategoryModel) {
+        fun onBind(data: String) {
+            itemBinding.apply {
 
-            if (data.isClick) {
-                binding.text.setTextColor(getColor(context, R.color.white))
-                binding.card.setCardBackgroundColor(getColor(context, R.color.blue))
-                binding.card.strokeColor = getColor(context, R.color.blue)
-            } else {
-                binding.text.setTextColor(getColor(context, R.color.grey2))
-                binding.card.setCardBackgroundColor(getColor(context, R.color.white))
-                binding.card.strokeColor = getColor(context, R.color.grey2)
             }
-
             itemView.setOnClickListener {
-                list[selected].isClick = false
-                selected = layoutPosition
-                list[selected].isClick = true
 
-                notifyDataSetChanged()
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemCategoryBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        return MyViewHolder(
+            ItemCategoryBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
-    )
+    }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(list[position])
-
-    override fun getItemCount() = list.size
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val data = getItem(position)
+        holder.onBind(data)
+    }
 }
