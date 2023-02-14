@@ -1,11 +1,12 @@
-package uz.rounded.baqlajon.presentation.ui.main.home.adapter
+package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import uz.rounded.baqlajon.databinding.ItemCourseReviewsBinding
 import uz.rounded.baqlajon.databinding.ItemHomeCourseBinding
 
-class HomeCourseAdapter : RecyclerView.Adapter<HomeCourseAdapter.ViewHolder>() {
+class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsAdapter.ViewHolder>() {
 
     private val list = mutableListOf<String>()
 
@@ -21,17 +22,17 @@ class HomeCourseAdapter : RecyclerView.Adapter<HomeCourseAdapter.ViewHolder>() {
         itemClickListener = f
     }
 
-    inner class ViewHolder(private val binding: ItemHomeCourseBinding) :
+    inner class ViewHolder(private val binding: ItemCourseReviewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: String) {
-            binding.card.setOnClickListener {
+            itemView.setOnClickListener {
                 itemClickListener?.invoke()
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemHomeCourseBinding.inflate(
+        ItemCourseReviewsBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

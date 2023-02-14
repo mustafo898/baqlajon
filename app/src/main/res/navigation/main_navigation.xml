@@ -9,12 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myCoursesFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.MyCoursesFragment"
         android:label="@string/my_courses"
-        tools:layout="@layout/fragment_my_courses" />
+        tools:layout="@layout/fragment_my_courses" >
+        <action
+            android:id="@+id/action_myCoursesFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/balanceFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.balance.BalanceFragment"
@@ -25,4 +33,18 @@
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/courseDetailsFragment"
+        tools:layout="@layout/fragment_course_details"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.CourseDetailsFragment"
+        android:label="Course details" >
+        <action
+            android:id="@+id/action_courseDetailsFragment_to_sectionDetailsFragment"
+            app:destination="@id/sectionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sectionDetailsFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.SectionDetailsFragment"
+        android:label="Video details"
+        tools:layout="@layout/fragment_section_details"/>
 </navigation>

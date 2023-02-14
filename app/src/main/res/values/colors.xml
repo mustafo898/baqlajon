@@ -35,5 +35,6 @@
 
     <color name="fragment_background">#FAFAFA</color>
     <color name="green">#B7F248</color>
+    <color name="red_alpha">#1AEB5757</color>
 
 </resources>
