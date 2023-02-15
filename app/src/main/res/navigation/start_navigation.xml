@@ -9,7 +9,7 @@
         android:id="@+id/welcomeFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.pager.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_authFragment"
             app:destination="@id/authFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/authFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" >
+        tools:layout="@layout/fragment_auth">
         <action
             android:id="@+id/action_authFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -30,16 +30,19 @@
         android:id="@+id/loginFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.login.LoginFragment"
         android:label="Let’s Sign In"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.register.RegistrationFragment"
         android:label="Let’s Sign Up"
-        tools:layout="@layout/fragment_registration" >
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_smsVerifyFragment"
             app:destination="@id/smsVerifyFragment" />
@@ -49,4 +52,18 @@
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.sms.SmsVerifyFragment"
         android:label="Verification code"
         tools:layout="@layout/fragment_sms_verify" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.start.auth.forgot_password.ForgotPasswordFragment"
+        android:label="Forgot Password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_resetFragment"
+            app:destination="@id/resetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.start.auth.forgot_password.ResetFragment"
+        android:label="Reset Password"
+        tools:layout="@layout/fragment_reset" />
 </navigation>

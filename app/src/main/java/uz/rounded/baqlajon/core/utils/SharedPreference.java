@@ -14,8 +14,7 @@ public class SharedPreference {
     SharedPreferences.Editor editor;
 
     public static SharedPreference getInstance(Context context) {
-        if (sharePreference != null)
-            return sharePreference;
+        if (sharePreference != null) return sharePreference;
         else return sharePreference = new SharedPreference(context);
     }
 
@@ -68,6 +67,16 @@ public class SharedPreference {
         editor = prefs.edit();
         editor.putString("user", objectToJson(user));
         editor.apply();
+    }
+
+    public void setPassword(String string) {
+        editor = prefs.edit();
+
+        editor.putString("password", string).apply();
+    }
+
+    public String getPassword() {
+        return prefs.getString("password", "");
     }
 
     public UserModel getUser() {

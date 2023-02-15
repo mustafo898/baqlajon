@@ -26,6 +26,8 @@
     <color name="black2">#32324D</color>
     <color name="black3">#4A4A6A</color>
 
+    <color name="main_blue">#00AFFF</color>
+    <color name="button_disabled">#333333</color>
 
     <color name="yellow">#FD9E19</color>
 
