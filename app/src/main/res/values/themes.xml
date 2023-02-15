@@ -33,4 +33,10 @@
     <style name="SpinnerTheme" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/spinner_background</item>
     </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/grey5</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+
 </resources>

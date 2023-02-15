@@ -42,6 +42,8 @@
     <string name="confirm_password">Confirm password</string>
     <string name="save">Save</string>
     <string name="continue_txt">Continue</string>
+    <string name="write_here">Write here</string>
+    <string name="send">Send</string>
 
     <string-array name="gender">
         <item>Male</item>
