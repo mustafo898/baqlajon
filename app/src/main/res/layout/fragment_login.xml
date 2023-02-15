@@ -57,8 +57,8 @@
                         android:layout_height="match_parent"
                         android:background="@color/grey7"
                         android:fontFamily="@font/regular_400"
-                        android:hint="@string/password"
                         android:gravity="center_vertical"
+                        android:hint="@string/password"
                         android:inputType="textPassword"
                         android:paddingHorizontal="16dp"
                         android:paddingVertical="12dp"
@@ -107,9 +107,9 @@
 
             <TextView
                 android:id="@+id/sign_up"
-                android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/medium_500"
                 android:text="@string/sign_up"
                 android:textColor="@color/blue"
