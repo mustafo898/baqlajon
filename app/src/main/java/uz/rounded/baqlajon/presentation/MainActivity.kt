@@ -6,12 +6,14 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.animateToolBarTittle
 import uz.rounded.baqlajon.core.extensions.gone
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.databinding.ActivityMainBinding
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
