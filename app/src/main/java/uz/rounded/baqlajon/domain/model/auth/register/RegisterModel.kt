@@ -1,10 +1,9 @@
-package uz.rounded.baqlajon.data.remote.dto.auth.registration
+package uz.rounded.baqlajon.domain.model.auth.register
 
-data class RegisterDto(
+data class RegisterModel(
     val firstName: String,
     val image: String? = null,
     val lastName: String,
-    val otp: String? = "",
     val password: String,
     val phoneNumber: String
 )
