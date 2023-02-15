@@ -33,7 +33,6 @@
     <!--    mustafo    -->
 
     <string name="confirm">Confirm</string>
-<<<<<<<<< Temporary merge branch 1
     <string name="search">Search</string>
     <string name="start_course">Start Course</string>
     <string name="mark_as_completed">Mark as completed</string>
@@ -56,8 +55,4 @@
 
     <!--    mustafo    -->
 
-=========
-    <string name="new_password">New password</string>
-    <string name="confirm_password">Confirm password</string>
->>>>>>>>> Temporary merge branch 2
 </resources>

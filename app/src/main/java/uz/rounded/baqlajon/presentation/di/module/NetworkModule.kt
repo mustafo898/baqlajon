@@ -14,6 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.getString
 import uz.rounded.baqlajon.core.utils.SharedPreference
+import uz.rounded.baqlajon.data.remote.AuthApiService
+import uz.rounded.baqlajon.data.remote.MainApiService
+import uz.rounded.baqlajon.data.repository.AuthRepositoryImpl
+import uz.rounded.baqlajon.data.repository.MainRepositoryImpl
+import uz.rounded.baqlajon.domain.repository.AuthRepository
+import uz.rounded.baqlajon.domain.repository.MainRepository
 import javax.inject.Singleton
 
 
@@ -47,7 +53,7 @@ object NetworkModule {
             .addNetworkInterceptor(Interceptor { chain: Interceptor.Chain ->
                 val request = chain.request().newBuilder()
                     .addHeader("Authorization", "Bearer ${sharedPreference.token}")
-                    .addHeader("language", sharedPreference.lang)
+                    .addHeader("lang", sharedPreference.lang)
                     .addHeader("Content-Type", "application/json")
                     .addHeader("Accept", "application/json")
                     .build()
@@ -70,4 +76,18 @@ object NetworkModule {
             .addConverterFactory(gsonGsonConverterFactory)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideAuthRepository(authApiService: AuthApiService): AuthRepository {
+        return AuthRepositoryImpl(authApiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMainRepository(mainApiService: MainApiService): MainRepository {
+        return MainRepositoryImpl(mainApiService)
+    }
+
+
 }
