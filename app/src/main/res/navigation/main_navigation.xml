@@ -9,12 +9,23 @@
         android:id="@+id/homeFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myCoursesFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.MyCoursesFragment"
         android:label="@string/my_courses"
-        tools:layout="@layout/fragment_my_courses" />
+        tools:layout="@layout/fragment_my_courses">
+        <action
+            android:id="@+id/action_myCoursesFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/balanceFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.balance.BalanceFragment"
@@ -24,5 +35,74 @@
         android:id="@+id/profileFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_paymentHistoryFragment"
+            app:destination="@id/paymentHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseDetailsFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.CourseDetailsFragment"
+        android:label="Course details"
+        tools:layout="@layout/fragment_course_details">
+        <action
+            android:id="@+id/action_courseDetailsFragment_to_sectionDetailsFragment"
+            app:destination="@id/sectionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sectionDetailsFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.SectionDetailsFragment"
+        android:label="Video details"
+        tools:layout="@layout/fragment_section_details" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.home.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.profile.edit.EditProfileFragment"
+        android:label="Edit profile"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_editPhoneFragment"
+            app:destination="@id/editPhoneFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_editPasswordFragment"
+            app:destination="@id/editPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPasswordFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.profile.edit.EditPasswordFragment"
+        android:label="Change password"
+        tools:layout="@layout/fragment_edit_password" />
+    <fragment
+        android:id="@+id/editPhoneFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.profile.edit.EditPhoneFragment"
+        android:label="Change number"
+        tools:layout="@layout/fragment_edit_phone" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.profile.about.AboutFragment"
+        android:label="About us"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.profile.language.LanguageFragment"
+        android:label="Change language"
+        tools:layout="@layout/fragment_language" />
+    <fragment
+        android:id="@+id/paymentHistoryFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.profile.history.PaymentHistoryFragment"
+        android:label="Payment history"
+        tools:layout="@layout/fragment_payment_history" />
 </navigation>

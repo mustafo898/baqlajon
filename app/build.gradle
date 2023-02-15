@@ -107,6 +107,9 @@ dependencies {
     //gson
     implementation 'com.google.code.gson:gson:2.10'
 
+    //read more
+    implementation("kr.co.prnd:readmore-textview:1.0.0")
+
     //pin view
     implementation("io.github.chaosleung:pinview:1.4.4")
 }

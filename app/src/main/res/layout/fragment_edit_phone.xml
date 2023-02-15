@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".presentation.ui.main.profile.edit.EditPhoneFragment">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="72dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/medium_500"
+            android:gravity="center"
+            android:text="@string/new_phone"
+            android:textColor="@color/grey1"
+            android:textSize="14sp" />
+
+        <include
+            android:id="@+id/full_name"
+            layout="@layout/input_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            app:name="@{@string/enter_new_phone}" />
+
+        <include
+            android:id="@+id/sign_up"
+            layout="@layout/main_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            app:name="@{@string/continue_txt}" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
