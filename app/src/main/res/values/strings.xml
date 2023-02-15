@@ -26,6 +26,8 @@
     <string name="full_name">Full name<font color="#F52725">*</font></string>
     <string name="phone_number_with_star">Phone number<font color="#F52725">*</font></string>
     <string name="referral_code">Referral code</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -47,6 +49,7 @@
     <string name="continue_txt">Continue</string>
     <string name="write_here">Write here</string>
     <string name="send">Send</string>
+    <string name="payment">Payment</string>
 
     <string-array name="gender">
         <item>Male</item>
