@@ -11,7 +11,7 @@ import uz.rounded.baqlajon.databinding.FragmentHomeBinding
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCategoryAdapter
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCourseAdapter
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCourseSecondAdapter
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 

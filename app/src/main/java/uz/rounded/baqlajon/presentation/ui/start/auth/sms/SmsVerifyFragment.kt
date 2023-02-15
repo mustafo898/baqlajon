@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import uz.rounded.baqlajon.databinding.FragmentSmsVerifyBinding
 import uz.rounded.baqlajon.presentation.MainActivity
 import uz.rounded.baqlajon.presentation.StartActivity
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
     override fun createBinding(

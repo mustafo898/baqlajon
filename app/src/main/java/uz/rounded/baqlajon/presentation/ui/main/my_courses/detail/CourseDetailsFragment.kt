@@ -10,7 +10,7 @@ import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.getColor
 import uz.rounded.baqlajon.databinding.FragmentCourseDetailsBinding
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.adapter.CoursePagerAdapter
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
     override fun createBinding(

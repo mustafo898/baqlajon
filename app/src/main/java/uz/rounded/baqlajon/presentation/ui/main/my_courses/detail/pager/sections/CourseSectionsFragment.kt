@@ -8,7 +8,7 @@ import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentCourseSectionsBinding
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.adapter.CourseSectionsAdapter
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class CourseSectionsFragment : BaseFragment<FragmentCourseSectionsBinding>() {
     override fun createBinding(

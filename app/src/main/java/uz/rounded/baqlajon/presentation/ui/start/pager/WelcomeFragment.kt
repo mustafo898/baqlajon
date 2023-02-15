@@ -10,7 +10,7 @@ import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentWelcomeBinding
 import uz.rounded.baqlajon.presentation.ui.start.pager.adapter.PagerModel
 import uz.rounded.baqlajon.presentation.ui.start.pager.adapter.WelcomeAdapter
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>() {
     private lateinit var adapter: WelcomeAdapter

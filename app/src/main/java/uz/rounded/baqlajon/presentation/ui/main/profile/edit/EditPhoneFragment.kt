@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import uz.rounded.baqlajon.databinding.FragmentEditPhoneBinding
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class EditPhoneFragment : BaseFragment<FragmentEditPhoneBinding>() {
     override fun createBinding(

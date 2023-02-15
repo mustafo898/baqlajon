@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentProfileBinding
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {

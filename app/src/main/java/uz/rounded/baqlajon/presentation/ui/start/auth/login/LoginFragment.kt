@@ -11,7 +11,7 @@ import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentLoginBinding
 import uz.rounded.baqlajon.presentation.MainActivity
 import uz.rounded.baqlajon.presentation.StartActivity
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 
 @AndroidEntryPoint

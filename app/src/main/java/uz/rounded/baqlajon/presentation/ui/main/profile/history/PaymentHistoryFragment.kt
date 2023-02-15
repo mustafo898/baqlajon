@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import uz.rounded.baqlajon.databinding.FragmentPaymentHistoryBinding
 import uz.rounded.baqlajon.presentation.ui.main.profile.history.adapter.PaymentHistoryAdapter
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class PaymentHistoryFragment : BaseFragment<FragmentPaymentHistoryBinding>() {
     override fun createBinding(

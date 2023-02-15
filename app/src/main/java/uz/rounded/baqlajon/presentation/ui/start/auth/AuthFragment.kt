@@ -1,14 +1,13 @@
 package uz.rounded.baqlajon.presentation.ui.start.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentAuthBinding
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>() {

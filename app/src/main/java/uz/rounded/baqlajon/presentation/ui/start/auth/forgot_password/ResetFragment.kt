@@ -12,7 +12,7 @@ import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.FragmentResetBinding
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import javax.inject.Inject
 
 class ResetFragment : BaseFragment<FragmentResetBinding>() {

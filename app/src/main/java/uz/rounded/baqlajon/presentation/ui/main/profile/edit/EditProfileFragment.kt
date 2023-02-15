@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.databinding.FragmentEditProfileBinding
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
     override fun createBinding(

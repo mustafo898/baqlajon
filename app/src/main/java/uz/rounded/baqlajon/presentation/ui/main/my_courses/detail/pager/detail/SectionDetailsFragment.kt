@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import uz.rounded.baqlajon.databinding.FragmentSectionDetailsBinding
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
     override fun createBinding(

@@ -12,7 +12,10 @@
     <string name="sub_label">Our new videos make it easy for you to learn anywhere, there are new videos that will be ready to help you</string>
 
     <string name="login">Login</string>
+    <string name="send_code">Send Code</string>
     <string name="sign_up">Sign Up</string>
+
+    <string name="password_rule">Parol kamida 8 ta belgidan iborat bo\'lishi va maxsus belgi yoki raqamni o\'z ichiga olishi kerak</string>
 
     <string name="phone_number">Phone number</string>
     <string name="password">Password</string>
@@ -23,8 +26,6 @@
     <string name="full_name">Full name<font color="#F52725">*</font></string>
     <string name="phone_number_with_star">Phone number<font color="#F52725">*</font></string>
     <string name="referral_code">Referral code</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     <!--    mustafo    -->

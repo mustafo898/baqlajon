@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import uz.rounded.baqlajon.databinding.FragmentMyCoursesBinding
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCategoryAdapter
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.adapter.MyCourseAdapter
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class MyCoursesFragment : BaseFragment<FragmentMyCoursesBinding>() {
 

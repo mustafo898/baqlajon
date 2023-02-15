@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import uz.rounded.baqlajon.databinding.FragmentCourseReviewsBinding
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.adapter.CourseReviewsAdapter
-import uz.roundedllc.tmkeld.presentation.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 class CourseReviewsFragment : BaseFragment<FragmentCourseReviewsBinding>() {
     override fun createBinding(
