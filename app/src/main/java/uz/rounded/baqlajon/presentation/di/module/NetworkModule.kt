@@ -1,4 +1,4 @@
-package uz.rounded.baqlajon.presentation.di
+package uz.rounded.baqlajon.presentation.di.module
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
