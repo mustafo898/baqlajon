@@ -4,26 +4,41 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.getColor
 import uz.rounded.baqlajon.databinding.FragmentCourseDetailsBinding
-import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.adapter.CoursePagerAdapter
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.adapter.CoursePagerAdapter
 
+@AndroidEntryPoint
 class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
     override fun createBinding(
         inflater: LayoutInflater, container: ViewGroup?
     ) = FragmentCourseDetailsBinding.inflate(inflater)
 
+    private val viewModel: CourseDetailsViewModel by viewModels()
+
     private lateinit var adapter: CoursePagerAdapter
 
+    private var id = ""
+
     override fun created(view: View, savedInstanceState: Bundle?) {
+        arguments?.let {
+            id = it.getString("ID", "")
+        }
+
+        observe()
+
         binding.viewPager.apply {
             (getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
-        
+
         adapter = CoursePagerAdapter(childFragmentManager, lifecycle)
 
         binding.viewPager.adapter = adapter
@@ -61,6 +76,25 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
         binding.videosView.setOnClickListener {
             setVideos()
             binding.viewPager.setCurrentItem(0, true)
+        }
+    }
+
+    private fun observe() {
+        viewModel.getDetail(id)
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.detail.collectLatest {
+                it.data?.let { p ->
+
+                    hideProgress()
+                }
+                if (it.isLoading) {
+                    showProgress()
+                }
+                if (it.error.isNotBlank()) {
+                    hideProgress()
+                }
+            }
         }
     }
 

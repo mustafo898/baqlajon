@@ -1,42 +1,54 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.databinding.ItemMyCoursesBinding
+import uz.rounded.baqlajon.domain.model.GetMyCourseModel
 
 class MyCourseAdapter(
+    private val context: Context,
     private val onItemClick: ((data: String) -> Unit)
 ) :
-    ListAdapter<String, MyCourseAdapter.MyViewHolder>(TaskDiffCallBack()) {
+    ListAdapter<GetMyCourseModel, MyCourseAdapter.MyViewHolder>(TaskDiffCallBack()) {
 
-    class TaskDiffCallBack : DiffUtil.ItemCallback<String>() {
+    class TaskDiffCallBack : DiffUtil.ItemCallback<GetMyCourseModel>() {
         override fun areItemsTheSame(
-            oldItem: String,
-            newItem: String
+            oldItem: GetMyCourseModel,
+            newItem: GetMyCourseModel
         ): Boolean {
-            return oldItem == newItem
+            return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(
-            oldItem: String,
-            newItem: String
+            oldItem: GetMyCourseModel,
+            newItem: GetMyCourseModel
         ): Boolean {
-            return oldItem == newItem
+            return oldItem._id == newItem._id
         }
     }
 
-    inner class MyViewHolder(var itemBinding: ItemMyCoursesBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
+    inner class MyViewHolder(var binding: ItemMyCoursesBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
+        fun onBind(data: GetMyCourseModel) {
 
-        fun onBind(data: String) {
-            itemBinding.apply {
+            binding.progressText.text = "${data.completedCount}/${data.course.videoCount}"
+            binding.image.loadImage(context, data.course.image)
 
-            }
+            binding.progressBar.max = data.course.viewCount
+            binding.progressBar.progress = data.completedCount
+
+            binding.eye.text = data.course.viewCount.toString()
+            binding.rating.text = data.course.rating.toString()
+
             itemView.setOnClickListener {
-
+                onItemClick.invoke(data._id)
             }
         }
     }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -11,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.navigate
+import uz.rounded.baqlajon.core.extensions.navigateWithArgs
 import uz.rounded.baqlajon.databinding.FragmentHomeBinding
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.CategoryModel
@@ -37,7 +39,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val adapterList by lazy {
         HomeCourseSecondAdapter(requireContext()) {
-
+            navigateWithArgs(
+                R.id.action_homeFragment_to_courseDetailsFragment,
+                bundleOf("ID" to it)
+            )
         }
     }
 

@@ -82,3 +82,17 @@ fun CommentDto.toModel(): CommentModel {
 fun AuthorDto.toModel(): AuthorModel {
     return AuthorModel(_id, createdAt, description, firstName, image, lastName, updatedAt)
 }
+
+fun GetMyCourseDto.toModel(): GetMyCourseModel {
+    return GetMyCourseModel(
+        _id,
+        completedCount,
+        course.toModel(),
+        courseId,
+        createdAt,
+        isSeen,
+        status,
+        updatedAt,
+        userId
+    )
+}

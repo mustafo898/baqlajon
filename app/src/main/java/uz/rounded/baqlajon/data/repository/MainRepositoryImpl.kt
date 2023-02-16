@@ -8,6 +8,7 @@ import uz.rounded.baqlajon.data.remote.MainApiService
 import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.domain.model.GetByIdCourseModel
 import uz.rounded.baqlajon.domain.model.GetCourseModel
+import uz.rounded.baqlajon.domain.model.GetMyCourseModel
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import javax.inject.Inject
 
@@ -44,6 +45,38 @@ class MainRepositoryImpl @Inject constructor(
             flow.emit(Resource.Error(e.message.toString()))
         }
     })
+
+    override suspend fun getAllMyCourse(): Flow<Resource<List<GetMyCourseModel>>> = loadResult({
+        mainApiService.getAllMyCourse()
+    }, { data, flow ->
+        try {
+            flow.emit(Resource.Success(data.map { it.toModel() }))
+        } catch (e: Exception) {
+            flow.emit(Resource.Error(e.message.toString()))
+        }
+    })
+
+    override suspend fun getMyCourseStatus(status: String): Flow<Resource<List<GetMyCourseModel>>> =
+        loadResult({
+            mainApiService.getMyCourseStatus(status)
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data.map { it.toModel() }))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
+    override suspend fun getStartCourse(id: String): Flow<Resource<Boolean>> =
+        loadResult({
+            mainApiService.getStartCourse(id)
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
 
     override suspend fun getByIdCourse(id: String): Flow<Resource<GetByIdCourseModel>> =
         loadResult({

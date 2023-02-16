@@ -1,7 +1,7 @@
 package uz.rounded.baqlajon.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -37,10 +37,11 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.toolbar.title.text = navController.currentDestination?.label.toString()
             animateToolBarTittle(binding.toolbar.title)
-            if (isToolBarGone.contains(destination.id)
-            ) {
+            if (isToolBarGone.contains(destination.id)) {
+                hideProgress()
                 binding.toolbar.toolbar.gone()
             } else {
+                showProgress()
                 binding.toolbar.toolbar.visible()
             }
         }
