@@ -14,29 +14,6 @@
         <item name="android:statusBarColor">@color/white</item>
     </style>
 
-    <style name="Theme.SplashScreen" parent="Theme.Baqlajon">
-        <item name="android:windowBackground">@drawable/splash_image</item>
-        <item name="android:statusBarColor">@color/blue</item>
-        <item name="android:navigationBarColor">@color/blue</item>
-    </style>
 
-    <style name="Theme.MyTheme" parent="Theme.Baqlajon">
-        <!-- Status bar color. -->
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@color/white</item>
-    </style>
-
-    <style name="corner_circle">
-        <item name="cornerSize">50%</item>
-    </style>
-
-    <style name="SpinnerTheme" parent="android:Widget.Spinner">
-        <item name="android:background">@drawable/spinner_background</item>
-    </style>
-
-    <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/grey5</item>
-        <item name="colorControlActivated">@color/yellow</item>
-    </style>
 
 </resources>
