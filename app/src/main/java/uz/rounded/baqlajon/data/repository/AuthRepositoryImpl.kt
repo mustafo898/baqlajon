@@ -1,14 +1,13 @@
 package uz.rounded.baqlajon.data.repository
 
 import kotlinx.coroutines.flow.Flow
-import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.data.common.ResponseHandler
 import uz.rounded.baqlajon.data.mapper.toModel
 import uz.rounded.baqlajon.data.remote.AuthApiService
+import uz.rounded.baqlajon.data.remote.dto.auth.login.LoginRequestDto
 import uz.rounded.baqlajon.data.remote.dto.auth.otp.CheckOtp
 import uz.rounded.baqlajon.data.remote.dto.auth.otp.SendOtpDto
 import uz.rounded.baqlajon.data.remote.dto.auth.password.ForgotPasswordDto
-import uz.rounded.baqlajon.data.remote.dto.auth.registration.LoginRequestDto
 import uz.rounded.baqlajon.data.remote.dto.auth.registration.RegisterDto
 import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.domain.model.UserModel
@@ -20,7 +19,7 @@ import uz.rounded.baqlajon.domain.repository.AuthRepository
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
-    private val authApiService: AuthApiService, private val shared: SharedPreference
+    private val authApiService: AuthApiService
 ) : AuthRepository, ResponseHandler() {
     override suspend fun register(request: RegisterModel): Flow<Resource<UserModel>> = loadResult({
         authApiService.registration(
@@ -98,4 +97,21 @@ class AuthRepositoryImpl @Inject constructor(
             }
         })
 
+//    override suspend fun recovery(loginModel: LoginModel): Flow<Resource<UserModel>> =
+//    loadResult(
+//    {
+//        authApiService.forgotPassword(
+//            ForgotPasswordDto(
+//                phoneNumber = loginModel._phoneNumber
+//            )
+//        )
+//    },
+//    {
+//        data, flow ->
+//        try {
+//            flow.emit(Resource.Success(data))
+//        } catch (e: Exception) {
+//            flow.emit(Resource.Error(e.message.toString()))
+//        }
+//    })
 }

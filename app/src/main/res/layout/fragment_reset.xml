@@ -9,7 +9,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:padding="24dp"
-        tools:context=".presentation.ui.start.auth.forgot_password.ResetFragment">
+        tools:context=".presentation.ui.start.auth.reset_password.ResetFragment">
 
         <TextView
             android:id="@+id/number"

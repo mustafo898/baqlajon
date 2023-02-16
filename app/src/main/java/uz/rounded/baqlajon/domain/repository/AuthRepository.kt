@@ -14,4 +14,6 @@ interface AuthRepository {
     suspend fun createOtp(createOtpModel: SendOtpModel): Flow<Resource<String>>
     suspend fun checkOtp(otpModel: CheckOtpModel): Flow<Resource<Boolean>>
     suspend fun password(passwordModel: SendOtpModel): Flow<Resource<String>>
+//    suspend fun recovery(loginModel: LoginModel): Flow<Resource<UserModel>>
+
 }

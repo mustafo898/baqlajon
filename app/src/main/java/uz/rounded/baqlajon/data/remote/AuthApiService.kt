@@ -7,7 +7,7 @@ import uz.rounded.baqlajon.data.remote.dto.UserDto
 import uz.rounded.baqlajon.data.remote.dto.auth.otp.CheckOtp
 import uz.rounded.baqlajon.data.remote.dto.auth.otp.SendOtpDto
 import uz.rounded.baqlajon.data.remote.dto.auth.password.ForgotPasswordDto
-import uz.rounded.baqlajon.data.remote.dto.auth.registration.LoginRequestDto
+import uz.rounded.baqlajon.data.remote.dto.auth.login.LoginRequestDto
 import uz.rounded.baqlajon.data.remote.dto.auth.registration.RegisterDto
 
 interface AuthApiService {
@@ -17,9 +17,6 @@ interface AuthApiService {
 
     @POST("user/login")
     suspend fun login(@Body login: LoginRequestDto): Response<MainResponseDto<UserDto>>
-
-//    @POST("student/password")
-//    suspend fun recovery(@Body login: LoginRequestDto): Response<MainResponseDto<UserDto>>
 
     @PUT("user/forget")
     suspend fun forgotPassword(@Body forgot: ForgotPasswordDto): Response<MainResponseDto<String>>

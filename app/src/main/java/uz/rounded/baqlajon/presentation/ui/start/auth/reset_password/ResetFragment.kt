@@ -1,4 +1,4 @@
-package uz.rounded.baqlajon.presentation.ui.start.auth.forgot_password
+package uz.rounded.baqlajon.presentation.ui.start.auth.reset_password
 
 import android.os.Bundle
 import android.view.LayoutInflater
