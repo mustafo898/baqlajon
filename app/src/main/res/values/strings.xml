@@ -33,6 +33,8 @@
     <!--    mustafo    -->
 
     <string name="confirm">Confirm</string>
+    <string name="lastName">Last name</string>
+    <string name="name">Firs name</string>
     <string name="search">Search</string>
     <string name="start_course">Start Course</string>
     <string name="mark_as_completed">Mark as completed</string>

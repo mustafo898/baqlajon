@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="46dp"
-            app:name="@{@string/full_name}" />
+            app:name="@{@string/name}" />
 
         <include
             android:id="@+id/last_name"
@@ -33,15 +33,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:name="@{@string/full_name}" />
+            app:name="@{@string/lastName}" />
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/border_field_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:cardCornerRadius="8dp">
+            app:cardBackgroundColor="@color/grey7"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -63,12 +63,13 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="16dp"
                     android:background="@android:color/transparent"
-                    android:hint="+998"
+                    android:fontFamily="@font/regular_400"
+                    android:gravity="center_vertical"
+                    android:hint="@string/phone_number"
                     android:inputType="phone"
-                    android:paddingVertical="16dp"
-                    android:textColorHint="@color/hint_color"
+                    android:textColorHint="@color/grey2"
                     android:textSize="16sp"
-                    app:met_mask="+998 ## ### ## ##" />
+                    app:met_mask="+998 (##) ### ## ##" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
