@@ -22,7 +22,6 @@ import javax.inject.Inject
 @HiltViewModel
 class SmsViewModel @Inject constructor(
     private val repository: AuthRepository
-
 ) : ViewModel() {
 
     private val _registration = MutableStateFlow(UIObjectState<UserModel>())

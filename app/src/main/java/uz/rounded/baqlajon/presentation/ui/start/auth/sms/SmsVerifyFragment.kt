@@ -16,6 +16,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.phone.SmsRetriever
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.*
@@ -31,6 +32,7 @@ import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import java.util.regex.Pattern
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
 
     private val viewModel: SmsViewModel by viewModels()
@@ -173,7 +175,12 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
             viewModel.create.collectLatest { k ->
                 k.data?.let {
                     timerCount.start()
+                    binding.resend.visible()
 //                    hideStartProgress()
+                }
+                if (k.error.isNotBlank()) {
+                    binding.resend.gone()
+                    Toast.makeText(requireContext(), k.error, Toast.LENGTH_SHORT).show()
                 }
             }
         }
