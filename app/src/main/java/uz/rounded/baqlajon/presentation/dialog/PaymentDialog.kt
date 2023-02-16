@@ -17,6 +17,8 @@ class PaymentDialog(
 
     private val bind get() = binding
 
+    private var payment_type = "PAYME"
+
     init {
         dialog.setView(binding?.root)
         dialog.setCancelable(false)
@@ -26,11 +28,38 @@ class PaymentDialog(
         bind?.back?.setOnClickListener {
             dialog.dismiss()
         }
+        paymentMethod()
+        continuePayment()
 
+    }
+
+    private fun continuePayment() = bind?.apply {
+        card.cardView.setOnClickListener {
+
+        }
     }
 
     fun show() {
         dialog.show()
+    }
+
+    private fun paymentMethod() = bind?.apply {
+        payme.setOnClickListener {
+            clearChecks()
+            paymeCheck.setImageResource(R.drawable.checked)
+            payment_type = "PAYME"
+        }
+        click.setOnClickListener {
+            clearChecks()
+            clickCheck.setImageResource(R.drawable.checked)
+            payment_type = "CLICK"
+
+        }
+    }
+
+    private fun clearChecks() = bind?.apply {
+        paymeCheck.setImageResource(R.drawable.unchecked)
+        clickCheck.setImageResource(R.drawable.unchecked)
     }
 
 }
