@@ -48,7 +48,7 @@ class MyCourseAdapter(
             binding.rating.text = data.course.rating.toString()
 
             itemView.setOnClickListener {
-                onItemClick.invoke(data._id)
+                onItemClick.invoke(data.courseId)
             }
         }
     }

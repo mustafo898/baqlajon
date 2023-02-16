@@ -14,7 +14,7 @@
         android:clipToPadding="false"
         android:orientation="vertical"
         android:overScrollMode="never"
-        android:paddingBottom="84dp"
+        android:paddingBottom="150dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_course_reviews" />
 

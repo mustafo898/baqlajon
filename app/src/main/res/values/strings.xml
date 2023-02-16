@@ -81,6 +81,15 @@
     <string name="please_enter_code">Please, enter the code we sent \n%1$s</string>
     <string name="time_00_23">Time: %1$s</string>
     <string name="time_sms">Vaqt: %1$s</string>
+    <string name="videos">%1$s Videos</string>
+    <string name="time_course">7h 30min</string>
+    <string name="reviews">%1$s reviews</string>
+    <string name="students_learnt">%1$s Students learnt</string>
+    <string name="very_bad">Very Bad</string>
+    <string name="bad">Bad</string>
+    <string name="ok">OK</string>
+    <string name="good">Good</string>
+    <string name="great">Great!</string>
 
     <!--    suhrob    -->
 

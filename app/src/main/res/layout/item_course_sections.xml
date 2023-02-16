@@ -92,6 +92,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
+            android:id="@+id/type_image"
             android:layout_marginEnd="16dp"
             android:src="@drawable/lock"
             app:layout_constraintBottom_toBottomOf="parent"

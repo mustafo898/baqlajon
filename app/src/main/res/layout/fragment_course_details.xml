@@ -131,7 +131,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
-                            android:text="14 Videos"
+                            android:text="@string/videos"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -154,7 +154,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
-                            android:text="7h 30min"
+                            android:text="@string/time_course"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -177,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
-                            android:text="565 reviews"
+                            android:text="@string/reviews"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -203,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/medium_500"
-                        android:text="1000+ Students learnt"
+                        android:text="@string/students_learnt"
                         android:textColor="@color/grey2"
                         android:textSize="14sp" />
 
@@ -276,7 +276,9 @@
                     android:layout_marginHorizontal="8dp"
                     android:layout_width="match_parent"
                     android:id="@+id/viewPager"
-                    android:layout_height="wrap_content" />
+                    android:clipToPadding="false"
+                    android:paddingBottom="104dp"
+                    android:layout_height="match_parent" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

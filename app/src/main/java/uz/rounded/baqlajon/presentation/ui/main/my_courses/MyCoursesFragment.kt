@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import uz.rounded.baqlajon.R
+import uz.rounded.baqlajon.core.extensions.navigateWithArgs
 import uz.rounded.baqlajon.databinding.FragmentMyCoursesBinding
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.CategoryModel
@@ -21,7 +24,10 @@ class MyCoursesFragment : BaseFragment<FragmentMyCoursesBinding>() {
 
     private val adapter by lazy {
         MyCourseAdapter(requireContext()) {
-
+            navigateWithArgs(
+                R.id.action_myCoursesFragment_to_courseDetailsFragment,
+                bundleOf("ID" to it)
+            )
         }
     }
 
