@@ -10,4 +10,10 @@
     <color name="main_blue">#00AFFF</color>
     <color name="button_disabled">#333333</color>
 
+    <!-- suhrob -->
+    <color name="main_text_color">#f2f2f2</color>
+    <color name="hint_color">#A7A7A7</color>
+    <color name="border_field_registration">#3D3D3D</color>
+    <color name="start_fragment_bg">#181818</color>
+    <!-- suhrob -->
 </resources>

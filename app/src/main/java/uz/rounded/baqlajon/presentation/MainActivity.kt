@@ -62,4 +62,15 @@ class MainActivity : AppCompatActivity() {
     fun showProgress() {
         binding.progress.visible()
     }
+    fun setMainToolbarText(text: String) {
+        binding.toolbar.title.text = text
+    }
+
+//    fun showProgress() = binding.apply {
+//        progressBar.visible()
+//    }
+//
+//    fun hideProgress() = binding.apply {
+//        progressBar.gone()
+//    }
 }

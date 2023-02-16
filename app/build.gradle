@@ -145,5 +145,13 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation "androidx.room:room-paging:$room_version"
+    //masked edittext
+    implementation("com.github.santalu:mask-edittext:1.0.2")
 
+    //gms auth
+    implementation("com.google.android.gms:play-services-auth:20.3.0")
+    implementation("com.google.android.gms:play-services-auth-api-phone:18.0.1")
+    implementation("com.google.code.gson:gson:2.10")
+    //loader
+    implementation("com.tuyenmonkey:mkloader:1.4.0")
 }

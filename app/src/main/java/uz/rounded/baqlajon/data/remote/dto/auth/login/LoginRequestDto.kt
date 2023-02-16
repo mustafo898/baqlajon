@@ -1,4 +1,4 @@
-package uz.rounded.baqlajon.data.remote.dto.auth.registration
+package uz.rounded.baqlajon.data.remote.dto.auth.login
 
 data class LoginRequestDto(
     val phoneNumber: String,

@@ -53,6 +53,33 @@
         <item>Female</item>
     </string-array>
 
+    <string-array name="region">
+        <item>Andijon</item>
+        <item>Buxoro</item>
+        <item>Fargʻona</item>
+        <item>Jizzax</item>
+        <item>Xorazm</item>
+        <item>Namangan</item>
+        <item>Navoiy</item>
+        <item>Qashqadaryo</item>
+        <item>Qoraqalpogʻiston Respublikasi</item>
+        <item>Samarqand</item>
+        <item>Sirdaryo</item>
+        <item>Surxondaryo</item>
+        <item>Toshkent</item>
+    </string-array>
+
     <!--    mustafo    -->
+
+
+    <!--    suhrob    -->
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="new_phone_number">Telefon raqamni yangilash</string>
+    <string name="please_enter_code">Please, enter the code we sent \n%1$s</string>
+    <string name="time_00_23">Time: %1$s</string>
+    <string name="time_sms">Vaqt: %1$s</string>
+
+    <!--    suhrob    -->
 
 </resources>

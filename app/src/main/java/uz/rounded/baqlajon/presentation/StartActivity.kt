@@ -62,4 +62,12 @@ class StartActivity : AppCompatActivity() {
         }
 
     }
+
+    fun showProgress() = binding.apply {
+        progressBar.visible()
+    }
+
+    fun hideProgress() = binding.apply {
+        progressBar.gone()
+    }
 }

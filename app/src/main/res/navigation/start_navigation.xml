@@ -46,12 +46,19 @@
         <action
             android:id="@+id/action_registrationFragment_to_smsVerifyFragment"
             app:destination="@id/smsVerifyFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/smsVerifyFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.sms.SmsVerifyFragment"
         android:label="Verification code"
-        tools:layout="@layout/fragment_sms_verify" />
+        tools:layout="@layout/fragment_sms_verify" >
+        <action
+            android:id="@+id/action_smsVerifyFragment_to_resetFragment"
+            app:destination="@id/resetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.forgot_password.ForgotPasswordFragment"
@@ -63,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/resetFragment"
-        android:name="uz.rounded.baqlajon.presentation.ui.start.auth.forgot_password.ResetFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.start.auth.reset_password.ResetFragment"
         android:label="Reset Password"
         tools:layout="@layout/fragment_reset" />
 </navigation>

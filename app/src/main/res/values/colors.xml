@@ -34,11 +34,21 @@
     <color name="yellow">#FD9E19</color>
 
 
+    <!--    suhrob -->
+    <color name="main_text_color">#121212</color>
+    <color name="hint_color">#A7A7A7</color>
+    <color name="border_field_registration">#E0E0E0</color>
+    <color name="start_fragment_bg">#FFFFFF</color>
+    <color name="podcast_seekbar">#3300AFFF</color>
 
-<!--    mustafo -->
+    <!--    suhrob -->
+
+
+    <!--    mustafo -->
 
     <color name="fragment_background">#FAFAFA</color>
     <color name="green">#B7F248</color>
     <color name="red_alpha">#1AEB5757</color>
+
 
 </resources>
