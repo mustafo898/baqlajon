@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import uz.rounded.baqlajon.presentation.MainActivity
 
 abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
@@ -37,4 +38,11 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
         Toast.makeText(requireContext(), str, Toast.LENGTH_SHORT).show()
     }
 
+    fun hideProgress() {
+        (activity as MainActivity).hideProgress()
+    }
+
+    fun showProgress() {
+        (activity as MainActivity).showProgress()
+    }
 }
