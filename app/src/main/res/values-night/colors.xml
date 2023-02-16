@@ -10,4 +10,35 @@
     <color name="main_blue">#00AFFF</color>
     <color name="button_disabled">#333333</color>
 
+    <color name="bottom_nav_selected">#0D90EF</color>
+    <color name="bottom_nav_unselected">#666687</color>
+
+
+    <color name="blue">#0D90EF</color>
+
+    <color name="red">#F52725</color>
+
+    <color name="toolbar_txt">#212134</color>
+
+    <color name="grey1">#666687</color>
+    <color name="grey2">#8E8EA9</color>
+    <color name="grey7">#F6F6F9</color>
+    <color name="grey5">#DCDCE4</color>
+    <color name="grey6">#EAEAEF</color>
+
+    <color name="black1">#212134</color>
+    <color name="black2">#32324D</color>
+    <color name="black3">#4A4A6A</color>
+
+    <color name="yellow">#FD9E19</color>
+
+    <color name="card_color">#32323D</color>
+
+
+    <!--    mustafo -->
+
+    <color name="fragment_background">#1D1E24</color>
+    <color name="green">#B7F248</color>
+    <color name="red_alpha">#1AEB5757</color>
+
 </resources>
