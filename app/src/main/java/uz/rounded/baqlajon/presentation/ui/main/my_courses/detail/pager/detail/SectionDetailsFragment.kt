@@ -1,13 +1,19 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MediaController
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.ExtractorMediaSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.Util
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
@@ -22,14 +28,13 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
 
     private val viewModel: DetailsViewModel by viewModels()
 
+    private lateinit var simpleExoplayer: SimpleExoPlayer
+
+
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = FragmentSectionDetailsBinding.inflate(inflater)
-
-    private val controller by lazy {
-        MediaController(requireContext())
-    }
 
     private var id = ""
 
@@ -65,9 +70,13 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
                         if (p.isFree) {
                             notification.gone()
                         } else {
-                            setVideo(p.videoUrl)
                             notification.visible()
                         }
+                        Log.d(
+                            "sldjsdkfjsokjf",
+                            "observe: ${getString(R.string.base_url) + "public" + p.videoUrl}"
+                        )
+                        setVideo(getString(R.string.base_url) + "/public" + p.videoUrl)
                         image2.loadImage(requireContext(), p.imageUrl)
                     }
                     hideProgress()
@@ -83,8 +92,20 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
     }
 
     private fun setVideo(path: String) {
-        binding.video.setVideoPath(getString(R.string.base_url) + path)
-        binding.video.setMediaController(controller)
-        controller.setAnchorView(binding.video)
+
+        simpleExoplayer = ExoPlayerFactory.newSimpleInstance(requireActivity())
+        binding.exoPlayer.player = simpleExoplayer
+        val dataSource = DefaultDataSourceFactory(
+            requireContext(), Util.getUserAgent(requireContext(), getString(R.string.app_name))
+        )
+        val mediaSource = ExtractorMediaSource.Factory(dataSource)
+            .createMediaSource(Uri.parse(path))
+
+        simpleExoplayer.prepare(mediaSource)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        simpleExoplayer.release()
     }
 }

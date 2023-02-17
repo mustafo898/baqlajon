@@ -17,6 +17,4 @@ class BalanceFragment : BaseFragment<FragmentBalanceBinding>() {
     override fun created(view: View, savedInstanceState: Bundle?) {
 
     }
-
-
 }
