@@ -2,7 +2,6 @@ package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,15 +67,11 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
                         title.text = p.title
                         desc.text = p.description
                         if (p.isFree) {
+                            setVideo(getString(R.string.base_url) + "public/uploads" + p.videoUrl)
                             notification.gone()
                         } else {
                             notification.visible()
                         }
-                        Log.d(
-                            "sldjsdkfjsokjf",
-                            "observe: ${getString(R.string.base_url) + "public" + p.videoUrl}"
-                        )
-                        setVideo(getString(R.string.base_url) + "/public" + p.videoUrl)
                         image2.loadImage(requireContext(), p.imageUrl)
                     }
                     hideProgress()

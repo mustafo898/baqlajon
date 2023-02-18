@@ -10,9 +10,9 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:overScrollMode="never"
             android:layout_height="match_parent"
-            android:background="@color/fragment_background">
+            android:background="@color/fragment_background"
+            android:overScrollMode="never">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -32,8 +32,7 @@
                         android:id="@+id/image"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/image_3" />
+                        android:scaleType="centerCrop" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -44,7 +43,6 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/medium_500"
-                    android:text="3D Design Illustration"
                     android:textColor="@color/black1"
                     android:textSize="20sp" />
 
@@ -54,7 +52,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:fontFamily="@font/regular_400"
-                    android:text="Hello and thank you for visiting my profile! My name is Queen. I'm a professional English Language teacher and an English Confidence And Fluency Guide. Also an experienced IELTS and TOEFL"
                     android:textColor="@color/grey1"
                     android:textSize="16sp"
                     app:readMoreColor="@color/blue"
@@ -73,7 +70,6 @@
                         android:layout_height="42dp"
                         android:gravity="center_vertical"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/image_3"
                         app:shapeAppearanceOverlay="@style/corner_circle" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -88,7 +84,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/medium_500"
-                            android:text="Alimardon Aliyev"
                             android:textColor="@color/black1"
                             android:textSize="14sp" />
 
@@ -98,7 +93,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/regular_400"
-                            android:text="Smm tutor"
                             android:textColor="@color/grey1"
                             android:textSize="12sp" />
 
@@ -131,7 +125,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
-                            android:text="@string/videos"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -154,7 +147,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
-                            android:text="@string/time_course"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -177,7 +169,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
-                            android:text="@string/reviews"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -203,7 +194,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/medium_500"
-                        android:text="@string/students_learnt"
                         android:textColor="@color/grey2"
                         android:textSize="14sp" />
 
@@ -272,13 +262,13 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.viewpager2.widget.ViewPager2
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_width="match_parent"
                     android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="16dp"
                     android:clipToPadding="false"
-                    android:paddingBottom="104dp"
-                    android:layout_height="match_parent" />
+                    android:paddingBottom="104dp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
