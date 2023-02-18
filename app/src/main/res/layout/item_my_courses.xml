@@ -8,7 +8,7 @@
     android:background="?attr/selectableItemBackgroundBorderless"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/card_color"
     app:cardCornerRadius="8dp"
     app:cardElevation="0dp">
 
@@ -54,7 +54,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/medium_500"
                 android:text="Social media marketing"
-                android:textColor="@color/black"
+                android:textColor="@color/black1"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -81,7 +81,7 @@
                     android:layout_marginHorizontal="8dp"
                     android:fontFamily="@font/medium_500"
                     android:text="10/17"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black1"
                     android:textSize="14sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

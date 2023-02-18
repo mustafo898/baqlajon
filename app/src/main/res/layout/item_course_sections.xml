@@ -9,7 +9,7 @@
     android:background="?attr/selectableItemBackgroundBorderless"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/card_color"
     app:cardCornerRadius="8dp"
     app:cardElevation="0dp"
     tools:context=".presentation.ui.main.my_courses.detail.pager.sections.CourseSectionsFragment">
