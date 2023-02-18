@@ -6,7 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/fragment_background"
         android:orientation="vertical"
         android:padding="24dp"
         tools:context=".presentation.ui.start.auth.reset_password.ResetFragment">

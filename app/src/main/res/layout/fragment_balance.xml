@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
+        android:background="@color/card_color"
         android:elevation="1dp">
 
         <TextView
@@ -167,7 +167,7 @@ to’lpagan ballaringizni istalgan narsangizga almashtiring"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/card_color"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp">
 

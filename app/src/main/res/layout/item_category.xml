@@ -9,6 +9,7 @@
     android:id="@+id/card"
     android:clickable="true"
     android:focusable="true"
+    app:cardBackgroundColor="@color/fragment_background"
     android:background="?attr/selectableItemBackgroundBorderless"
     android:layout_marginVertical="8dp"
     android:layout_marginStart="16dp"

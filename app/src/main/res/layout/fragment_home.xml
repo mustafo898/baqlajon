@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/card_color"
         android:elevation="1dp">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -90,6 +90,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/card_color"
                     android:gravity="center_vertical"
                     android:paddingVertical="8dp">
 
@@ -98,9 +99,6 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="16dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="true"
-                        android:focusable="true"
                         android:padding="10dp"
                         android:src="@drawable/search" />
 
