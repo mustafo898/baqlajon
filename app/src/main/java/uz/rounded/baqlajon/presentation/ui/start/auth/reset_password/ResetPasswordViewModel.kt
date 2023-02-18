@@ -1,18 +1,10 @@
 package uz.rounded.baqlajon.presentation.ui.start.auth.reset_password
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
-import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.domain.model.UserModel
-import uz.rounded.baqlajon.domain.model.auth.login.LoginModel
 import uz.rounded.baqlajon.domain.repository.AuthRepository
 import uz.rounded.baqlajon.presentation.common.UIObjectState
 import javax.inject.Inject

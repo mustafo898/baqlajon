@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment2"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -67,6 +70,9 @@
         <action
             android:id="@+id/action_forgotPasswordFragment_to_resetFragment"
             app:destination="@id/resetFragment" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_smsVerifyFragment"
+            app:destination="@id/smsVerifyFragment" />
     </fragment>
     <fragment
         android:id="@+id/resetFragment"

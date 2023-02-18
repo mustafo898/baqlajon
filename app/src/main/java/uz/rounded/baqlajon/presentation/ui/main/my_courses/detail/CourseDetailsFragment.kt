@@ -86,13 +86,13 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
             viewModel.detail.collectLatest {
                 it.data?.let { p ->
 
-                    hideProgress()
+                    hideMainProgress()
                 }
                 if (it.isLoading) {
-                    showProgress()
+                    showMainProgress()
                 }
                 if (it.error.isNotBlank()) {
-                    hideProgress()
+                    hideMainProgress()
                 }
             }
         }

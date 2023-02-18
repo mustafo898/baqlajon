@@ -54,15 +54,16 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
     fun setMainToolbarText(text: String) {
         binding.toolbar.title.text = text
     }
 
     fun showProgress() = binding.apply {
-        progressBar.visible()
+        progress.visible()
     }
 
     fun hideProgress() = binding.apply {
-        progressBar.gone()
+        progress.gone()
     }
 }
