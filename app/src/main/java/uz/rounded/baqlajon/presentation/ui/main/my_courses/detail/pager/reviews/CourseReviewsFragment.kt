@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import uz.rounded.baqlajon.databinding.FragmentCourseReviewsBinding
-import uz.rounded.baqlajon.domain.model.CommentModel
+import uz.rounded.baqlajon.domain.model.main.course.CommentModel
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.adapter.CourseReviewsAdapter
 

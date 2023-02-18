@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.UserModel
+import uz.rounded.baqlajon.domain.model.main.course.UserModel
 import uz.rounded.baqlajon.domain.model.auth.login.LoginModel
 import uz.rounded.baqlajon.domain.repository.AuthRepository
 import uz.rounded.baqlajon.presentation.common.UIObjectState

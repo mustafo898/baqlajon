@@ -6,7 +6,7 @@ import static uz.rounded.baqlajon.core.extensions.FragmentExtensionsKt.objectToJ
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import uz.rounded.baqlajon.domain.model.UserModel;
+import uz.rounded.baqlajon.domain.model.main.course.UserModel;
 
 public class SharedPreference {
     SharedPreferences prefs;
@@ -36,6 +36,16 @@ public class SharedPreference {
     public void setHasLang(boolean hasLang) {
         editor = prefs.edit();
         editor.putBoolean("hasLang", hasLang);
+        editor.apply();
+    }
+
+    public int getType() {
+        return prefs.getInt("type", 0);
+    }
+
+    public void setType(int type) {
+        editor = prefs.edit();
+        editor.putInt("type", type);
         editor.apply();
     }
 

@@ -11,9 +11,9 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.CommentModel
-import uz.rounded.baqlajon.domain.model.RequestCommentModel
-import uz.rounded.baqlajon.domain.model.VideoModel
+import uz.rounded.baqlajon.domain.model.main.course.CommentModel
+import uz.rounded.baqlajon.domain.model.main.course.RequestCommentModel
+import uz.rounded.baqlajon.domain.model.main.course.VideoModel
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import uz.rounded.baqlajon.presentation.common.UIObjectState
 import javax.inject.Inject

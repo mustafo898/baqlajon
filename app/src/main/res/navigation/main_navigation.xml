@@ -30,7 +30,11 @@
         android:id="@+id/balanceFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.balance.BalanceFragment"
         android:label="@string/balance"
-        tools:layout="@layout/fragment_balance" />
+        tools:layout="@layout/fragment_balance" >
+        <action
+            android:id="@+id/action_balanceFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.ProfileFragment"
@@ -113,4 +117,9 @@
         tools:layout="@layout/fragment_reviews"
         android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.ReviewsFragment"
         android:label="Write a review" />
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.balance.shop.ShopFragment"
+        android:label="Shop"
+        tools:layout="@layout/fragment_shop" />
 </navigation>

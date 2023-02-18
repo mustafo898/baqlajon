@@ -2,7 +2,7 @@ package uz.rounded.baqlajon.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.UserModel
+import uz.rounded.baqlajon.domain.model.main.course.UserModel
 import uz.rounded.baqlajon.domain.model.auth.login.LoginModel
 import uz.rounded.baqlajon.domain.model.auth.otp.CheckOtpModel
 import uz.rounded.baqlajon.domain.model.auth.otp.SendOtpModel

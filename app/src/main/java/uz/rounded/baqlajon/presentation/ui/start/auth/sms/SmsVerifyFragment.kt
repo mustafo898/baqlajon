@@ -100,7 +100,7 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
             viewModel.registration.collectLatest { k ->
                 k.data?.let {
                     hideStartProgress()
-                    shared.user = it
+//                    shared.user = it
                     shared.token = it.token
                     shared.hasToken = true
                     navigateWithArgs(

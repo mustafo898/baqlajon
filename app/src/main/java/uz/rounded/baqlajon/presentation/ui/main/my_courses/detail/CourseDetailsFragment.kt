@@ -2,6 +2,7 @@ package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import uz.rounded.baqlajon.core.extensions.getColor
 import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.core.extensions.navigateWithArgs
 import uz.rounded.baqlajon.databinding.FragmentCourseDetailsBinding
-import uz.rounded.baqlajon.domain.model.VideoModel
+import uz.rounded.baqlajon.domain.model.main.course.VideoModel
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.adapter.CoursePagerAdapter
 
@@ -103,6 +104,7 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
                     binding.apply {
                         title.text = p.title
                         desc.text = p.description
+                        hours.text = timeFormat(p.time)
                         teacherName.text = p.author.firstName + " " + p.author.lastName
                         teacherType.text = p.author.description
                         teacherImage.loadImage(requireContext(), p.author.image)
@@ -128,6 +130,7 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
                     showProgress()
                 }
                 if (it.error.isNotBlank()) {
+                    Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
                     hideProgress()
                 }
             }
@@ -154,5 +157,13 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
         reviewsView.strokeColor = getColor(requireContext(), R.color.blue)
         btn.name = getString(R.string.write_a_review)
         isOpen = false
+    }
+
+    private fun timeFormat(time: Int): String {
+        val hour = time / 3600
+        val minute = time / 60
+        val hourFormat = if (hour < 1) "" else "${hour}h"
+        val minuteFormat = if (minute < 10) "0${minute}" else "$minute"
+        return "$hourFormat${minuteFormat}min"
     }
 }

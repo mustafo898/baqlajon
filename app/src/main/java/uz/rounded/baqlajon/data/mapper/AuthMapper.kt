@@ -1,7 +1,7 @@
 package uz.rounded.baqlajon.data.mapper
 
 import uz.rounded.baqlajon.data.remote.dto.UserDto
-import uz.rounded.baqlajon.domain.model.UserModel
+import uz.rounded.baqlajon.domain.model.main.course.UserModel
 
 fun UserDto.toModel(): UserModel {
     return UserModel(

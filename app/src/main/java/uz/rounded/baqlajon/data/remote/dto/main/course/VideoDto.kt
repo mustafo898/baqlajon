@@ -9,6 +9,7 @@ data class VideoDto(
     val index: Int,
     val isFree: Boolean,
     val title: String,
+    val time: Int,
     val updatedAt: String,
     val videoUrl: String,
     val viewCount: Int

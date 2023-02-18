@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.databinding.ItemMyCoursesBinding
-import uz.rounded.baqlajon.domain.model.GetMyCourseModel
+import uz.rounded.baqlajon.domain.model.main.course.GetMyCourseModel
 
 class MyCourseAdapter(
     private val context: Context,
@@ -41,7 +41,7 @@ class MyCourseAdapter(
             binding.progressText.text = "${data.completedCount}/${data.course.videoCount}"
             binding.image.loadImage(context, data.course.image)
 
-            binding.progressBar.max = data.course.viewCount
+            binding.progressBar.max = data.course.videoCount
             binding.progressBar.progress = data.completedCount
 
             binding.eye.text = data.course.viewCount.toString()

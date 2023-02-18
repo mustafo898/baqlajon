@@ -1,15 +1,10 @@
 package uz.rounded.baqlajon.core.extensions
 
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
-import uz.rounded.baqlajon.domain.model.UserModel
+import uz.rounded.baqlajon.domain.model.main.course.UserModel
 
 fun Fragment.popBackStack() {
     findNavController().popBackStack()

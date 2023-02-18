@@ -8,7 +8,7 @@ import androidx.core.os.bundleOf
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.navigateWithArgs
 import uz.rounded.baqlajon.databinding.FragmentCourseSectionsBinding
-import uz.rounded.baqlajon.domain.model.VideoModel
+import uz.rounded.baqlajon.domain.model.main.course.VideoModel
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.adapter.CourseSectionsAdapter
 

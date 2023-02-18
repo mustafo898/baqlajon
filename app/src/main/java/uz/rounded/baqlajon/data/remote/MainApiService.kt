@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.*
 import uz.rounded.baqlajon.data.remote.dto.MainResponseDto
 import uz.rounded.baqlajon.data.remote.dto.main.course.*
+import uz.rounded.baqlajon.data.remote.dto.main.gift.GetGiftDto
 
 interface MainApiService {
     @GET("course")
@@ -21,7 +22,7 @@ interface MainApiService {
     @GET("myCourse/status")
     suspend fun getMyCourseStatus(@Query("status") status: String): Response<MainResponseDto<List<GetMyCourseDto>>>
 
-    @POST("start/{id}")
+    @GET("myCourse/start/{id}")
     suspend fun startCourse(@Path("id") id: String): Response<MainResponseDto<Boolean>>
 
     @GET("course/{id}")
@@ -30,12 +31,23 @@ interface MainApiService {
     @GET("video/{id}")
     suspend fun getByIdVideo(@Path("id") id: String): Response<MainResponseDto<VideoDto>>
 
-    @POST("video/finish/{id}")
+    @GET("video/finish/{id}")
     suspend fun finishVideo(@Path("id") id: String): Response<MainResponseDto<Boolean>>
+
+    @GET("gift/buy/{id}")
+    suspend fun buyGift(@Path("id") id: String): Response<MainResponseDto<Boolean>>
+
+    @GET("gift")
+    suspend fun getGift(): Response<MainResponseDto<List<GetGiftDto>>>
+
+//    @GET("user")
+//    suspend fun getProfile(): Response<MainResponseDto<UserProfileDto>>
 
     @POST("comment/{id}")
     suspend fun createComment(
         @Path("id") id: String,
         @Body requestCommentDto: RequestCommentDto
     ): Response<MainResponseDto<CommentDto>>
+
+
 }

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.databinding.ItemHomeListBinding
-import uz.rounded.baqlajon.domain.model.GetCourseModel
+import uz.rounded.baqlajon.domain.model.main.course.GetCourseModel
 
 class HomeCourseSecondAdapter(
     private val context: Context,

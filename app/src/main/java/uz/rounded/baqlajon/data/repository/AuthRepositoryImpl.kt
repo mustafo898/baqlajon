@@ -10,7 +10,7 @@ import uz.rounded.baqlajon.data.remote.dto.auth.otp.SendOtpDto
 import uz.rounded.baqlajon.data.remote.dto.auth.password.ForgotPasswordDto
 import uz.rounded.baqlajon.data.remote.dto.auth.registration.RegisterDto
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.UserModel
+import uz.rounded.baqlajon.domain.model.main.course.UserModel
 import uz.rounded.baqlajon.domain.model.auth.login.LoginModel
 import uz.rounded.baqlajon.domain.model.auth.otp.CheckOtpModel
 import uz.rounded.baqlajon.domain.model.auth.otp.SendOtpModel

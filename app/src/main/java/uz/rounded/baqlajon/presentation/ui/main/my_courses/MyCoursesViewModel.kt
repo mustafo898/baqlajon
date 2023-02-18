@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.GetMyCourseModel
+import uz.rounded.baqlajon.domain.model.main.course.GetMyCourseModel
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import uz.rounded.baqlajon.presentation.common.UIListState
 import javax.inject.Inject

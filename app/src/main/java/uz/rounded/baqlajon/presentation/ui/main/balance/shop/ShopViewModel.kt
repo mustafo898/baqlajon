@@ -1,4 +1,4 @@
-package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail
+package uz.rounded.baqlajon.presentation.ui.main.balance.shop
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,52 +11,50 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.main.course.GetByIdCourseModel
+import uz.rounded.baqlajon.domain.model.main.gift.GetGiftModel
 import uz.rounded.baqlajon.domain.repository.MainRepository
+import uz.rounded.baqlajon.presentation.common.UIListState
 import uz.rounded.baqlajon.presentation.common.UIObjectState
 import javax.inject.Inject
 
 @HiltViewModel
-class CourseDetailsViewModel @Inject constructor(
-    private val repository: MainRepository
-) : ViewModel() {
+class ShopViewModel @Inject constructor(private val repository: MainRepository) : ViewModel() {
+    private val _shopList = MutableStateFlow(UIListState<GetGiftModel>())
+    val shopList = _shopList.asStateFlow()
 
-    private val _detail = MutableStateFlow(UIObjectState<GetByIdCourseModel>())
-    val detail = _detail.asStateFlow()
-
-    fun getDetail(id: String) {
+    fun getGiftList() {
         viewModelScope.launch {
-            repository.getByIdCourse(id).onEach {
+            repository.getGift().onEach {
                 when (it) {
                     is Resource.Error -> {
-                        _detail.value = UIObjectState(it.message ?: "")
+                        _shopList.value = UIListState(it.message ?: "")
                     }
                     is Resource.Loading -> {
-                        _detail.value = UIObjectState(isLoading = true)
+                        _shopList.value = UIListState(isLoading = true)
                     }
                     is Resource.Success -> {
-                        _detail.value = UIObjectState(data = it.data)
+                        _shopList.value = UIListState(data = it.data)
                     }
                 }
             }.launchIn(CoroutineScope(Dispatchers.IO))
         }
     }
 
-    private val _start = MutableStateFlow(UIObjectState<Boolean>())
-    val start = _start.asStateFlow()
+    private val _buy = MutableStateFlow(UIObjectState<Boolean>())
+    val buy = _buy.asStateFlow()
 
-    fun startLesson(id: String) {
+    fun buyGift(id: String) {
         viewModelScope.launch {
-            repository.getStartCourse(id).onEach {
+            repository.buyGift(id).onEach {
                 when (it) {
                     is Resource.Error -> {
-                        _start.value = UIObjectState(it.message ?: "")
+                        _buy.value = UIObjectState(it.message ?: "")
                     }
                     is Resource.Loading -> {
-                        _start.value = UIObjectState(isLoading = true)
+                        _buy.value = UIObjectState(isLoading = true)
                     }
                     is Resource.Success -> {
-                        _start.value = UIObjectState(data = it.data)
+                        _buy.value = UIObjectState(data = it.data)
                     }
                 }
             }.launchIn(CoroutineScope(Dispatchers.IO))

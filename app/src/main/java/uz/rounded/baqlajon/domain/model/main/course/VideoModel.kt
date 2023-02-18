@@ -1,6 +1,6 @@
-package uz.rounded.baqlajon.domain.model
+package uz.rounded.baqlajon.domain.model.main.course
 
-data class FreeVideoModel(
+data class VideoModel(
     val _id: String,
     val courseId: String,
     val createdAt: String,
@@ -9,6 +9,7 @@ data class FreeVideoModel(
     val index: Int,
     val isFree: Boolean,
     val title: String,
+    val time: Int,
     val updatedAt: String,
     val videoUrl: String,
     val viewCount: Int
