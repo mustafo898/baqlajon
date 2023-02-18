@@ -7,7 +7,7 @@ data class GetByIdCourseModel(
     val comment: List<CommentModel>,
     val createdAt: String,
     val description: String,
-    val freeVideo: List<FreeVideoModel>,
+    val freeVideo: List<VideoModel>,
     val image: String,
     val language: String,
     val rating: Int,

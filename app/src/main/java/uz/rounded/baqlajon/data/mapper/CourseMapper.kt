@@ -43,6 +43,10 @@ fun GetByIdCourseDto.toModel(): GetByIdCourseModel {
     )
 }
 
+fun RequestCommentModel.toModel(): RequestCommentDto {
+    return RequestCommentDto(text)
+}
+
 fun VideoDto.toModel(): VideoModel {
     return VideoModel(
         _id,

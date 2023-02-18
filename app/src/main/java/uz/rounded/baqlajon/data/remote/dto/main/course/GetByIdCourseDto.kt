@@ -7,7 +7,7 @@ data class GetByIdCourseDto(
     val comment: List<CommentDto>,
     val createdAt: String,
     val description: String,
-    val freeVideo: List<FreeVideoDto>,
+    val freeVideo: List<VideoDto>,
     val image: String,
     val language: String,
     val rating: Int,

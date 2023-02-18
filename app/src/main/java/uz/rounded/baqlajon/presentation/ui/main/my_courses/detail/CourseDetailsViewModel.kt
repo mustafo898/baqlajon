@@ -42,4 +42,24 @@ class CourseDetailsViewModel @Inject constructor(
         }
     }
 
+    private val _start = MutableStateFlow(UIObjectState<Boolean>())
+    val start = _start.asStateFlow()
+
+    fun startLesson(id: String) {
+        viewModelScope.launch {
+            repository.getStartCourse(id).onEach {
+                when (it) {
+                    is Resource.Error -> {
+                        _start.value = UIObjectState(it.message ?: "")
+                    }
+                    is Resource.Loading -> {
+                        _start.value = UIObjectState(isLoading = true)
+                    }
+                    is Resource.Success -> {
+                        _start.value = UIObjectState(data = it.data)
+                    }
+                }
+            }.launchIn(CoroutineScope(Dispatchers.IO))
+        }
+    }
 }

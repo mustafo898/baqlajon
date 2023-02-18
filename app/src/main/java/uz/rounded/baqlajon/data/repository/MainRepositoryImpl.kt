@@ -6,9 +6,7 @@ import uz.rounded.baqlajon.data.common.ResponseHandler
 import uz.rounded.baqlajon.data.mapper.toModel
 import uz.rounded.baqlajon.data.remote.MainApiService
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.GetByIdCourseModel
-import uz.rounded.baqlajon.domain.model.GetCourseModel
-import uz.rounded.baqlajon.domain.model.GetMyCourseModel
+import uz.rounded.baqlajon.domain.model.*
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import javax.inject.Inject
 
@@ -69,7 +67,7 @@ class MainRepositoryImpl @Inject constructor(
 
     override suspend fun getStartCourse(id: String): Flow<Resource<Boolean>> =
         loadResult({
-            mainApiService.getStartCourse(id)
+            mainApiService.startCourse(id)
         }, { data, flow ->
             try {
                 flow.emit(Resource.Success(data))
@@ -81,6 +79,42 @@ class MainRepositoryImpl @Inject constructor(
     override suspend fun getByIdCourse(id: String): Flow<Resource<GetByIdCourseModel>> =
         loadResult({
             mainApiService.getByIdCourse(id)
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data.toModel()))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
+    override suspend fun getByIdVideo(id: String): Flow<Resource<VideoModel>> =
+        loadResult({
+            mainApiService.getByIdVideo(id)
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data.toModel()))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
+    override suspend fun finishVideo(id: String): Flow<Resource<Boolean>> =
+        loadResult({
+            mainApiService.finishVideo(id)
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
+    override suspend fun createComment(
+        id: String,
+        requestCommentModel: RequestCommentModel
+    ): Flow<Resource<CommentModel>> =
+        loadResult({
+            mainApiService.createComment(id, requestCommentModel.toModel())
         }, { data, flow ->
             try {
                 flow.emit(Resource.Success(data.toModel()))

@@ -26,8 +26,7 @@
     <string name="full_name">Full name<font color="#F52725">*</font></string>
     <string name="phone_number_with_star">Phone number<font color="#F52725">*</font></string>
     <string name="referral_code">Referral code</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="share_referral_code">Share referral code</string>
 
 
     <!--    mustafo    -->
@@ -49,6 +48,7 @@
     <string name="continue_txt">Continue</string>
     <string name="write_here">Write here</string>
     <string name="send">Send</string>
+    <string name="payment">Payment</string>
 
     <string-array name="gender">
         <item>Male</item>
@@ -81,6 +81,15 @@
     <string name="please_enter_code">Please, enter the code we sent \n%1$s</string>
     <string name="time_00_23">Time: %1$s</string>
     <string name="time_sms">Vaqt: %1$s</string>
+    <string name="videos">%1$s Videos</string>
+    <string name="time_course">7h 30min</string>
+    <string name="reviews">%1$s reviews</string>
+    <string name="students_learnt">%1$s Students learnt</string>
+    <string name="very_bad">Very Bad</string>
+    <string name="bad">Bad</string>
+    <string name="ok">OK</string>
+    <string name="good">Good</string>
+    <string name="great">Great!</string>
 
     <!--    suhrob    -->
 

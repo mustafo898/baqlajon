@@ -51,7 +51,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/medium_500"
                     android:gravity="center"
-                    android:text="Very Bad"
+                    android:text="@string/very_bad"
                     android:textColor="@color/black3"
                     android:textSize="16sp" />
 

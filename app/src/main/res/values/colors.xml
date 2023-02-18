@@ -33,6 +33,8 @@
 
     <color name="yellow">#FD9E19</color>
 
+    <color name="card_color">#FFFFFF</color>
+
 
     <!--    suhrob -->
     <color name="main_text_color">#121212</color>

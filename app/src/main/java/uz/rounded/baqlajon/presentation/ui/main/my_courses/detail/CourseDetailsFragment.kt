@@ -1,9 +1,11 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.getColor
+import uz.rounded.baqlajon.core.extensions.loadImage
+import uz.rounded.baqlajon.core.extensions.navigateWithArgs
 import uz.rounded.baqlajon.databinding.FragmentCourseDetailsBinding
+import uz.rounded.baqlajon.domain.model.VideoModel
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.adapter.CoursePagerAdapter
 
@@ -27,6 +32,7 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
     private lateinit var adapter: CoursePagerAdapter
 
     private var id = ""
+    private var isOpen = true
 
     override fun created(view: View, savedInstanceState: Bundle?) {
         arguments?.let {
@@ -39,9 +45,16 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
             (getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
 
-        adapter = CoursePagerAdapter(childFragmentManager, lifecycle)
-
-        binding.viewPager.adapter = adapter
+        binding.btn.cardView.setOnClickListener {
+            if (isOpen) {
+                viewModel.startLesson(id)
+            } else {
+                navigateWithArgs(
+                    R.id.action_courseDetailsFragment_to_reviewsFragment,
+                    bundleOf("ID" to id)
+                )
+            }
+        }
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
@@ -79,6 +92,7 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observe() {
         viewModel.getDetail(id)
 
@@ -86,13 +100,35 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
             viewModel.detail.collectLatest {
                 it.data?.let { p ->
 
-                    hideMainProgress()
+                    binding.apply {
+                        title.text = p.title
+                        desc.text = p.description
+                        teacherName.text = p.author.firstName + " " + p.author.lastName
+                        teacherType.text = p.author.description
+                        teacherImage.loadImage(requireContext(), p.author.image)
+                        image.loadImage(requireContext(), p.image)
+                        videos.text = getString(R.string.videos, p.videoCount.toString())
+                        students.text =
+                            getString(R.string.students_learnt, p.studentCount.toString())
+                        comment.text = getString(R.string.reviews, p.comment.size.toString())
+                    }
+
+                    val list = mutableListOf<VideoModel>()
+
+                    list.addAll(p.freeVideo)
+                    list.addAll(p.video)
+
+                    adapter = CoursePagerAdapter(p.comment, list, childFragmentManager, lifecycle)
+
+                    binding.viewPager.adapter = adapter
+
+                    hideProgress()
                 }
                 if (it.isLoading) {
-                    showMainProgress()
+                    showProgress()
                 }
                 if (it.error.isNotBlank()) {
-                    hideMainProgress()
+                    hideProgress()
                 }
             }
         }
@@ -106,6 +142,7 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
         reviewsView.setCardBackgroundColor(getColor(requireContext(), R.color.white))
         reviewsView.strokeColor = getColor(requireContext(), R.color.grey2)
         btn.name = getString(R.string.start_course)
+        isOpen = true
     }
 
     private fun setReviews() = binding.apply {
@@ -116,5 +153,6 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
         reviewsView.setCardBackgroundColor(getColor(requireContext(), R.color.blue))
         reviewsView.strokeColor = getColor(requireContext(), R.color.blue)
         btn.name = getString(R.string.write_a_review)
+        isOpen = false
     }
 }
