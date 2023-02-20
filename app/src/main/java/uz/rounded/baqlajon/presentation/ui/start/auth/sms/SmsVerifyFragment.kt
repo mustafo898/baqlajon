@@ -27,7 +27,6 @@ import uz.rounded.baqlajon.domain.model.auth.otp.CheckOtpModel
 import uz.rounded.baqlajon.domain.model.auth.otp.SendOtpModel
 import uz.rounded.baqlajon.domain.model.auth.register.RegisterModel
 import uz.rounded.baqlajon.presentation.MainActivity
-import uz.rounded.baqlajon.presentation.StartActivity
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import java.util.regex.Pattern
 import javax.inject.Inject
@@ -55,10 +54,10 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
     ): FragmentSmsVerifyBinding = FragmentSmsVerifyBinding.inflate(inflater)
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-        binding.confirm.cardView.setOnClickListener {
-            startActivity(Intent(requireContext(), MainActivity::class.java))
-            (activity as StartActivity).finish()
-        }
+//        binding.confirm.cardView.setOnClickListener {
+//            startActivity(Intent(requireContext(), MainActivity::class.java))
+//            (activity as StartActivity).finish()
+//        }
         bundle()
         if (type == 5) (activity as MainActivity).setMainToolbarText(getString(R.string.new_phone_number))
 
@@ -94,8 +93,8 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
     }
 
     private fun observe() {
-        viewModel.createOtp(SendOtpModel(phoneNumber = phone))
-
+        viewModel.createOtp(SendOtpModel(phoneNumber = phone.replace(" ", "")))
+        Log.d("KJNFJKDS", "observe: ${phone.replace(" ", "")}")
         lifecycleScope.launchWhenStarted {
             viewModel.registration.collectLatest { k ->
                 k.data?.let {
@@ -187,13 +186,14 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
     }
 
     private fun sendRequest() {
-        viewModel.registration(
+        viewModel.register(
             RegisterModel(
                 firstName = name,
                 lastName = lastname,
                 phoneNumber = phone,
                 image = image,
-                password = password
+                password = password,
+                otp = otp
             )
         )
     }
@@ -217,7 +217,18 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
                 )
                 otp = binding.code.text.toString()
                 binding.confirm.cardView.setOnClickListener {
-                    viewModel.checkOtp(CheckOtpModel(otp = otp))
+                    navigateWithArgs(
+                        R.id.action_smsVerifyFragment_to_resetFragment,
+                        bundleOf(
+                            "NAME" to name,
+                            "LASTNAME" to lastname,
+                            "PHONE" to phone,
+                            "IMAGE" to image,
+                            "OTPREG" to otp
+                        )
+                    )
+                    Log.d("KJNFJKDS", "setUpPin: $otp")
+                    Log.d("KJNFJKDS", "setUpPin: $password")
                 }
             } else {
                 binding.confirm.cardView.isClickable = false

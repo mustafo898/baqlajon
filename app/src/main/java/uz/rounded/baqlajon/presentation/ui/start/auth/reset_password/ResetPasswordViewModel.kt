@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import uz.rounded.baqlajon.domain.model.main.course.UserModel
+import uz.rounded.baqlajon.domain.model.UserResponseModel
 import uz.rounded.baqlajon.domain.repository.AuthRepository
 import uz.rounded.baqlajon.presentation.common.UIObjectState
 import javax.inject.Inject
@@ -35,7 +35,7 @@ class ResetPasswordViewModel @Inject constructor(
 //        }
 //    }
 
-    private val _recovery = MutableStateFlow(UIObjectState<UserModel>())
+    private val _recovery = MutableStateFlow(UIObjectState<UserResponseModel>())
     val recovery = _recovery.asStateFlow()
 
 //    fun recoveryPassword(registrationModel: LoginModel) {

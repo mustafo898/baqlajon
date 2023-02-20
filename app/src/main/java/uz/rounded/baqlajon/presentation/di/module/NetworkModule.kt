@@ -47,7 +47,6 @@ object NetworkModule {
             .maxContentLength(500_000L)
             .alwaysReadResponseBody(true)
             .build()
-
         val builder = OkHttpClient.Builder()
             .addInterceptor(chuckInterceptor)
             .addNetworkInterceptor(Interceptor { chain: Interceptor.Chain ->
@@ -55,7 +54,7 @@ object NetworkModule {
 //                    .addHeader("Authorization", "Bearer ${sharedPreference.token}")
                     .addHeader(
                         "Authorization",
-                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6Iis5OTg5NDAxMDIwMDMiLCJpYXQiOjE2NzY0NTE2OTcsImV4cCI6MTcwODAwOTI5N30.sSK5cxv6XFb2yraB_pG9kLx17X6NT0LxtZTdzAG5TgM"
+                        "Bearer ${sharedPreference.token}"
                     )
                     .addHeader("lang", sharedPreference.lang)
                     .addHeader("Content-Type", "application/json")
@@ -66,7 +65,6 @@ object NetworkModule {
             .build()
         return builder
     }
-
 
     @Singleton
     @Provides

@@ -74,14 +74,6 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.title.text = text
     }
 
-    fun showProgress1() = binding.apply {
-        progressBar1.visible()
-    }
-
-    fun hideProgress1() = binding.apply {
-        progressBar1.gone()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         sharedPreference.type = 0

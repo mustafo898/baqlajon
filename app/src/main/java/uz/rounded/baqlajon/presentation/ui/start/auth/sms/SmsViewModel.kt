@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.domain.common.Resource
-import uz.rounded.baqlajon.domain.model.main.course.UserModel
+import uz.rounded.baqlajon.domain.model.UserResponseModel
 import uz.rounded.baqlajon.domain.model.auth.otp.CheckOtpModel
 import uz.rounded.baqlajon.domain.model.auth.otp.SendOtpModel
 import uz.rounded.baqlajon.domain.model.auth.register.RegisterModel
@@ -24,7 +24,7 @@ class SmsViewModel @Inject constructor(
     private val repository: AuthRepository
 ) : ViewModel() {
 
-    private val _registration = MutableStateFlow(UIObjectState<UserModel>())
+    private val _registration = MutableStateFlow(UIObjectState<UserResponseModel>())
     val registration = _registration.asStateFlow()
 
     private val _create = MutableStateFlow(UIObjectState<String>())
@@ -33,7 +33,7 @@ class SmsViewModel @Inject constructor(
     private val _check = MutableStateFlow(UIObjectState<Boolean>())
     val check = _check.asStateFlow()
 
-    fun registration(registrationModel: RegisterModel) {
+    fun register(registrationModel: RegisterModel) {
         viewModelScope.launch {
             repository.register(registrationModel).onEach {
                 when (it) {

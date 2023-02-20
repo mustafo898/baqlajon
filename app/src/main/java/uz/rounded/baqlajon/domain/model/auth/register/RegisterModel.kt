@@ -5,5 +5,6 @@ data class RegisterModel(
     val image: String? = null,
     val lastName: String,
     val password: String,
-    val phoneNumber: String
+    val phoneNumber: String,
+    val otp: String
 )

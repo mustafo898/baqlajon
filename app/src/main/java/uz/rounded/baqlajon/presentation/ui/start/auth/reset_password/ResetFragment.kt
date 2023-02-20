@@ -1,10 +1,17 @@
 package uz.rounded.baqlajon.presentation.ui.start.auth.reset_password
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.getColor
 import uz.rounded.baqlajon.core.extensions.gone
@@ -12,9 +19,13 @@ import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.FragmentResetBinding
+import uz.rounded.baqlajon.domain.model.auth.register.RegisterModel
+import uz.rounded.baqlajon.presentation.MainActivity
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
+import uz.rounded.baqlajon.presentation.ui.start.auth.sms.SmsViewModel
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ResetFragment : BaseFragment<FragmentResetBinding>() {
     override fun createBinding(
         inflater: LayoutInflater, container: ViewGroup?
@@ -22,17 +33,70 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
 
     private var password = ""
     private var confirmPassword = ""
+    private var name = ""
+    private var lastname = ""
+    private var phone = ""
+    private var image = ""
+    private var otp = ""
 
     @Inject
     lateinit var shared: SharedPreference
 
-    override fun created(view: View, savedInstanceState: Bundle?) {
+    private val viewModel: SmsViewModel by viewModels()
 
+    override fun created(view: View, savedInstanceState: Bundle?) {
+        bundle()
         listener()
     }
 
+    private fun bundle() {
+        val bundle: Bundle? = this.arguments
+        bundle?.let {
+            name = it.getString("NAME", "")
+            lastname = it.getString("LASTNAME", "")
+            phone = it.getString("PHONE", "")
+            otp = it.getString("OTPREG", "")
+            image = it.getString("IMAGE", "")
+        }
+    }
+
+    private fun registerUser() {
+        viewModel.register(
+            RegisterModel(
+                firstName = name,
+                lastName = lastname,
+                image = image,
+                otp = otp,
+                password = password,
+                phoneNumber = phone
+            )
+        )
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.registration.collectLatest { k ->
+                k.data?.let {
+                    hideStartProgress()
+                    shared.user = it
+                    shared.token = it.token
+                    shared.hasToken = true
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                    activity?.finish()
+                    Log.d("SSNSNWJNJNDNWENBU", "observe: $it")
+                }
+                if (k.error.isNotEmpty()) {
+                    hideStartProgress()
+                    Log.d("SSNSNWJNJNDNWENBU", "observe: ${k.error}")
+                    Toast.makeText(requireContext(), k.error, Toast.LENGTH_SHORT).show()
+                    if (k.error == "Student already exists") {
+                        navigate(R.id.loginFragment)
+                    }
+                }
+            }
+        }
+    }
+
     private fun validation(): Boolean {
-        return if (password.matches(".*[A-Za-z@#\$%^_\\d].*".toRegex()) && password.length >= 8 && password == confirmPassword) {
+        return if (password.matches(".*[A-Za-z\\d].*".toRegex()) && password.length >= 8 && password == confirmPassword) {
             binding.next.cardView.setCardBackgroundColor(
                 getColor(
                     requireContext(), R.color.main_blue
@@ -41,7 +105,7 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
             binding.rule.gone()
             binding.next.cardView.isClickable = true
             binding.next.cardView.setOnClickListener {
-                navigate(R.id.homeFragment)
+                registerUser()
             }
             true
         } else {
@@ -66,7 +130,6 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
 
         binding.confirmPassword.addTextChangedListener {
             confirmPassword = it.toString()
-
             validation()
         }
     }
