@@ -67,7 +67,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
     }
 
     private fun validateFields() {
-        binding.number.addTextChangedListener {
+        binding.phoneNumber.addTextChangedListener {
             phoneLength = it.toString().length == 17
             validation()
             phoneString = it.toString().trim()
