@@ -1,6 +1,7 @@
 package uz.rounded.baqlajon.presentation.ui.start.auth.register
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
     private var phoneString = ""
     private var name = ""
     private var lastName = ""
-    private var referalCode = ""
+    private var referralCode = ""
     private val type = 0
     private val password = ""
 
@@ -32,13 +33,11 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
     ): FragmentRegistrationBinding = FragmentRegistrationBinding.inflate(inflater)
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-
         setUpUi()
         validateFields()
     }
 
     private fun setUpUi() {
-
         binding.signUp.cardView.setCardBackgroundColor(
             getColor(
                 requireContext(), R.color.button_disabled
@@ -53,12 +52,14 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
         binding.signUp.cardView.setOnClickListener {
             if (validation()) {
+                Log.d("sdlsjdfkh", "bundle: registration $referralCode")
+
                 navigateWithArgs(
                     R.id.action_registrationFragment_to_smsVerifyFragment, bundleOf(
                         "NAME" to name,
                         "LASTNAME" to lastName,
                         "PHONE" to phoneString,
-                        "REFERALCODE" to referalCode,
+                        "REFERALCODE" to referralCode,
                         "TYPE" to type,
                     )
                 )
@@ -101,8 +102,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
             validation()
         }
         binding.referralCode.editText.addTextChangedListener {
-            referalCode = it.toString().trim()
-            validation()
+            referralCode = it.toString().trim()
         }
     }
 }

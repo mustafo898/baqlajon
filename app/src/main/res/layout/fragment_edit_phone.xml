@@ -19,14 +19,47 @@
             android:textColor="@color/grey1"
             android:textSize="14sp" />
 
-        <include
-            android:id="@+id/full_name"
-            layout="@layout/input_card"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="24dp"
-            app:name="@{@string/enter_new_phone}" />
+            app:cardBackgroundColor="@color/grey7"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:src="@drawable/flag" />
+
+                <com.santalu.maskedittext.MaskEditText
+                    android:id="@+id/phoneNumber"
+                    style="@style/toolbar_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/regular_400"
+                    android:gravity="center_vertical"
+                    android:hint="@string/phone_number"
+                    android:inputType="phone"
+                    android:textColorHint="@color/grey2"
+                    android:textSize="16sp"
+                    app:met_mask="+998 ## ### ## ##" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+
 
         <include
             android:id="@+id/sign_up"

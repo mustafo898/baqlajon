@@ -14,6 +14,7 @@ import uz.rounded.baqlajon.domain.model.UserResponseModel
 import uz.rounded.baqlajon.domain.model.auth.login.LoginModel
 import uz.rounded.baqlajon.domain.model.auth.otp.CheckOtpModel
 import uz.rounded.baqlajon.domain.model.auth.otp.SendOtpModel
+import uz.rounded.baqlajon.domain.model.auth.password.ForgotPasswordModel
 import uz.rounded.baqlajon.domain.model.auth.register.RegisterModel
 import uz.rounded.baqlajon.domain.repository.AuthRepository
 import javax.inject.Inject
@@ -30,7 +31,7 @@ class AuthRepositoryImpl @Inject constructor(
                     image = request.image,
                     password = request.password,
                     phoneNumber = request.phoneNumber,
-                    otp = request.otp
+                    promocode = request.promocode
                 )
             )
         }, { data, flow ->
@@ -45,7 +46,7 @@ class AuthRepositoryImpl @Inject constructor(
         loadResult({
             authApiService.login(
                 LoginRequestDto(
-                    phoneNumber = loginModel._phoneNumber, password = loginModel.password
+                    phoneNumber = loginModel.phoneNumber, password = loginModel.password
                 )
             )
         }, { data, flow ->
@@ -71,10 +72,25 @@ class AuthRepositoryImpl @Inject constructor(
             }
         })
 
+    override suspend fun createForgetOtp(createOtpModel: SendOtpModel): Flow<Resource<String>> =
+        loadResult({
+            authApiService.createForgetOtp(
+                SendOtpDto(
+                    phoneNumber = createOtpModel.phoneNumber
+                )
+            )
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
     override suspend fun checkOtp(otpModel: CheckOtpModel): Flow<Resource<Boolean>> = loadResult({
         authApiService.checkOtp(
             CheckOtp(
-                otp = otpModel.otp
+                otp = otpModel.otp, phoneNumber = otpModel.phoneNumber
             )
         )
     }, { data, flow ->
@@ -85,16 +101,32 @@ class AuthRepositoryImpl @Inject constructor(
         }
     })
 
-    override suspend fun password(passwordModel: SendOtpModel): Flow<Resource<String>> =
+    override suspend fun updatePhone(otpModel: CheckOtpModel): Flow<Resource<UserResponseModel>> =
         loadResult({
-            authApiService.forgotPassword(
-                ForgotPasswordDto(
-                    phoneNumber = passwordModel.phoneNumber
+            authApiService.updatePhone(
+                CheckOtp(
+                    otp = otpModel.otp, phoneNumber = otpModel.phoneNumber
                 )
             )
         }, { data, flow ->
             try {
-                flow.emit(Resource.Success(data))
+                flow.emit(Resource.Success(data.toModel()))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
+    override suspend fun forgetPassword(forgotPasswordModel: ForgotPasswordModel): Flow<Resource<UserResponseModel>> =
+        loadResult({
+            authApiService.forgetPassword(
+                ForgotPasswordDto(
+                    phoneNumber = forgotPasswordModel.phoneNumber,
+                    password = forgotPasswordModel.password
+                )
+            )
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data.toModel()))
             } catch (e: Exception) {
                 flow.emit(Resource.Error(e.message.toString()))
             }

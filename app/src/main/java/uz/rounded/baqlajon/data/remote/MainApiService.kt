@@ -1,10 +1,13 @@
 package uz.rounded.baqlajon.data.remote
 
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
+import uz.rounded.baqlajon.data.remote.dto.DataDto
 import uz.rounded.baqlajon.data.remote.dto.MainResponseDto
 import uz.rounded.baqlajon.data.remote.dto.main.course.*
 import uz.rounded.baqlajon.data.remote.dto.main.gift.GetGiftDto
+import uz.rounded.baqlajon.data.remote.dto.main.profile.UpdateUserRequestDto
 
 interface MainApiService {
     @GET("course")
@@ -37,11 +40,18 @@ interface MainApiService {
     @GET("gift/buy/{id}")
     suspend fun buyGift(@Path("id") id: String): Response<MainResponseDto<Boolean>>
 
+    @Multipart
+    @POST("image/upload")
+    suspend fun uploadImage(@Part file: MultipartBody.Part): Response<MainResponseDto<String>>
+
     @GET("gift")
     suspend fun getGift(): Response<MainResponseDto<List<GetGiftDto>>>
 
-//    @GET("user")
-//    suspend fun getProfile(): Response<MainResponseDto<UserProfileDto>>
+    @GET("user")
+    suspend fun getProfile(): Response<MainResponseDto<DataDto>>
+
+    @PUT("user")
+    suspend fun updateUser(@Body updateUserRequestDto: UpdateUserRequestDto): Response<MainResponseDto<DataDto>>
 
     @POST("comment/{id}")
     suspend fun createComment(

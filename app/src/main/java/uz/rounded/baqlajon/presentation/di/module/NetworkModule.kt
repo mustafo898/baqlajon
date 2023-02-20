@@ -51,7 +51,6 @@ object NetworkModule {
             .addInterceptor(chuckInterceptor)
             .addNetworkInterceptor(Interceptor { chain: Interceptor.Chain ->
                 val request = chain.request().newBuilder()
-//                    .addHeader("Authorization", "Bearer ${sharedPreference.token}")
                     .addHeader(
                         "Authorization",
                         "Bearer ${sharedPreference.token}"

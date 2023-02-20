@@ -1,13 +1,18 @@
 package uz.rounded.baqlajon.data.repository
 
 
+import android.util.Log
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MultipartBody
 import uz.rounded.baqlajon.data.common.ResponseHandler
 import uz.rounded.baqlajon.data.mapper.toModel
 import uz.rounded.baqlajon.data.remote.MainApiService
+import uz.rounded.baqlajon.data.remote.dto.main.profile.UpdateUserRequestDto
 import uz.rounded.baqlajon.domain.common.Resource
+import uz.rounded.baqlajon.domain.model.DataModel
 import uz.rounded.baqlajon.domain.model.main.course.*
 import uz.rounded.baqlajon.domain.model.main.gift.GetGiftModel
+import uz.rounded.baqlajon.domain.model.main.profile.UpdateUserRequestModel
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import javax.inject.Inject
 
@@ -88,16 +93,48 @@ class MainRepositoryImpl @Inject constructor(
             }
         })
 
-//    override suspend fun getProfile(): Flow<Resource<UserProfileModel>> =
-//        loadResult({
-//            mainApiService.getProfile()
-//        }, { data, flow ->
-//            try {
-//                flow.emit(Resource.Success(data.toModel()))
-//            } catch (e: Exception) {
-//                flow.emit(Resource.Error(e.message.toString()))
-//            }
-//        })
+    override suspend fun getProfile(): Flow<Resource<DataModel>> =
+        loadResult({
+            mainApiService.getProfile()
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data.toModel()))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
+    override suspend fun updateUser(updateUserRequestModel: UpdateUserRequestModel): Flow<Resource<DataModel>> =
+        loadResult({
+            mainApiService.updateUser(
+                UpdateUserRequestDto(
+                    updateUserRequestModel.firstName,
+                    updateUserRequestModel.image,
+                    updateUserRequestModel.lastName,
+                    updateUserRequestModel.password,
+                    updateUserRequestModel.phoneNumber
+                )
+            )
+        }, { data, flow ->
+            try {
+                flow.emit(Resource.Success(data.toModel()))
+            } catch (e: Exception) {
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
+
+    override suspend fun uploadImage(file: MultipartBody.Part): Flow<Resource<String>> =
+        loadResult({
+            mainApiService.uploadImage(file)
+        }, { data, flow ->
+            try {
+                Log.d("EEEEEE", "uploadImage: $file")
+                flow.emit(Resource.Success(data))
+            } catch (e: Exception) {
+                Log.d("EEEEEE", "error: $e")
+                flow.emit(Resource.Error(e.message.toString()))
+            }
+        })
 
     override suspend fun getByIdCourse(id: String): Flow<Resource<GetByIdCourseModel>> =
         loadResult({

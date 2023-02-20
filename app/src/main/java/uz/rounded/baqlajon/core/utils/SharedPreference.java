@@ -6,6 +6,7 @@ import static uz.rounded.baqlajon.core.extensions.FragmentExtensionsKt.objectToJ
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import uz.rounded.baqlajon.domain.model.DataModel;
 import uz.rounded.baqlajon.domain.model.UserResponseModel;
 
 public class SharedPreference {
@@ -73,7 +74,7 @@ public class SharedPreference {
         return prefs.getString("token", "");
     }
 
-    public void setUser(UserResponseModel user) {
+    public void setUser(DataModel user) {
         editor = prefs.edit();
         editor.putString("user", objectToJson(user));
         editor.apply();
@@ -89,7 +90,7 @@ public class SharedPreference {
         return prefs.getString("password", "");
     }
 
-    public UserResponseModel getUser() {
+    public DataModel getUser() {
         return jsonToObject(prefs.getString("user", ""));
     }
 

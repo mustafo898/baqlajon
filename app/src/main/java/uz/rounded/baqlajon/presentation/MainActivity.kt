@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentMain) as NavHostFragment
         navController = navHostFragment.findNavController()
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.toolbar.title.text = navController.currentDestination?.label.toString()
             animateToolBarTittle(binding.toolbar.title)
@@ -68,6 +69,14 @@ class MainActivity : AppCompatActivity() {
 
     fun showProgress() {
         binding.progress.visible()
+    }
+
+    fun hideProgress1() {
+        binding.progressBar1.gone()
+    }
+
+    fun showProgress1() {
+        binding.progressBar1.visible()
     }
 
     fun setMainToolbarText(text: String) {

@@ -34,7 +34,6 @@ class ShopFragment : BaseFragment<FragmentShopBinding>() {
     }
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-        hideProgress()
 
         binding.list.adapter = adapter
 
@@ -44,6 +43,7 @@ class ShopFragment : BaseFragment<FragmentShopBinding>() {
             viewModel.shopList.collectLatest {
                 it.data?.let { p ->
                     adapter.submitList(p)
+                    hideMainProgress()
                 }
             }
         }

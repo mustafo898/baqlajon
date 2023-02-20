@@ -56,7 +56,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     ): FragmentHomeBinding = FragmentHomeBinding.inflate(inflater)
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-//        getProfile()
+        getProfile()
         setAdapter()
         setCategory()
         getAllCourse()
@@ -84,21 +84,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-//    private fun getProfile() {
-//        viewModel.getProfile()
-//
-//        lifecycleScope.launchWhenStarted {
-//            viewModel.user.collectLatest {
-//                it.data?.let { p ->
-//                    sharedPreference.user = p
-//                }
-//                if (it.error.isNotBlank()) {
-//                    Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
-//                    hideProgress()
-//                }
-//            }
-//        }
-//    }
+    private fun getProfile() {
+        viewModel.getProfile()
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.user.collectLatest {
+                it.data?.let { p ->
+                    sharedPreference.user = p
+                    hideMainProgress()
+                }
+                if (it.error.isNotBlank()) {
+                    Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
+                    hideMainProgress()
+                }
+            }
+        }
+    }
 
     private fun getAllCourse() {
         viewModel.getAllCourse()
@@ -110,7 +111,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
                 if (it.error.isNotBlank()) {
                     Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
-                    hideProgress()
+                    hideMainProgress()
                 }
             }
         }

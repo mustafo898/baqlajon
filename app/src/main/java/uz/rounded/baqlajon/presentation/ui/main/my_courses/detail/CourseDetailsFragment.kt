@@ -100,7 +100,6 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
         lifecycleScope.launchWhenStarted {
             viewModel.detail.collectLatest {
                 it.data?.let { p ->
-
                     binding.apply {
                         title.text = p.title
                         desc.text = p.description
@@ -124,14 +123,14 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
 
                     binding.viewPager.adapter = adapter
 
-                    hideProgress()
+                    hideMainProgress()
                 }
                 if (it.isLoading) {
-                    showProgress()
+                    showMainProgress()
                 }
                 if (it.error.isNotBlank()) {
                     Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
-                    hideProgress()
+                    hideMainProgress()
                 }
             }
         }

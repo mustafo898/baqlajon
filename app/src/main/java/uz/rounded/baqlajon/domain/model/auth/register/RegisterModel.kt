@@ -6,5 +6,5 @@ data class RegisterModel(
     val lastName: String,
     val password: String,
     val phoneNumber: String,
-    val otp: String
+    val promocode: String
 )
