@@ -74,13 +74,13 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
                         }
                         image2.loadImage(requireContext(), p.imageUrl)
                     }
-                    hideProgress()
+                    hideMainProgress()
                 }
                 if (it.isLoading) {
-                    showProgress()
+                    showMainProgress()
                 }
                 if (it.error.isNotBlank()) {
-                    hideProgress()
+                    hideMainProgress()
                 }
             }
         }

@@ -22,6 +22,9 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
     private var name = ""
     private var lastName = ""
     private var referalCode = ""
+    private val type = 0
+    private val password = ""
+
 
     override fun createBinding(
         inflater: LayoutInflater,
@@ -55,7 +58,8 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
                         "NAME" to name,
                         "LASTNAME" to lastName,
                         "PHONE" to phoneString,
-                        "REFERALCODE" to referalCode
+                        "REFERALCODE" to referalCode,
+                        "TYPE" to type,
                     )
                 )
             }

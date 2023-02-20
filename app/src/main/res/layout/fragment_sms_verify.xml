@@ -36,7 +36,7 @@
             android:textColor="@color/black3"
             android:textSize="28sp"
             app:cursorColor="@color/blue"
-            app:itemCount="4"
+            app:itemCount="6"
             app:itemRadius="8dp"
             app:itemSpacing="16dp"
             app:layout_constraintBottom_toBottomOf="parent"

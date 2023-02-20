@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.domain.model.UserModel
+import uz.rounded.baqlajon.domain.model.UserResponseModel
 import uz.rounded.baqlajon.domain.model.auth.login.LoginModel
 import uz.rounded.baqlajon.domain.repository.AuthRepository
 import uz.rounded.baqlajon.presentation.common.UIObjectState
@@ -22,7 +23,7 @@ class LoginViewModel @Inject constructor(
     private val useCase: AuthRepository
 ) : ViewModel() {
 
-    private val _login = MutableStateFlow(UIObjectState<UserModel>())
+    private val _login = MutableStateFlow(UIObjectState<UserResponseModel>())
     val login = _login.asStateFlow()
 
     fun login(registrationModel: LoginModel) {

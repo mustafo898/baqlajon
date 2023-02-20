@@ -25,7 +25,7 @@ class ReviewsFragment : BaseFragment<FragmentReviewsBinding>() {
     private var id = ""
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-        hideProgress()
+        hideMainProgress()
 
         arguments?.let {
             id = it.getString("ID", "")

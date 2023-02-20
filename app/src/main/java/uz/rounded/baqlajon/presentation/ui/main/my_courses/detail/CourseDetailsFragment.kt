@@ -122,13 +122,13 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
 
                     binding.viewPager.adapter = adapter
 
-                    hideProgress()
+                    hideMainProgress()
                 }
                 if (it.isLoading) {
-                    showProgress()
+                    showMainProgress()
                 }
                 if (it.error.isNotBlank()) {
-                    hideProgress()
+                    hideMainProgress()
                 }
             }
         }

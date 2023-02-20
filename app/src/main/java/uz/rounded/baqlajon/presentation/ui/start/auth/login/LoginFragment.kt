@@ -55,6 +55,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun observe() {
         binding.login.cardView.setOnClickListener {
+            phoneString.replace(" ", "")
             if (validation()) {
                 viewModel.login(LoginModel(_phoneNumber = phoneString, password = password))
             }
@@ -107,7 +108,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun validateFields() {
         binding.phoneNumber.addTextChangedListener {
-            phoneLength = it.toString().length == 19
+            phoneLength = it.toString().length == 17
             validation()
             phoneString = it.toString().trim()
 

@@ -6,7 +6,7 @@ import static uz.rounded.baqlajon.core.extensions.FragmentExtensionsKt.objectToJ
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import uz.rounded.baqlajon.domain.model.UserModel;
+import uz.rounded.baqlajon.domain.model.UserResponseModel;
 
 public class SharedPreference {
     SharedPreferences prefs;
@@ -29,7 +29,7 @@ public class SharedPreference {
     }
 
     public String getLang() {
-        return prefs.getString("lang", "uz");
+        return prefs.getString("lang", "en");
     }
 
 
@@ -63,7 +63,7 @@ public class SharedPreference {
         return prefs.getString("token", "");
     }
 
-    public void setUser(UserModel user) {
+    public void setUser(UserResponseModel user) {
         editor = prefs.edit();
         editor.putString("user", objectToJson(user));
         editor.apply();
@@ -79,7 +79,7 @@ public class SharedPreference {
         return prefs.getString("password", "");
     }
 
-    public UserModel getUser() {
+    public UserResponseModel getUser() {
         return jsonToObject(prefs.getString("user", ""));
     }
 

@@ -1,15 +1,10 @@
 package uz.rounded.baqlajon.core.extensions
 
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
-import uz.rounded.baqlajon.domain.model.UserModel
+import uz.rounded.baqlajon.domain.model.UserResponseModel
 
 fun Fragment.popBackStack() {
     findNavController().popBackStack()
@@ -23,10 +18,10 @@ fun Fragment.navigateWithArgs(id: Int, bundle: Bundle) {
     findNavController().navigate(id, bundle)
 }
 
-fun objectToJson(data: UserModel): String {
+fun objectToJson(data: UserResponseModel): String {
     return Gson().toJson(data)
 }
 
-fun jsonToObject(data: String?): UserModel {
-    return Gson().fromJson(data ?: "null", UserModel::class.java)
+fun jsonToObject(data: String?): UserResponseModel {
+    return Gson().fromJson(data ?: "null", UserResponseModel::class.java)
 }
