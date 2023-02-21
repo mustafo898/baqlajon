@@ -10,7 +10,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.animateToolBarTittle
 import uz.rounded.baqlajon.core.extensions.gone
-import uz.rounded.baqlajon.core.extensions.invisible
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.ActivityStartBinding
@@ -26,7 +25,7 @@ class StartActivity : AppCompatActivity() {
 
     private val isToolBarGone = mutableListOf(
         R.id.welcomeFragment,
-        R.id.authFragment
+        R.id.authFragment,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +46,7 @@ class StartActivity : AppCompatActivity() {
             animateToolBarTittle(binding.toolbar.title)
             if (isToolBarGone.contains(destination.id)
             ) {
-                binding.toolbar.toolbar.invisible()
+                binding.toolbar.toolbar.gone()
             } else {
                 binding.toolbar.toolbar.visible()
             }

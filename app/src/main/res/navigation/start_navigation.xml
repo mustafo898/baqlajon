@@ -77,6 +77,6 @@
     <fragment
         android:id="@+id/resetFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.reset_password.ResetFragment"
-        android:label="Reset Password"
+        android:label="Set password"
         tools:layout="@layout/fragment_reset" />
 </navigation>

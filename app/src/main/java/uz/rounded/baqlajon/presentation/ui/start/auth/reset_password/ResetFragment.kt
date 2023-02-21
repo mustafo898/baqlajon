@@ -103,7 +103,6 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
 
     private fun updatePassword() {
         resetViewModel.forgotPassword(ForgotPasswordModel(phone, password))
-
         lifecycleScope.launchWhenStarted {
             resetViewModel.password.collectLatest { k ->
                 k.data?.let {

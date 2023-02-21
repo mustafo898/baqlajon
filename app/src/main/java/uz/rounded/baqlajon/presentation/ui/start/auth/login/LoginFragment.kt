@@ -49,6 +49,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
 
+        binding.signUp.setOnClickListener {
+            navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+
         observe()
         validateFields()
     }

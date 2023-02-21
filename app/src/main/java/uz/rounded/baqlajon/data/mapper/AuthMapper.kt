@@ -1,9 +1,11 @@
 package uz.rounded.baqlajon.data.mapper
 
-import uz.rounded.baqlajon.data.remote.dto.UserDto
-import uz.rounded.baqlajon.domain.model.main.course.UserModel
 import uz.rounded.baqlajon.data.remote.dto.*
-import uz.rounded.baqlajon.domain.model.*
+import uz.rounded.baqlajon.domain.model.CodeModel
+import uz.rounded.baqlajon.domain.model.CoinModel
+import uz.rounded.baqlajon.domain.model.DataModel
+import uz.rounded.baqlajon.domain.model.UserResponseModel
+import uz.rounded.baqlajon.domain.model.main.course.UserModel
 
 fun UserDto.toModel(): UserModel {
     return UserModel(
@@ -25,8 +27,8 @@ fun UserResponseDto.toModel(): UserResponseModel {
 fun DataDto.toModel(): DataModel {
     return DataModel(
         _id = _id,
-        code = code.toModel(),
-        coin = coin.toModel(),
+        code = code?.let { it.toModel() },
+        coin = coin?.let { it.toModel() },
         createdAt = createdAt,
         firstName = firstName,
         image = image,
