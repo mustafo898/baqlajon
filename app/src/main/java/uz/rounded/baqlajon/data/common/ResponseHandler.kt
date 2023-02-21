@@ -40,7 +40,8 @@ open class ResponseHandler {
                             )
                         )
                     }
-                } else {
+                }
+                else {
                     try {
                         val me: APIErrorResponse = Gson().fromJson(
                             response.errorBody()!!.charStream(),

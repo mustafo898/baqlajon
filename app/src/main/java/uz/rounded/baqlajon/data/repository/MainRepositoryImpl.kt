@@ -169,7 +169,7 @@ class MainRepositoryImpl @Inject constructor(
             }
         })
 
-    override suspend fun buyGift(id: String): Flow<Resource<Boolean>> =
+    override suspend fun buyGift(id: String): Flow<Resource<String>> =
         loadResult({
             mainApiService.buyGift(id)
         }, { data, flow ->

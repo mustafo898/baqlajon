@@ -40,7 +40,7 @@ class ShopViewModel @Inject constructor(private val repository: MainRepository) 
         }
     }
 
-    private val _buy = MutableStateFlow(UIObjectState<Boolean>())
+    private val _buy = MutableStateFlow(UIObjectState<String>())
     val buy = _buy.asStateFlow()
 
     fun buyGift(id: String) {
