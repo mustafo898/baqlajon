@@ -19,6 +19,7 @@ import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.FragmentResetBinding
+import uz.rounded.baqlajon.domain.model.auth.password.ForgotPasswordModel
 import uz.rounded.baqlajon.domain.model.auth.register.RegisterModel
 import uz.rounded.baqlajon.presentation.MainActivity
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
@@ -37,12 +38,14 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
     private var lastname = ""
     private var phone = ""
     private var image = ""
-    private var otp = ""
+    private var referralCode = ""
+    private var type = 0
 
     @Inject
     lateinit var shared: SharedPreference
 
     private val viewModel: SmsViewModel by viewModels()
+    private val resetViewModel: ResetPasswordViewModel by viewModels()
 
     override fun created(view: View, savedInstanceState: Bundle?) {
         bundle()
@@ -55,8 +58,11 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
             name = it.getString("NAME", "")
             lastname = it.getString("LASTNAME", "")
             phone = it.getString("PHONE", "")
-            otp = it.getString("OTPREG", "")
+            type = it.getInt("TYPE", 0)
             image = it.getString("IMAGE", "")
+            referralCode = it.getString("REFERALCODE", "")
+
+            Log.d("sdlsjdfkh", "bundle: password $referralCode")
         }
     }
 
@@ -66,7 +72,7 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
                 firstName = name,
                 lastName = lastname,
                 image = image,
-                otp = otp,
+                promocode = referralCode,
                 password = password,
                 phoneNumber = phone
             )
@@ -76,7 +82,33 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
             viewModel.registration.collectLatest { k ->
                 k.data?.let {
                     hideStartProgress()
-                    shared.user = it
+                    shared.user = it.data
+                    shared.token = it.token
+                    shared.hasToken = true
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                    activity?.finish()
+                    Log.d("SSNSNWJNJNDNWENBU", "observe: $it")
+                }
+                if (k.error.isNotEmpty()) {
+                    hideStartProgress()
+                    Log.d("SSNSNWJNJNDNWENBU", "observe: ${k.error}")
+                    Toast.makeText(requireContext(), k.error, Toast.LENGTH_SHORT).show()
+                    if (k.error == "Student already exists") {
+                        navigate(R.id.loginFragment)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updatePassword() {
+        resetViewModel.forgotPassword(ForgotPasswordModel(phone, password))
+
+        lifecycleScope.launchWhenStarted {
+            resetViewModel.password.collectLatest { k ->
+                k.data?.let {
+                    hideStartProgress()
+                    shared.user = it.data
                     shared.token = it.token
                     shared.hasToken = true
                     startActivity(Intent(requireContext(), MainActivity::class.java))
@@ -105,7 +137,11 @@ class ResetFragment : BaseFragment<FragmentResetBinding>() {
             binding.rule.gone()
             binding.next.cardView.isClickable = true
             binding.next.cardView.setOnClickListener {
-                registerUser()
+                if (type == 0) {
+                    registerUser()
+                } else if (type == 1) {
+                    updatePassword()
+                }
             }
             true
         } else {

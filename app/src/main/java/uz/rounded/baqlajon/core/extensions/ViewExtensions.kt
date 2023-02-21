@@ -2,6 +2,7 @@ package uz.rounded.baqlajon.core.extensions
 
 import android.content.Context
 import android.graphics.PorterDuff
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.ColorRes
@@ -27,6 +28,7 @@ fun View.invisible() {
 }
 
 fun ImageView.loadImage(context: Context, path: String) {
+    Log.d("dkkfjshdjn", "loadImage: ${getString(R.string.base_url) + "public/uploads" + path}")
     Glide.with(context).load(getString(R.string.base_url) + "public/uploads" + path)
         .into(this)
 }

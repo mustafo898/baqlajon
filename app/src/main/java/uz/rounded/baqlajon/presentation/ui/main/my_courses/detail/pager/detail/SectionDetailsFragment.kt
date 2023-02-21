@@ -36,6 +36,7 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
     ) = FragmentSectionDetailsBinding.inflate(inflater)
 
     private var id = ""
+    private var isOpen = false
 
     override fun created(view: View, savedInstanceState: Bundle?) {
         arguments?.let {
@@ -67,9 +68,11 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
                         title.text = p.title
                         desc.text = p.description
                         if (p.isFree) {
+                            isOpen = true
                             setVideo(getString(R.string.base_url) + "public/uploads" + p.videoUrl)
                             notification.gone()
                         } else {
+                            isOpen = false
                             notification.visible()
                         }
                         image2.loadImage(requireContext(), p.imageUrl)
@@ -101,6 +104,8 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
-        simpleExoplayer.release()
+        if (isOpen) {
+            simpleExoplayer.release()
+        }
     }
 }

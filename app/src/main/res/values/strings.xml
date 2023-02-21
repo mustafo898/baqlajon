@@ -90,6 +90,12 @@
     <string name="ok">OK</string>
     <string name="good">Good</string>
     <string name="great">Great!</string>
+    <string name="coins">%1$s coins</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="congratulations_text">Your request has been received and we will contact you soon!</string>
+    <string name="error">Oops!</string>
+    <string name="error_text">Sorry you don\'t have enough coins! Collect more coins.</string>
+    <string name="not_enough_coins">Yetarli mablag\' mavjud emas</string>
 
     <!--    suhrob    -->
 

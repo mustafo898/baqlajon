@@ -30,7 +30,11 @@
         android:id="@+id/balanceFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.balance.BalanceFragment"
         android:label="@string/balance"
-        tools:layout="@layout/fragment_balance" />
+        tools:layout="@layout/fragment_balance">
+        <action
+            android:id="@+id/action_balanceFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.ProfileFragment"
@@ -82,6 +86,9 @@
         <action
             android:id="@+id/action_editProfileFragment_to_editPasswordFragment"
             app:destination="@id/editPasswordFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_smsVerifyFragment"
+            app:destination="@id/smsVerifyFragment2" />
     </fragment>
     <fragment
         android:id="@+id/editPasswordFragment"
@@ -92,7 +99,11 @@
         android:id="@+id/editPhoneFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.edit.EditPhoneFragment"
         android:label="Change number"
-        tools:layout="@layout/fragment_edit_phone" />
+        tools:layout="@layout/fragment_edit_phone" >
+        <action
+            android:id="@+id/action_editPhoneFragment_to_smsVerifyFragment2"
+            app:destination="@id/smsVerifyFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.about.AboutFragment"
@@ -110,7 +121,23 @@
         tools:layout="@layout/fragment_payment_history" />
     <fragment
         android:id="@+id/reviewsFragment"
-        tools:layout="@layout/fragment_reviews"
         android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.ReviewsFragment"
-        android:label="Write a review" />
+        android:label="Write a review"
+        tools:layout="@layout/fragment_reviews" />
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="uz.rounded.baqlajon.presentation.ui.main.balance.shop.ShopFragment"
+        android:label="Shop"
+        tools:layout="@layout/fragment_shop" />
+    <fragment
+        android:id="@+id/smsVerifyFragment2"
+        android:name="uz.rounded.baqlajon.presentation.ui.start.auth.sms.SmsVerifyFragment"
+        android:label="SmsVerifyFragment" >
+        <action
+            android:id="@+id/action_smsVerifyFragment2_to_editPhoneFragment"
+            app:destination="@id/editPhoneFragment" />
+        <action
+            android:id="@+id/action_smsVerifyFragment2_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
 </navigation>

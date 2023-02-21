@@ -111,8 +111,8 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -125,6 +125,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
+                            android:gravity="center_vertical"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -133,7 +134,8 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
 
 
                         <ImageView
@@ -147,6 +149,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
+                            android:gravity="center_vertical"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 
@@ -155,7 +158,8 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
 
 
                         <ImageView
@@ -169,6 +173,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/medium_500"
+                            android:gravity="center_vertical"
                             android:textColor="@color/grey2"
                             android:textSize="14sp" />
 

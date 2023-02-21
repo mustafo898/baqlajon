@@ -11,16 +11,21 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.navigateWithArgs
+import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.FragmentMyCoursesBinding
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.CategoryModel
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.HomeCategoryAdapter
 import uz.rounded.baqlajon.presentation.ui.main.my_courses.adapter.MyCourseAdapter
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MyCoursesFragment : BaseFragment<FragmentMyCoursesBinding>() {
 
     private val viewModel: MyCoursesViewModel by viewModels()
+
+    @Inject
+    lateinit var sharedPreference: SharedPreference
 
     private val adapter by lazy {
         MyCourseAdapter(requireContext()) {
@@ -33,6 +38,7 @@ class MyCoursesFragment : BaseFragment<FragmentMyCoursesBinding>() {
 
     private val adapterCategory by lazy {
         HomeCategoryAdapter(requireContext()) {
+            sharedPreference.type = it
             getByCategory(it)
         }
     }
@@ -46,7 +52,12 @@ class MyCoursesFragment : BaseFragment<FragmentMyCoursesBinding>() {
         binding.categoryList.adapter = adapterCategory
 
         setCategory()
-        getAllCourse()
+
+        when (sharedPreference.type) {
+            0 -> getByCategory(0)
+            1 -> getByCategory(1)
+            2 -> getByCategory(2)
+        }
     }
 
     private fun setCategory() {

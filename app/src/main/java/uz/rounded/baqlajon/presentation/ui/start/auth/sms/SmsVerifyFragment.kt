@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +24,6 @@ import uz.rounded.baqlajon.core.utils.SmsReceiver
 import uz.rounded.baqlajon.databinding.FragmentSmsVerifyBinding
 import uz.rounded.baqlajon.domain.model.auth.otp.CheckOtpModel
 import uz.rounded.baqlajon.domain.model.auth.otp.SendOtpModel
-import uz.rounded.baqlajon.domain.model.auth.register.RegisterModel
-import uz.rounded.baqlajon.presentation.MainActivity
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import java.util.regex.Pattern
 import javax.inject.Inject
@@ -47,20 +44,19 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
     private var image = ""
     private var phone = ""
     private var password = ""
+    private var referralCode = ""
     var otp = ""
     var type = 0
+
     override fun createBinding(
         inflater: LayoutInflater, container: ViewGroup?
     ): FragmentSmsVerifyBinding = FragmentSmsVerifyBinding.inflate(inflater)
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-//        binding.confirm.cardView.setOnClickListener {
-//            startActivity(Intent(requireContext(), MainActivity::class.java))
-//            (activity as StartActivity).finish()
-//        }
         bundle()
-        if (type == 5) (activity as MainActivity).setMainToolbarText(getString(R.string.new_phone_number))
-
+        if (type == 3 || type == 4) {
+            hideMainProgress()
+        }
 
         binding.confirm.cardView.setCardBackgroundColor(
             getColor(
@@ -89,81 +85,69 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
             phone = it.getString("PHONE", "")
             type = it.getInt("TYPE", 0)
             image = it.getString("IMAGE", "")
+            referralCode = it.getString("REFERALCODE", "")
         }
     }
 
     private fun observe() {
-        viewModel.createOtp(SendOtpModel(phoneNumber = phone.replace(" ", "")))
-        Log.d("KJNFJKDS", "observe: ${phone.replace(" ", "")}")
-        lifecycleScope.launchWhenStarted {
-            viewModel.registration.collectLatest { k ->
-                k.data?.let {
-                    hideStartProgress()
-                    shared.user = it
-                    shared.token = it.token
-                    shared.hasToken = true
-                    navigateWithArgs(
-                        R.id.action_smsVerifyFragment_to_resetFragment,
-                        bundleOf("PHONE" to phone)
-                    )
-                    Log.d("SSNSNWJNJNDNWENBU", "observe: $it")
-//                    ipAddress()?.let { it1 ->
-//                        DeviceModel(
-//                            ip_address = it1,
-//                            device = getDeviceName()
-//                        )
-//                    }?.let { it2 ->
-//                        viewModel.getDevice(it2)
-//                    }
-                }
-                if (k.error.isNotEmpty()) {
-                    hideStartProgress()
-                    Log.d("SSNSNWJNJNDNWENBU", "observe: ${k.error}")
-                    Toast.makeText(requireContext(), k.error, Toast.LENGTH_SHORT).show()
-                    if (k.error == "Student already exists") {
-                        navigate(R.id.loginFragment)
-                    }
-                }
-            }
+        if (type == 0 || type == 4) {
+            viewModel.createOtp(SendOtpModel(phoneNumber = phone.replace(" ", "")))
+        } else {
+            viewModel.createForgetOtp(SendOtpModel(phoneNumber = phone.replace(" ", "")))
         }
 
         lifecycleScope.launchWhenStarted {
             viewModel.check.collectLatest { k ->
                 k.data?.let {
-                    when (type) {
-                        0 -> {
-                            sendRequest()
-                            hideStartProgress()
-                        }
-                        1 -> {
-                            navigateWithArgs(
-                                R.id.action_smsVerifyFragment_to_resetFragment,
-                                bundleOf("PHONE" to phone, "TYPE" to 1)
-                            )
-                            hideStartProgress()
-                        }
-                        5 -> {
-                            Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
-                            hideMainProgress()
-                            navigateWithArgs(
-                                R.id.editProfileFragment,
-                                bundleOf("PHONE" to phone, "TYPE" to 5)
-                            )
-                        }
-                    }
+                    actions()
                 }
                 if (k.isLoading) {
-                    if (type == 5) {
-                        showMainProgress()
+                    if (type == 3 || type == 4) {
+                        showMainProgress1()
                     } else {
                         showStartProgress()
                     }
                 }
                 if (k.error.isNotEmpty()) {
-                    if (type == 5) {
-                        showMainProgress()
+                    if (type == 3 || type == 4) {
+                        hideMainProgress1()
+                    } else {
+                        hideStartProgress()
+                    }
+                    Toast.makeText(requireContext(), k.error, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.updatePhone.collectLatest { k ->
+                k.data?.let {
+                    when (type) {
+                        4 -> {
+                            navigateWithArgs(
+                                R.id.action_smsVerifyFragment2_to_editProfileFragment,
+                                bundleOf("PHONE" to phone, "TYPE" to 2)
+                            )
+                            shared.user = it.data
+                            shared.token = it.token
+                            shared.hasToken = true
+
+                            hideMainProgress1()
+                        }
+                    }
+                }
+                if (k.isLoading) {
+                    if (type == 3 || type == 4) {
+                        showMainProgress1()
                     } else {
                         showStartProgress()
+                    }
+                }
+                if (k.error.isNotEmpty()) {
+                    if (type == 3 || type == 4) {
+                        hideMainProgress1()
+                    } else {
+                        hideStartProgress()
                     }
                     Toast.makeText(requireContext(), k.error, Toast.LENGTH_SHORT).show()
                 }
@@ -175,7 +159,6 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
                 k.data?.let {
                     timerCount.start()
                     binding.resend.visible()
-//                    hideStartProgress()
                 }
                 if (k.error.isNotBlank()) {
                     binding.resend.gone()
@@ -185,25 +168,45 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
         }
     }
 
-    private fun sendRequest() {
-        viewModel.register(
-            RegisterModel(
-                firstName = name,
-                lastName = lastname,
-                phoneNumber = phone,
-                image = image,
-                password = password,
-                otp = otp
-            )
-        )
+    private fun actions() {
+        when (type) {
+            0 -> {
+                navigateWithArgs(
+                    R.id.action_smsVerifyFragment_to_resetFragment, bundleOf(
+                        "NAME" to name,
+                        "LASTNAME" to lastname,
+                        "PHONE" to phone,
+                        "REFERALCODE" to referralCode,
+                        "TYPE" to 0,
+                    )
+                )
+                hideStartProgress()
+            }
+            1 -> {
+                navigateWithArgs(
+                    R.id.action_smsVerifyFragment_to_resetFragment, bundleOf(
+                        "NAME" to name,
+                        "LASTNAME" to lastname,
+                        "PHONE" to phone,
+                        "REFERALCODE" to referralCode,
+                        "TYPE" to 1,
+                    )
+                )
+                hideStartProgress()
+            }
+            3 -> {
+                navigate(R.id.action_smsVerifyFragment2_to_editPhoneFragment)
+                hideMainProgress1()
+            }
+
+        }
     }
 
     private fun setUpPin() {
         binding.confirm.cardView.isClickable = false
         binding.confirm.cardView.setCardBackgroundColor(
             getColor(
-                requireContext(),
-                R.color.button_disabled
+                requireContext(), R.color.button_disabled
             )
         )
         binding.code.addTextChangedListener {
@@ -211,31 +214,28 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
                 binding.confirm.cardView.isClickable = true
                 binding.confirm.cardView.setCardBackgroundColor(
                     getColor(
-                        requireContext(),
-                        R.color.main_blue
+                        requireContext(), R.color.main_blue
                     )
                 )
                 otp = binding.code.text.toString()
                 binding.confirm.cardView.setOnClickListener {
-                    navigateWithArgs(
-                        R.id.action_smsVerifyFragment_to_resetFragment,
-                        bundleOf(
-                            "NAME" to name,
-                            "LASTNAME" to lastname,
-                            "PHONE" to phone,
-                            "IMAGE" to image,
-                            "OTPREG" to otp
+//                    actions()
+                    if (type == 4) viewModel.updatePhone(
+                        CheckOtpModel(
+                            otp = otp, phoneNumber = phone
                         )
                     )
-                    Log.d("KJNFJKDS", "setUpPin: $otp")
-                    Log.d("KJNFJKDS", "setUpPin: $password")
+                    else viewModel.checkOtp(
+                        CheckOtpModel(
+                            otp = otp, phoneNumber = phone
+                        )
+                    )
                 }
             } else {
                 binding.confirm.cardView.isClickable = false
                 binding.confirm.cardView.setCardBackgroundColor(
                     getColor(
-                        requireContext(),
-                        R.color.button_disabled
+                        requireContext(), R.color.button_disabled
                     )
                 )
             }
@@ -247,8 +247,7 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
         override fun onTick(millisUntilFinished: Long) {
             val min = (millisUntilFinished / 60000) % 60
             val sec = millisUntilFinished / 1000 % 60
-            binding.resend.text =
-                getString(R.string.time_sms, String.format("%d:%02d", min, sec))
+            binding.resend.text = getString(R.string.time_sms, String.format("%d:%02d", min, sec))
         }
 
         override fun onFinish() {
@@ -273,7 +272,16 @@ class SmsVerifyFragment : BaseFragment<FragmentSmsVerifyBinding>() {
         val matcher = pattern.matcher(message)
         if (matcher.find()) {
             binding.code.setText(matcher.group(0))
-            viewModel.checkOtp(CheckOtpModel(otp = matcher.group(0) as String))
+            if (type == 4) viewModel.updatePhone(
+                CheckOtpModel(
+                    otp = matcher.group(0) as String, phoneNumber = phone
+                )
+            )
+            else viewModel.checkOtp(
+                CheckOtpModel(
+                    otp = matcher.group(0) as String, phoneNumber = phone
+                )
+            )
         }
     }
 

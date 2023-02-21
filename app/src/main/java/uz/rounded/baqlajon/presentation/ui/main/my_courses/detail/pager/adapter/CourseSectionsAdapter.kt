@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.databinding.ItemCourseSectionsBinding
-import uz.rounded.baqlajon.domain.model.VideoModel
+import uz.rounded.baqlajon.domain.model.main.course.VideoModel
 
 class CourseSectionsAdapter : RecyclerView.Adapter<CourseSectionsAdapter.ViewHolder>() {
 
@@ -33,19 +33,25 @@ class CourseSectionsAdapter : RecyclerView.Adapter<CourseSectionsAdapter.ViewHol
             binding.image.loadImage(binding.root.context, data.imageUrl)
             binding.title.text = data.title
             binding.eye.text = data.viewCount.toString()
-            binding.clock.text = (0).toString()
+            binding.clock.text = data.time.toString()
 
             itemView.setOnClickListener {
                 itemClickListener?.invoke(data._id)
             }
         }
+
+        private fun timeFormat(time: Int): String {
+            val hour = time / 3600
+            val minute = time / 60
+            val hourFormat = if (hour < 1) "" else "${hour}h"
+            val minuteFormat = if (minute < 10) "0${minute}min" else "${minute}min"
+            return "$hourFormat${minuteFormat}"
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         ItemCourseSectionsBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+            LayoutInflater.from(parent.context), parent, false
         )
     )
 

@@ -1,7 +1,7 @@
 package uz.rounded.baqlajon.data.mapper
 
 import uz.rounded.baqlajon.data.remote.dto.main.course.*
-import uz.rounded.baqlajon.domain.model.*
+import uz.rounded.baqlajon.domain.model.main.course.*
 
 fun GetCourseDto.toModel(): GetCourseModel {
     return GetCourseModel(
@@ -44,7 +44,7 @@ fun GetByIdCourseDto.toModel(): GetByIdCourseModel {
 }
 
 fun RequestCommentModel.toModel(): RequestCommentDto {
-    return RequestCommentDto(text)
+    return RequestCommentDto(text, rating)
 }
 
 fun VideoDto.toModel(): VideoModel {
@@ -57,6 +57,7 @@ fun VideoDto.toModel(): VideoModel {
         index,
         isFree,
         title,
+        time,
         updatedAt,
         videoUrl,
         viewCount

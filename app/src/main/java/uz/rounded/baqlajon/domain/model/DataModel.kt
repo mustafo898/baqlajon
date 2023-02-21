@@ -6,8 +6,8 @@ data class DataModel(
     val coin: CoinModel,
     val createdAt: String,
     val firstName: String,
-    val image: String,
+    var image: String,
     val lastName: String,
-    val password: String,
-    val phoneNumber: String
+    var password: String,
+    var phoneNumber: String
 )

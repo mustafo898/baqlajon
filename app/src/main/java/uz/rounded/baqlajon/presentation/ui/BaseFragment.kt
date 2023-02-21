@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import uz.rounded.baqlajon.presentation.StartActivity
 import uz.rounded.baqlajon.presentation.MainActivity
+import uz.rounded.baqlajon.presentation.StartActivity
 
 abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
@@ -45,6 +45,14 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
     fun hideMainProgress() {
         (activity as MainActivity).hideProgress()
+    }
+
+    fun showMainProgress1() {
+        (activity as MainActivity).showProgress1()
+    }
+
+    fun hideMainProgress1() {
+        (activity as MainActivity).hideProgress1()
     }
 
     fun showStartProgress() {

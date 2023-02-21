@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import uz.rounded.baqlajon.databinding.ItemCourseReviewsBinding
-import uz.rounded.baqlajon.domain.model.CommentModel
+import uz.rounded.baqlajon.domain.model.main.course.CommentModel
 
 class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsAdapter.ViewHolder>() {
 

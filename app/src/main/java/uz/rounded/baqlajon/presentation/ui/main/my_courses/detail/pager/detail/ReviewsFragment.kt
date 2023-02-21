@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.popBackStack
 import uz.rounded.baqlajon.databinding.FragmentReviewsBinding
-import uz.rounded.baqlajon.domain.model.RequestCommentModel
+import uz.rounded.baqlajon.domain.model.main.course.RequestCommentModel
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 @AndroidEntryPoint
@@ -32,8 +32,10 @@ class ReviewsFragment : BaseFragment<FragmentReviewsBinding>() {
         }
 
         binding.signUp.cardView.setOnClickListener {
-            if (binding.txt.text.isNotEmpty()) {
-                viewModel.createComment(id, RequestCommentModel(binding.txt.text.toString()))
+            if (binding.txt.text.isNotEmpty() && binding.rating.progress > 0) {
+                viewModel.createComment(
+                    id, RequestCommentModel(binding.txt.text.toString(), binding.rating.progress)
+                )
             }
         }
 

@@ -57,7 +57,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         binding.login.cardView.setOnClickListener {
             phoneString.replace(" ", "")
             if (validation()) {
-                viewModel.login(LoginModel(_phoneNumber = phoneString, password = password))
+                viewModel.login(LoginModel(phoneNumber = phoneString, password = password))
             }
         }
 
@@ -66,7 +66,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 k.data?.let {
                     hideStartProgress()
 
-                    shared.user = it
+                    shared.user = it.data
                     shared.hasToken = true
                     shared.token = it.token
 
