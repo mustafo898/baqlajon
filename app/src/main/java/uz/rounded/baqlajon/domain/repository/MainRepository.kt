@@ -35,7 +35,7 @@ interface MainRepository {
 
     suspend fun finishVideo(id: String): Flow<Resource<Boolean>>
 
-    suspend fun buyGift(id: String): Flow<Resource<Boolean>>
+    suspend fun buyGift(id: String): Flow<Resource<String>>
 
     suspend fun createComment(
         id: String,

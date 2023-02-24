@@ -7,7 +7,7 @@ data class GetCourseModel(
     val description: String,
     val image: String,
     val language: String,
-    val rating: Int,
+    val rating: Double,
     val studentCount: Int,
     val time: Int,
     val title: String,

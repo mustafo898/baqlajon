@@ -38,7 +38,7 @@ interface MainApiService {
     suspend fun finishVideo(@Path("id") id: String): Response<MainResponseDto<Boolean>>
 
     @GET("gift/buy/{id}")
-    suspend fun buyGift(@Path("id") id: String): Response<MainResponseDto<Boolean>>
+    suspend fun buyGift(@Path("id") id: String): Response<MainResponseDto<String>>
 
     @Multipart
     @POST("image/upload")

@@ -167,6 +167,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
                     sharedPreference.user = p
                     setUserFields(sharedPreference.user)
                     hideMainProgress1()
+                    body = null
                     Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
                 }
             }

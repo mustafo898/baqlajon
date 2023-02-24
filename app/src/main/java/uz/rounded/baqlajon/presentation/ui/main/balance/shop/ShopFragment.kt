@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.databinding.FragmentShopBinding
 import uz.rounded.baqlajon.presentation.dialog.BuyDialog
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
@@ -51,18 +49,12 @@ class ShopFragment : BaseFragment<FragmentShopBinding>() {
         lifecycleScope.launchWhenStarted {
             viewModel.buy.collectLatest {
                 it.data?.let { p ->
-                    if (p) {
-                        dialog.setCongratulations()
-                    }
+                    dialog.setCongratulations()
                     dialog.show()
                 }
                 if (it.error.isNotBlank()) {
-                    if (it.error == getString(R.string.not_enough_coins)) {
-                        dialog.setError()
-                        dialog.show()
-                    } else {
-                        Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
-                    }
+                    dialog.setError(it.error)
+                    dialog.show()
                 }
             }
         }

@@ -110,6 +110,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     adapterList.submitList(p)
                 }
                 if (it.error.isNotBlank()) {
+                    showToast(it.error)
                     Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
                     hideMainProgress()
                 }

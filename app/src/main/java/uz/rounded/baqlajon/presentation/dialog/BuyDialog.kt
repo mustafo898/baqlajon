@@ -15,13 +15,15 @@ class BuyDialog(context: Context) : AlertDialog(context) {
     private var payment_type = "PAYME"
 
     fun setCongratulations() {
+        binding.animation.setAnimation(R.raw.congratulations)
         binding.type.text = getString(R.string.congratulations)
         binding.desc.text = getString(R.string.congratulations_text)
     }
 
-    fun setError() {
+    fun setError(error: String) {
+        binding.animation.setAnimation(R.raw.not_money)
         binding.type.text = getString(R.string.error)
-        binding.desc.text = getString(R.string.error_text)
+        binding.desc.text = error
     }
 
     init {
