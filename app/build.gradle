@@ -160,5 +160,5 @@ dependencies {
     //loader
     implementation("com.tuyenmonkey:mkloader:1.4.0")
     //hawk
-    implementation("com.orhanobut:hawk:2.0.1")
+    implementation("com.orhanobut:hawk:2.0.1")\
 }

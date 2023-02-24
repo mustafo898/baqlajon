@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearSnapHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.core.extensions.navigate
@@ -89,15 +92,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun getProfile() {
         viewModel.getProfile()
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.user.collectLatest {
-                it.data?.let { p ->
-                    sharedPreference.user = p
-                    hideMainProgress()
-                }
-                if (it.error.isNotBlank()) {
-                    Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
-                    hideMainProgress()
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.user.collectLatest {
+                    it.data?.let { p ->
+                        sharedPreference.user = p
+                        hideMainProgress()
+                    }
+                    if (it.error.isNotBlank()) {
+                        Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
+                        hideMainProgress()
+                    }
                 }
             }
         }
@@ -106,16 +111,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun getAllCourse() {
         viewModel.getAllCourse()
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.allCourse.collectLatest {
-                it.data?.let { p ->
-                    adapterList.submitList(p)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.allCourse.collectLatest {
+                    it.data?.let { p ->
+                        adapterList.submitList(p)
+                    }
+                    if (it.error.isNotBlank()) {
+                        showToast(it.error)
+                        Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
+                        hideMainProgress()
+                    }
                 }
-                if (it.error.isNotBlank()) {
-                    showToast(it.error)
-                    Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
-                    hideMainProgress()
-                }
+
             }
         }
     }
@@ -123,10 +131,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun getPopular() {
         viewModel.getPopular()
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.popular.collectLatest {
-                it.data?.let { p ->
-                    adapterList.submitList(p)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.popular.collectLatest {
+                    it.data?.let { p ->
+                        adapterList.submitList(p)
+                    }
                 }
             }
         }
@@ -135,10 +145,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun getNewest() {
         viewModel.getNewest()
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.newest.collectLatest {
-                it.data?.let { p ->
-                    adapterList.submitList(p)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.newest.collectLatest {
+                    it.data?.let { p ->
+                        adapterList.submitList(p)
+                    }
                 }
             }
         }
