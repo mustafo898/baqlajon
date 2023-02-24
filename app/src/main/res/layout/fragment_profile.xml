@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Language"
+                    android:text="@string/language"
                     android:textColor="@color/black1"
                     android:textSize="14sp" />
 
@@ -179,7 +179,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="English"
+                    android:text="@string/english"
                     android:textColor="@color/black1"
                     android:textSize="14sp" />
 
@@ -199,8 +199,8 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
-                android:paddingBottom="8dp"
-                android:paddingHorizontal="16dp">
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="8dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -212,11 +212,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Dark mode"
+                    android:text="@string/dark_mode"
                     android:textColor="@color/black1"
                     android:textSize="14sp" />
 
                 <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -264,7 +265,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="About"
+                    android:text="@string/about"
                     android:textColor="@color/black1"
                     android:textSize="14sp" />
 
@@ -297,7 +298,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Share"
+                    android:text="@string/share"
                     android:textColor="@color/black1"
                     android:textSize="14sp" />
 
@@ -317,9 +318,9 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
-                android:paddingBottom="16dp"
+                android:paddingHorizontal="16dp"
                 android:paddingTop="8dp"
-                android:paddingHorizontal="16dp">
+                android:paddingBottom="16dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -331,7 +332,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Help"
+                    android:text="@string/help"
                     android:textColor="@color/black1"
                     android:textSize="14sp" />
 

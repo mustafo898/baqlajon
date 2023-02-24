@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
+import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.core.extensions.navigateWithArgs
 import uz.rounded.baqlajon.core.utils.SharedPreference
@@ -60,7 +61,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setAdapter()
         setCategory()
         getAllCourse()
-
+        binding.userName.text = sharedPreference.user.firstName
+        binding.userImage.loadImage(requireContext(), sharedPreference.user.image)
         binding.search.setOnClickListener {
             navigate(R.id.action_homeFragment_to_searchFragment)
         }

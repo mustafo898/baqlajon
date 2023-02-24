@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import uz.rounded.baqlajon.domain.model.DataModel;
-import uz.rounded.baqlajon.domain.model.UserResponseModel;
 
 public class SharedPreference {
     SharedPreferences prefs;
@@ -94,5 +93,24 @@ public class SharedPreference {
         return jsonToObject(prefs.getString("user", ""));
     }
 
+    public void setLanguage(String language) {
+        editor = prefs.edit();
+        editor.putString("language", language);
+        editor.apply();
+    }
+
+    public String getLanguage() {
+        return prefs.getString("language", "");
+    }
+
+    public void setNightMode(Boolean hasToken) {
+        editor = prefs.edit();
+        editor.putBoolean("nightMode", hasToken);
+        editor.apply();
+    }
+
+    public Boolean getNightMode() {
+        return prefs.getBoolean("nightMode", false);
+    }
 
 }

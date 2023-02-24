@@ -1,5 +1,6 @@
 package uz.rounded.baqlajon.presentation
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -11,6 +12,7 @@ import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.animateToolBarTittle
 import uz.rounded.baqlajon.core.extensions.gone
 import uz.rounded.baqlajon.core.extensions.visible
+import uz.rounded.baqlajon.core.utils.ControlLanguage
 import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.ActivityMainBinding
 import javax.inject.Inject
@@ -61,6 +63,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase?.let { ControlLanguage.setLocale(it) })
     }
 
     fun hideProgress() {
