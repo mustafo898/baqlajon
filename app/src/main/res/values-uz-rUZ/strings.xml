@@ -1,5 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="language">Til</string>
+    <string name="app_name">Baqlajon</string>
+    <string name="home">Home</string>
+    <string name="my_courses">My courses</string>
+    <string name="balance">Balance</string>
+    <string name="profile">Profile</string>
 
+    <string name="skip">Skip</string>
+    <string name="find_your_favorite_course">Find your favorite course</string>
+    <string name="learn_with_fun">Learn with fun</string>
+    <string name="get_good_results">Get good results</string>
+    <string name="sub_label">Our new videos make it easy for you to learn anywhere, there are new videos that will be ready to help you</string>
+
+    <string name="login">Login</string>
+    <string name="send_code">Send Code</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="password_rule">Parol kamida 8 ta belgidan iborat bo\'lishi va maxsus belgi yoki raqamni o\'z ichiga olishi kerak</string>
+
+    <string name="phone_number">Phone number</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="do_not_have_acc">Don’t have an account?</string>
+    <string name="already_have_acc">Already have an account?</string>
+
+    <string name="full_name">Full name<font color="#F52725">*</font></string>
+    <string name="phone_number_with_star">Phone number<font color="#F52725">*</font></string>
+    <string name="referral_code">Referral code</string>
+    <string name="share_referral_code">Share referral code</string>
+
+
+    <!--    mustafo    -->
+
+    <string name="confirm">Confirm</string>
+    <string name="lastName">Last name</string>
+    <string name="name">Firs name</string>
+    <string name="search">Search</string>
+    <string name="start_course">Start Course</string>
+    <string name="mark_as_completed">Mark as completed</string>
+    <string name="write_a_review">Write a review</string>
+    <string name="enter_new_phone">Enter new phone number</string>
+    <string name="new_phone">Please, enter your new phone number</string>
+    <string name="new_password_txt">Please, enter your new password below</string>
+    <string name="old_password">Enter old password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="save">Save</string>
+    <string name="continue_txt">Continue</string>
+    <string name="write_here">Write here</string>
+    <string name="send">Send</string>
+    <string name="payment">Payment</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="region">
+        <item>Andijon</item>
+        <item>Buxoro</item>
+        <item>Fargʻona</item>
+        <item>Jizzax</item>
+        <item>Xorazm</item>
+        <item>Namangan</item>
+        <item>Navoiy</item>
+        <item>Qashqadaryo</item>
+        <item>Qoraqalpogʻiston Respublikasi</item>
+        <item>Samarqand</item>
+        <item>Sirdaryo</item>
+        <item>Surxondaryo</item>
+        <item>Toshkent</item>
+    </string-array>
+
+    <!--    mustafo    -->
+
+
+    <!--    suhrob    -->
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="new_phone_number">Telefon raqamni yangilash</string>
+    <string name="please_enter_code">Please, enter the code we sent \n%1$s</string>
+    <string name="time_00_23">Time: %1$s</string>
+    <string name="time_sms">Vaqt: %1$s</string>
+    <string name="videos">%1$s Videos</string>
+    <string name="time_course">7h 30min</string>
+    <string name="reviews">%1$s reviews</string>
+    <string name="students_learnt">%1$s Students learnt</string>
+    <string name="very_bad">Very Bad</string>
+    <string name="bad">Bad</string>
+    <string name="ok">OK</string>
+    <string name="good">Good</string>
+    <string name="great">Great!</string>
+    <string name="coins">%1$s coins</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="congratulations_text">Your request has been received and we will contact you soon!</string>
+    <string name="error">Oops!</string>
+    <string name="error_text">Sorry you don\'t have enough coins! Collect more coins.</string>
+    <string name="not_enough_coins">Yetarli mablag\' mavjud emas</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="about">About</string>
+    <string name="share">Share</string>
+    <string name="help">Help</string>
+    <string name="english">English</string>
+
+
+
+
+    <string name="language">Til</string>
 </resources>
