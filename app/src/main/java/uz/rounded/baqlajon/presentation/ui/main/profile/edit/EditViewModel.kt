@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import okhttp3.MultipartBody
 import uz.rounded.baqlajon.domain.model.DataModel
 import uz.rounded.baqlajon.domain.model.main.profile.UpdateUserRequestModel
-import uz.rounded.baqlajon.domain.repository.AuthRepository
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import uz.rounded.baqlajon.presentation.common.UIObjectState
 import uz.rounded.baqlajon.presentation.ui.BaseViewModel
