@@ -1,52 +1,40 @@
 package uz.rounded.baqlajon.core.utils
 
+import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
 import com.orhanobut.hawk.Hawk
+import java.util.*
 
-class ControlLanguage {
+object ControlLanguage {
+    fun setLocale(context: Context): Context? {
+        return updateResources(context, getLanguagePref(context))
+    }
 
-    companion object {
-        fun setLocale(mContext: android.content.Context): android.content.Context? {
-            return updateResources(mContext, getLanguagePref(mContext))
-        }
+    fun setNewLocale(context: Context, language: String): Context? {
+        setLanguagePref(context, language)
+        return updateResources(context, language)
+    }
 
+    private fun getLanguagePref(context: Context): String {
+        return Hawk.get("pref_lang", "en")
+    }
 
-        fun setNewLocale(
-            mContext: android.content.Context,
-            language: kotlin.String
-        ): android.content.Context? {
-            setLanguagePref(mContext, language)
-            return updateResources(mContext, language)
-        }
+    private fun setLanguagePref(context: Context, localeKey: String) {
+        Hawk.put("pref_lang", localeKey)
+    }
 
-        private fun getLanguagePref(mContext: android.content.Context?): kotlin.String {
-            return Hawk.get<kotlin.String>("pref_lang", "en")
-        }
+    private fun updateResources(context: Context, language: String): Context? {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val resources = context.resources
+        val configuration = Configuration(resources.configuration)
+        configuration.setLocale(locale)
+        return context.createConfigurationContext(configuration)
+    }
 
-        private fun setLanguagePref(mContext: android.content.Context, localeKey: kotlin.String) {
-            Hawk.get<kotlin.String>("pref_lang", localeKey)
-        }
-
-        private fun updateResources(
-            context: android.content.Context,
-            language: kotlin.String
-        ): android.content.Context? {
-            var context: android.content.Context = context
-            val locale: java.util.Locale = java.util.Locale(language)
-            java.util.Locale.setDefault(locale)
-            val res: android.content.res.Resources = context.resources
-            val config: android.content.res.Configuration =
-                android.content.res.Configuration(res.configuration)
-            config.setLocale(locale)
-            context = context.createConfigurationContext(config)
-            res.updateConfiguration(config, res.displayMetrics)
-            return context
-        }
-
-        fun getLocale(res: android.content.res.Resources): java.util.Locale? {
-            val config: android.content.res.Configuration = res.configuration
-            return config.locales.get(0)
-        }
-
-
+    fun getLocale(resources: Resources): Locale? {
+        val configuration = resources.configuration
+        return configuration.locales.get(0)
     }
 }
