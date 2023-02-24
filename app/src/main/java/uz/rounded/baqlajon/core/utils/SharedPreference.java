@@ -9,9 +9,20 @@ import android.content.SharedPreferences;
 import uz.rounded.baqlajon.domain.model.DataModel;
 
 public class SharedPreference {
+    private static final String PREF_NAME = "uz.rounded.baqlajon.core.utils.SharedPreference";
+    private static final String KEY_LANG = "lang";
+    private static final String KEY_HAS_LANG = "hasLang";
+    private static final String KEY_TYPE = "type";
+    private static final String KEY_HAS_TOKEN = "hasToken";
+    private static final String KEY_TOKEN = "token";
+    private static final String KEY_USER = "user";
+    private static final String KEY_PASSWORD = "password";
+    private static final String KEY_LANGUAGE = "language";
+    private static final String KEY_NIGHT_MODE = "nightMode";
+
     SharedPreferences prefs;
+
     private static SharedPreference sharePreference;
-    SharedPreferences.Editor editor;
 
     public static SharedPreference getInstance(Context context) {
         if (sharePreference != null) return sharePreference;
@@ -19,98 +30,78 @@ public class SharedPreference {
     }
 
     private SharedPreference(Context context) {
-        prefs = context.getSharedPreferences(getClass().getName(), Context.MODE_PRIVATE);
+        prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
     public void setLang(String lang) {
-        editor = prefs.edit();
-        editor.putString("lang", lang);
-        editor.apply();
+        prefs.edit().putString(KEY_LANG, lang).apply();
     }
 
     public String getLang() {
-        return prefs.getString("lang", "en");
+        return prefs.getString(KEY_LANG, "en");
     }
-
 
     public void setHasLang(boolean hasLang) {
-        editor = prefs.edit();
-        editor.putBoolean("hasLang", hasLang);
-        editor.apply();
-    }
-
-    public int getType() {
-        return prefs.getInt("type", 0);
-    }
-
-    public void setType(int type) {
-        editor = prefs.edit();
-        editor.putInt("type", type);
-        editor.apply();
+        prefs.edit().putBoolean(KEY_HAS_LANG, hasLang).apply();
     }
 
     public boolean getHasLang() {
-        return prefs.getBoolean("hasLang", false);
+        return prefs.getBoolean(KEY_HAS_LANG, false);
+    }
+
+    public void setType(int type) {
+        prefs.edit().putInt(KEY_TYPE, type).apply();
+    }
+
+    public int getType() {
+        return prefs.getInt(KEY_TYPE, 0);
     }
 
     public void setHasToken(Boolean token) {
-        editor = prefs.edit();
-        editor.putBoolean("hasToken", token);
-        editor.apply();
+        prefs.edit().putBoolean(KEY_HAS_TOKEN, token).apply();
     }
 
     public Boolean getHasToken() {
-        return prefs.getBoolean("hasToken", false);
+        return prefs.getBoolean(KEY_HAS_TOKEN, false);
     }
 
     public void setToken(String token) {
-        editor = prefs.edit();
-        editor.putString("token", token);
-        editor.apply();
+        prefs.edit().putString(KEY_TOKEN, token).apply();
     }
 
     public String getToken() {
-        return prefs.getString("token", "");
+        return prefs.getString(KEY_TOKEN, "");
     }
 
     public void setUser(DataModel user) {
-        editor = prefs.edit();
-        editor.putString("user", objectToJson(user));
-        editor.apply();
-    }
-
-    public void setPassword(String string) {
-        editor = prefs.edit();
-
-        editor.putString("password", string).apply();
-    }
-
-    public String getPassword() {
-        return prefs.getString("password", "");
+        prefs.edit().putString(KEY_USER, objectToJson(user)).apply();
     }
 
     public DataModel getUser() {
-        return jsonToObject(prefs.getString("user", ""));
+        return jsonToObject(prefs.getString(KEY_USER, ""));
+    }
+
+    public void setPassword(String string) {
+        prefs.edit().putString(KEY_PASSWORD, string).apply();
+    }
+
+    public String getPassword() {
+        return prefs.getString(KEY_PASSWORD, "");
     }
 
     public void setLanguage(String language) {
-        editor = prefs.edit();
-        editor.putString("language", language);
-        editor.apply();
+        prefs.edit().putString(KEY_LANGUAGE, language).apply();
     }
 
     public String getLanguage() {
-        return prefs.getString("language", "");
+        return prefs.getString(KEY_LANGUAGE, "");
     }
 
-    public void setNightMode(Boolean hasToken) {
-        editor = prefs.edit();
-        editor.putBoolean("nightMode", hasToken);
-        editor.apply();
+    public void setNightMode(Boolean nightMode) {
+        prefs.edit().putBoolean(KEY_NIGHT_MODE, nightMode).apply();
     }
 
     public Boolean getNightMode() {
-        return prefs.getBoolean("nightMode", false);
+        return prefs.getBoolean(KEY_NIGHT_MODE, false);
     }
-
 }
