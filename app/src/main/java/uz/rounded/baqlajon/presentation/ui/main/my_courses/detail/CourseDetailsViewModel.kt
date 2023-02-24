@@ -1,65 +1,30 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
-import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.domain.model.main.course.GetByIdCourseModel
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import uz.rounded.baqlajon.presentation.common.UIObjectState
+import uz.rounded.baqlajon.presentation.ui.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class CourseDetailsViewModel @Inject constructor(
     private val repository: MainRepository
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val _detail = MutableStateFlow(UIObjectState<GetByIdCourseModel>())
     val detail = _detail.asStateFlow()
 
     fun getDetail(id: String) {
-        viewModelScope.launch {
-            repository.getByIdCourse(id).onEach {
-                when (it) {
-                    is Resource.Error -> {
-                        _detail.value = UIObjectState(it.message ?: "")
-                    }
-                    is Resource.Loading -> {
-                        _detail.value = UIObjectState(isLoading = true)
-                    }
-                    is Resource.Success -> {
-                        _detail.value = UIObjectState(data = it.data)
-                    }
-                }
-            }.launchIn(CoroutineScope(Dispatchers.IO))
-        }
+        getDataObject({ repository.getByIdCourse(id = id) }, _detail)
     }
 
     private val _start = MutableStateFlow(UIObjectState<Boolean>())
     val start = _start.asStateFlow()
 
     fun startLesson(id: String) {
-        viewModelScope.launch {
-            repository.getStartCourse(id).onEach {
-                when (it) {
-                    is Resource.Error -> {
-                        _start.value = UIObjectState(it.message ?: "")
-                    }
-                    is Resource.Loading -> {
-                        _start.value = UIObjectState(isLoading = true)
-                    }
-                    is Resource.Success -> {
-                        _start.value = UIObjectState(data = it.data)
-                    }
-                }
-            }.launchIn(CoroutineScope(Dispatchers.IO))
-        }
+        getDataObject({ repository.getStartCourse(id = id) }, _start)
     }
 }

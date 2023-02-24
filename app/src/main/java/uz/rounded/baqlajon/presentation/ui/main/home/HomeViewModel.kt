@@ -20,7 +20,6 @@ class HomeViewModel @Inject constructor(private val mainRepository: MainReposito
 
     fun getAllCourse() {
         getDataList({ mainRepository.getAllCourse() }, _allCourse)
-
     }
 
     private val _user = MutableStateFlow(UIObjectState<DataModel>())
