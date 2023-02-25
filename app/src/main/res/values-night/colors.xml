@@ -15,6 +15,10 @@
     <color name="hint_color">#A7A7A7</color>
     <color name="border_field_registration">#3D3D3D</color>
     <color name="start_fragment_bg">#181818</color>
+    <color name="bell">#DCDCE4</color>
+    <color name="hello_name">#DCDCE4</color>
+    <color name="stoke">#4B4D5A</color>
+
     <!-- suhrob -->
     <color name="bottom_nav_selected">#0D90EF</color>
     <color name="bottom_nav_unselected">#666687</color>

@@ -22,7 +22,6 @@ import uz.rounded.baqlajon.domain.repository.AuthRepository
 import uz.rounded.baqlajon.domain.repository.MainRepository
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
@@ -70,25 +69,23 @@ object NetworkModule {
     fun provideRetrofit(
         gsonGsonConverterFactory: GsonConverterFactory,
         builder: OkHttpClient
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(getString(R.string.base_url))
-            .client(builder)
-            .addConverterFactory(gsonGsonConverterFactory)
-            .build()
-    }
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(getString(R.string.base_url))
+        .client(builder)
+        .addConverterFactory(gsonGsonConverterFactory)
+        .build()
 
     @Provides
     @Singleton
-    fun provideAuthRepository(authApiService: AuthApiService): AuthRepository {
-        return AuthRepositoryImpl(authApiService)
-    }
+    fun provideAuthRepository(authApiService: AuthApiService): AuthRepository =
+        AuthRepositoryImpl(authApiService)
+
 
     @Provides
     @Singleton
-    fun provideMainRepository(mainApiService: MainApiService): MainRepository {
-        return MainRepositoryImpl(mainApiService)
-    }
+    fun provideMainRepository(mainApiService: MainApiService): MainRepository =
+        MainRepositoryImpl(mainApiService)
+
 
     @Singleton
     @Provides

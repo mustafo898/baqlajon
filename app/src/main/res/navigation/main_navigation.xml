@@ -73,8 +73,12 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.home.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        android:label="Search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.edit.EditProfileFragment"
@@ -99,7 +103,7 @@
         android:id="@+id/editPhoneFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.edit.EditPhoneFragment"
         android:label="Change number"
-        tools:layout="@layout/fragment_edit_phone" >
+        tools:layout="@layout/fragment_edit_phone">
         <action
             android:id="@+id/action_editPhoneFragment_to_smsVerifyFragment2"
             app:destination="@id/smsVerifyFragment2" />
@@ -132,7 +136,7 @@
     <fragment
         android:id="@+id/smsVerifyFragment2"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.sms.SmsVerifyFragment"
-        android:label="SmsVerifyFragment" >
+        android:label="SmsVerifyFragment">
         <action
             android:id="@+id/action_smsVerifyFragment2_to_editPhoneFragment"
             app:destination="@id/editPhoneFragment" />

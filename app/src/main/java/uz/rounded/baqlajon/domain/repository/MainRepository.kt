@@ -1,7 +1,9 @@
 package uz.rounded.baqlajon.domain.repository
 
+import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
+import uz.rounded.baqlajon.data.remote.dto.PagingMainDto
 import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.domain.model.DataModel
 import uz.rounded.baqlajon.domain.model.main.course.*
@@ -41,4 +43,6 @@ interface MainRepository {
         id: String,
         requestCommentModel: RequestCommentModel
     ): Flow<Resource<CommentModel>>
+
+    suspend fun searchAllCourse(search: String): Flow<PagingData<GetCourseModel>>
 }

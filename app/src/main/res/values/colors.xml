@@ -44,6 +44,9 @@
     <color name="border_field_registration">#E0E0E0</color>
     <color name="start_fragment_bg">#FFFFFF</color>
     <color name="podcast_seekbar">#3300AFFF</color>
+    <color name="bell">#4A4A6A</color>
+    <color name="hello_name">#666687</color>
+    <color name="stoke">#8E8EA9</color>
 
     <!--    suhrob -->
 
