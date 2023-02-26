@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
@@ -16,11 +15,13 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.gone
+import uz.rounded.baqlajon.core.extensions.hideSoftKeyboard
 import uz.rounded.baqlajon.core.extensions.navigateWithArgs
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.databinding.FragmentSearchBinding
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.home.adapter.SearchAllCourseAdapter
+
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
@@ -52,21 +53,26 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                //search
-                viewModel.searchAllCourse(it.toString().trim()).collectLatest {
-                    //adapter for result data in search
-                    adapterSearchAllCourseAdapter.addLoadStateListener { loadState ->
-                        if (loadState.append.endOfPaginationReached) {
-                            if (adapterSearchAllCourseAdapter.itemCount < 1) {
-                                binding.animation.visible()
-                                binding.searchRv.gone()
-                            } else {
-                                binding.animation.gone()
-                                binding.searchRv.visible()
+                it?.let { text ->
+                    if (text.toString().trim().isNotEmpty()) {
+                        //search
+                        viewModel.searchAllCourse(text.toString().trim()).collectLatest {
+                            //adapter for result data in search
+                            adapterSearchAllCourseAdapter.addLoadStateListener { loadState ->
+                                if (loadState.append.endOfPaginationReached) {
+                                    if (adapterSearchAllCourseAdapter.itemCount < 1) {
+                                        binding.animation.visible()
+                                        binding.searchRv.gone()
+                                    } else {
+                                        binding.animation.gone()
+                                        binding.searchRv.visible()
+                                    }
+                                }
                             }
+                            adapterSearchAllCourseAdapter.submitData(it)
                         }
                     }
-                    adapterSearchAllCourseAdapter.submitData(it)
+
                 }
 
             }
@@ -75,12 +81,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun close() = binding.apply {
         close.gone()
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        binding.search.requestFocus()
+        //        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     private fun clickClose() = binding.close.setOnClickListener {
         binding.search.setText("")
         binding.close.gone()
+        requireActivity().hideSoftKeyboard()
     }
 
 
