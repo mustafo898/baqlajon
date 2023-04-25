@@ -286,6 +286,12 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
         binding.lastName.editText.setText(user.lastName)
         binding.editText.text = user.phoneNumber
 
+        binding.signUp.cardView.setCardBackgroundColor(
+            getColor(
+                requireContext(), R.color.button_disabled
+            )
+        )
+
         var string = ""
         for (i in 0 until user.password.length) {
             string += "*"

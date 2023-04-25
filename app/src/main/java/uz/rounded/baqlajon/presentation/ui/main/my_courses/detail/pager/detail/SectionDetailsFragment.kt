@@ -2,6 +2,7 @@ package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,7 +91,7 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
     }
 
     private fun setVideo(path: String) {
-
+        Log.d("video url", "setVideo: $path")
         simpleExoplayer = ExoPlayerFactory.newSimpleInstance(requireActivity())
         binding.exoPlayer.player = simpleExoplayer
         val dataSource = DefaultDataSourceFactory(

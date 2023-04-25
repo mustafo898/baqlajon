@@ -42,6 +42,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     override fun created(view: View, savedInstanceState: Bundle?) {
         hideMainProgress()
+        hideMainProgress()
         setAdapter()
         searchText()
         close()
