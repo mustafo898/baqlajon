@@ -34,6 +34,7 @@
     <color name="yellow">#FD9E19</color>
 
     <color name="card_color">#FFFFFF</color>
+    <color name="card_color_transparent">#FFFFFF</color>
 
     <color name="grey_card">#F6F6F9</color>
 
@@ -44,6 +45,10 @@
     <color name="border_field_registration">#E0E0E0</color>
     <color name="start_fragment_bg">#FFFFFF</color>
     <color name="podcast_seekbar">#3300AFFF</color>
+    <color name="bell">#4A4A6A</color>
+    <color name="hello_name">#666687</color>
+    <color name="stoke">#8E8EA9</color>
+    <color name="transparent">#00000000</color>
 
     <!--    suhrob -->
 

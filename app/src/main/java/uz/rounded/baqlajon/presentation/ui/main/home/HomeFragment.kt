@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -15,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.R
+import uz.rounded.baqlajon.core.extensions.gone
 import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.core.extensions.navigate
 import uz.rounded.baqlajon.core.extensions.navigateWithArgs
@@ -72,8 +74,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         binding.userName.text = sharedPreference.user.firstName
         binding.userImage.loadImage(requireContext(), sharedPreference.user.image)
+        binding.searchCard.setOnClickListener {
+            navigate(R.id.action_homeFragment_to_searchFragment)
+        }
         binding.search.setOnClickListener {
             navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+        binding.apply {
+            close.gone()
+            requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         }
     }
 
@@ -86,6 +95,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         adapterCategory.submitList(category)
     }
+
+
+//    private fun clickClose() = binding.close.setOnClickListener {
+//        binding.search.setText("")
+//
+//    }
+
 
     private fun getCategoryList(pos: Int) {
         when (pos) {

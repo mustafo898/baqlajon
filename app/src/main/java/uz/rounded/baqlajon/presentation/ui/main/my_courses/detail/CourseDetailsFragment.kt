@@ -1,6 +1,5 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -93,7 +92,6 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun observe() {
         viewModel.getDetail(id)
 
@@ -104,7 +102,11 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
                         title.text = p.title
                         desc.text = p.description
                         hours.text = timeFormat(p.time)
-                        teacherName.text = p.author.firstName + " " + p.author.lastName
+                        teacherName.text = buildString {
+                            append(p.author.firstName)
+                            append(" ")
+                            append(p.author.lastName)
+                        }
                         teacherType.text = p.author.description
                         teacherImage.loadImage(requireContext(), p.author.image)
                         image.loadImage(requireContext(), p.image)

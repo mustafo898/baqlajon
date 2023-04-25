@@ -50,7 +50,7 @@ class HomeCategoryAdapter(
                 itemBinding.text.setTextColor(getColor(context, R.color.white))
                 itemBinding.card.strokeColor = getColor(context, R.color.blue)
             } else {
-                itemBinding.card.setCardBackgroundColor(getColor(context, R.color.white))
+                itemBinding.card.setCardBackgroundColor(getColor(context, R.color.transparent))
                 itemBinding.text.setTextColor(getColor(context, R.color.grey2))
                 itemBinding.card.strokeColor = getColor(context, R.color.grey2)
             }

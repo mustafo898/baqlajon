@@ -1,6 +1,10 @@
 package uz.rounded.baqlajon.presentation.ui.main.home
 
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import uz.rounded.baqlajon.domain.model.DataModel
@@ -42,4 +46,5 @@ class HomeViewModel @Inject constructor(private val mainRepository: MainReposito
     fun getNewest() {
         getDataList({ mainRepository.getNewestCourse() }, _newest)
     }
+
 }

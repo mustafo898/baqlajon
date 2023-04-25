@@ -21,13 +21,13 @@ class CoursePagerAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                CourseSectionsFragment(videos ?: emptyList())
+                CourseSectionsFragment(videos)
             }
             1 -> {
-                CourseReviewsFragment(comments ?: emptyList())
+                CourseReviewsFragment(comments)
             }
             else -> {
-                CourseSectionsFragment(videos ?: emptyList())
+                CourseSectionsFragment(videos)
             }
         }
     }

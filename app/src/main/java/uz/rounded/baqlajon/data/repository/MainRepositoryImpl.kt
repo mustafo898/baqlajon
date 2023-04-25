@@ -2,10 +2,12 @@ package uz.rounded.baqlajon.data.repository
 
 
 import android.util.Log
+import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
 import uz.rounded.baqlajon.data.common.ResponseHandler
 import uz.rounded.baqlajon.data.mapper.toModel
+import uz.rounded.baqlajon.data.paging.createPager
 import uz.rounded.baqlajon.data.remote.MainApiService
 import uz.rounded.baqlajon.data.remote.dto.main.profile.UpdateUserRequestDto
 import uz.rounded.baqlajon.domain.common.Resource
@@ -193,4 +195,13 @@ class MainRepositoryImpl @Inject constructor(
                 flow.emit(Resource.Error(e.message.toString()))
             }
         })
+
+    override suspend fun searchAllCourse(search: String): Flow<PagingData<GetCourseModel>> {
+        return createPager { page ->
+            val response = mainApiService.searchAllCourse(page = page, search = search)
+            response.body()?.data!!.map {
+                it.toModel()
+            }
+        }.flow
+    }
 }

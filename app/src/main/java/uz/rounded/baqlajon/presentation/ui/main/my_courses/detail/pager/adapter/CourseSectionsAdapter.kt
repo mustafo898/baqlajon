@@ -28,16 +28,23 @@ class CourseSectionsAdapter : RecyclerView.Adapter<CourseSectionsAdapter.ViewHol
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: VideoModel) {
 
-            binding.typeImage.setImageResource(if (!data.isFree) R.drawable.lock else R.drawable.play_course)
+            if (!data.isFree) {
+                binding.typeImage.isClickable = false
+                binding.typeImage.setImageResource(R.drawable.lock)
+            } else {
+                binding.typeImage.isClickable = true
+                binding.typeImage.setOnClickListener {
+                    itemClickListener?.invoke(data._id)
+                }
+                binding.typeImage.setImageResource(R.drawable.play_course)
+            }
 
             binding.image.loadImage(binding.root.context, data.imageUrl)
             binding.title.text = data.title
             binding.eye.text = data.viewCount.toString()
             binding.clock.text = data.time.toString()
 
-            itemView.setOnClickListener {
-                itemClickListener?.invoke(data._id)
-            }
+
         }
 
         private fun timeFormat(time: Int): String {

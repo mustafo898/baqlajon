@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragment_background"
-    android:orientation="vertical"
     tools:context=".presentation.ui.main.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
         android:background="@color/card_color"
         android:elevation="1dp">
 
@@ -31,15 +32,14 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp">
+        android:layout_below="@id/bar"
+        android:overScrollMode="never">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/fragment_background"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:paddingBottom="12dp"
+            android:layout_height="match_parent">
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -232,8 +232,11 @@
                             android:id="@+id/moon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:gravity="end|center" />
+                            android:gravity="end|center"
+                            android:thumb="@drawable/custom_thumb"
+                            app:track="@drawable/custom_track" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -362,6 +365,7 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+
     </androidx.core.widget.NestedScrollView>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

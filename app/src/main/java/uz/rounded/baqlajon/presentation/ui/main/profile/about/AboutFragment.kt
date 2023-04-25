@@ -14,6 +14,6 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
     ) = FragmentAboutBinding.inflate(inflater)
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-
+        hideMainProgress()
     }
 }
