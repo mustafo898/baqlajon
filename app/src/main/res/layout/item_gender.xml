@@ -4,9 +4,10 @@
     android:layout_height="wrap_content"
     android:fontFamily="@font/regular_400"
     android:gravity="center_vertical"
-    android:text="Gender"
     android:paddingHorizontal="16dp"
     android:id="@+id/text"
+    android:hint="Gender"
+    android:textColorHint="@color/grey2"
     android:paddingVertical="12dp"
-    android:textColor="@color/grey2"
+    android:textColor="@color/black1"
     android:textSize="16sp" />

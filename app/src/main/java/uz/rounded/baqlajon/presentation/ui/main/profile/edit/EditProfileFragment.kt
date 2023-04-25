@@ -3,8 +3,11 @@ package uz.rounded.baqlajon.presentation.ui.main.profile.edit
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -36,6 +39,7 @@ import uz.rounded.baqlajon.domain.model.DataModel
 import uz.rounded.baqlajon.domain.model.main.profile.UpdateUserRequestModel
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import java.io.File
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -68,6 +72,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
         setAdapters()
         setUserFields(sharedPreference.user)
 
+        date()
         getProfile()
         uploadObserve()
         validateFields()
@@ -109,7 +114,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
         )
 
         binding.gender.adapter = adapter
-        binding.date.adapter = adapter
+//        binding.date.adapter = adapter
     }
 
     private fun bundle() {
@@ -228,6 +233,45 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
         val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
         cursor.moveToFirst()
         return cursor.getString(columnIndex)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun date() {
+        val calendar = Calendar.getInstance()
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val month = calendar.get(Calendar.MONTH)
+        val year = calendar.get(Calendar.YEAR)
+
+        val listener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            var day1 = ""
+            var month1 = ""
+            val month2 = month + 1
+
+            day1 += if (dayOfMonth > 10)
+                "$dayOfMonth"
+            else
+                "0$dayOfMonth"
+
+            month1 += if (month2 > 10)
+                "$month2"
+            else
+                "0$month2"
+
+            binding.date.setText(dayOfMonth.toString() + month1 + year.toString())
+        }
+
+        binding.icon.setOnClickListener {
+            val dialog = DatePickerDialog(
+                requireContext(),
+                android.R.style.Theme_Holo_Dialog_MinWidth,
+                listener,
+                year,
+                month,
+                day
+            )
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.show()
+        }
     }
 
     private fun validation(): Boolean {

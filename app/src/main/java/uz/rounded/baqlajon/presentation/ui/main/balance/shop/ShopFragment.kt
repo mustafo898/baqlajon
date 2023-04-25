@@ -32,10 +32,6 @@ class ShopFragment : BaseFragment<FragmentShopBinding>() {
         BuyDialog(requireContext())
     }
 
-    private val dialogPayment by lazy {
-        PaymentDialog(requireContext())
-    }
-
     override fun created(view: View, savedInstanceState: Bundle?) {
 
         binding.list.adapter = adapter
@@ -43,7 +39,7 @@ class ShopFragment : BaseFragment<FragmentShopBinding>() {
         viewModel.getGiftList()
 
         dialog.setItemClickListener {
-            dialogPayment.show()
+            PaymentDialog(requireContext()).show()
         }
 
         lifecycleScope.launchWhenStarted {
