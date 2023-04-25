@@ -15,7 +15,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     ): FragmentSearchBinding = FragmentSearchBinding.inflate(inflater)
 
     override fun created(view: View, savedInstanceState: Bundle?) {
-
+        hideMainProgress()
     }
 
 }

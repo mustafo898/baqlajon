@@ -1,29 +1,21 @@
 package uz.rounded.baqlajon.presentation.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.presentation.common.UIListState
 import uz.rounded.baqlajon.presentation.common.UIObjectState
-import kotlin.coroutines.CoroutineContext
+import javax.inject.Inject
 
-abstract class BaseViewModel : ViewModel() {
+open class BaseViewModel @Inject constructor() : ViewModel() {
 
-    protected fun launchScope(
-        context: CoroutineContext = Dispatchers.IO,
-        start: CoroutineStart = CoroutineStart.DEFAULT,
-        block: suspend CoroutineScope.() -> Unit
-    ) {
-        viewModelScope.launch(context, start, block)
-    }
+    private val _reload = MutableStateFlow(UIObjectState<String>())
+    val reload = _reload.asSharedFlow()
 
     fun <T> getDataList(
         repositoryCall: suspend () -> Flow<Resource<List<T>>>,
@@ -34,6 +26,8 @@ abstract class BaseViewModel : ViewModel() {
                 when (it) {
                     is Resource.Error -> {
                         listState.value = UIListState(it.message ?: "")
+                        Log.d("dddddssddsweewe", "getDataObject: ${it.message ?: ""}")
+                        _reload.value = UIObjectState(it.message ?: "Something went wrong")
                     }
                     is Resource.Loading -> {
                         listState.value = UIListState(isLoading = true)
@@ -54,6 +48,8 @@ abstract class BaseViewModel : ViewModel() {
             repositoryCall().onEach {
                 when (it) {
                     is Resource.Error -> {
+                        _reload.value = UIObjectState(it.message ?: "Something went wrong")
+                        Log.d("dddddssddsweewe", "getDataObject: ${it.message ?: ""}")
                         listState.value = UIObjectState(it.message ?: "")
                     }
                     is Resource.Loading -> {

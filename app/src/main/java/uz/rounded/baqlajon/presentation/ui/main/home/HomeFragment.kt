@@ -64,6 +64,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setAdapter()
         setCategory()
         getAllCourse()
+
+//        reload = {
+//            Log.d("addishfhuhwf", "created: reload")
+//            getAllCourse()
+//        }
+
         binding.userName.text = sharedPreference.user.firstName
         binding.userImage.loadImage(requireContext(), sharedPreference.user.image)
         binding.search.setOnClickListener {
@@ -100,7 +106,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         hideMainProgress()
                     }
                     if (it.error.isNotBlank()) {
-                        Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
                         hideMainProgress()
                     }
                 }
@@ -119,7 +124,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     }
                     if (it.error.isNotBlank()) {
                         showToast(it.error)
-                        Log.d("sdksfkhsjlddhj", "observe: ${it.error}")
+                        Log.d("reloaddddd", "observe: ${it.error}")
                         hideMainProgress()
                     }
                 }
