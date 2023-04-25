@@ -178,7 +178,6 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
         requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
-    @SuppressLint("MissingPermission")
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
