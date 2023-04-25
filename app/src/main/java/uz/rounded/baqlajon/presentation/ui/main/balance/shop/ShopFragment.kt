@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.databinding.FragmentShopBinding
 import uz.rounded.baqlajon.presentation.dialog.BuyDialog
+import uz.rounded.baqlajon.presentation.dialog.PaymentDialog
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 import uz.rounded.baqlajon.presentation.ui.main.balance.shop.adapter.ShopAdapter
 
@@ -31,11 +32,19 @@ class ShopFragment : BaseFragment<FragmentShopBinding>() {
         BuyDialog(requireContext())
     }
 
+    private val dialogPayment by lazy {
+        PaymentDialog(requireContext())
+    }
+
     override fun created(view: View, savedInstanceState: Bundle?) {
 
         binding.list.adapter = adapter
 
         viewModel.getGiftList()
+
+        dialog.setItemClickListener {
+            dialogPayment.show()
+        }
 
         lifecycleScope.launchWhenStarted {
             viewModel.shopList.collectLatest {

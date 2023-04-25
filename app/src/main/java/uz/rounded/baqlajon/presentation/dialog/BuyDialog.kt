@@ -14,6 +14,12 @@ class BuyDialog(context: Context) : AlertDialog(context) {
 
     private var payment_type = "PAYME"
 
+    private var itemClickListener: (() -> Unit)? = null
+
+    fun setItemClickListener(f: () -> Unit) {
+        itemClickListener = f
+    }
+
     fun setCongratulations() {
         binding.animation.setAnimation(R.raw.congratulations)
         binding.type.text = getString(R.string.congratulations)
@@ -32,6 +38,7 @@ class BuyDialog(context: Context) : AlertDialog(context) {
         setCancelable(true)
 
         binding.ok.cardView.setOnClickListener {
+            itemClickListener?.invoke()
             dismiss()
         }
     }

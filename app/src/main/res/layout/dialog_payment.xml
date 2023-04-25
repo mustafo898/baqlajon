@@ -2,167 +2,185 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/dialog_back"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/c"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginHorizontal="8dp"
+            app:cardBackgroundColor="@color/card_color"
+            app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
-                android:layout_marginStart="24dp"
-                android:fontFamily="@font/medium_500"
-                android:text="@string/payment"
-                android:textColor="@color/black1"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="24dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="8dp"
-                android:src="@drawable/exit_x"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/c">
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="24dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <include
-                    android:id="@+id/input"
-                    layout="@layout/input_card"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/c"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:name='@{@string/referral_code}' />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="16dp"
+                        android:layout_marginStart="24dp"
+                        android:fontFamily="@font/medium_500"
+                        android:text="@string/payment"
+                        android:textColor="@color/black1"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/exit_x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/label"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    app:layout_constraintTop_toBottomOf="@id/c">
 
-                    <com.google.android.material.card.MaterialCardView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/payme"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="#F6F6F9"
-                        app:cardCornerRadius="8dp">
+                        android:orientation="vertical"
+                        android:paddingHorizontal="24dp">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <include
+                            android:id="@+id/input"
+                            layout="@layout/input_card"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="14dp">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            app:name='@{@string/referral_code}' />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:src="@drawable/payme"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:id="@+id/payme_check"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="end"
-                                android:src="@drawable/checked"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/click"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="#F6F6F9"
-                        app:cardCornerRadius="8dp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="14dp">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/payme"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:src="@drawable/click"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="#F6F6F9"
+                                app:cardCornerRadius="8dp"
+                                app:cardElevation="0dp">
 
-                            <ImageView
-                                android:id="@+id/click_check"
-                                android:layout_width="wrap_content"
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:paddingHorizontal="12dp"
+                                    android:paddingVertical="14dp">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:src="@drawable/payme"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <ImageView
+                                        android:id="@+id/payme_check"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="end"
+                                        android:src="@drawable/checked"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/click"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="end"
-                                android:src="@drawable/unchecked"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="#F6F6F9"
+                                app:cardCornerRadius="8dp"
+                                app:cardElevation="0dp">
 
-                    </com.google.android.material.card.MaterialCardView>
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:paddingHorizontal="12dp"
+                                    android:paddingVertical="14dp">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:src="@drawable/click"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <ImageView
+                                        android:id="@+id/click_check"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="end"
+                                        android:src="@drawable/unchecked"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                        <include
+                            android:id="@+id/card"
+                            layout="@layout/main_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            app:name='@{@string/continue_txt}' />
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <include
-                    android:id="@+id/card"
-                    layout="@layout/main_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="24dp"
-                    app:name='@{@string/continue_txt}' />
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

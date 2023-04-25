@@ -99,7 +99,7 @@
         android:id="@+id/editPhoneFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.profile.edit.EditPhoneFragment"
         android:label="Change number"
-        tools:layout="@layout/fragment_edit_phone" >
+        tools:layout="@layout/fragment_edit_phone">
         <action
             android:id="@+id/action_editPhoneFragment_to_smsVerifyFragment2"
             app:destination="@id/smsVerifyFragment2" />
@@ -132,7 +132,8 @@
     <fragment
         android:id="@+id/smsVerifyFragment2"
         android:name="uz.rounded.baqlajon.presentation.ui.start.auth.sms.SmsVerifyFragment"
-        android:label="SmsVerifyFragment" >
+        android:label="Verification code"
+        tools:layout="@layout/fragment_sms_verify">
         <action
             android:id="@+id/action_smsVerifyFragment2_to_editPhoneFragment"
             app:destination="@id/editPhoneFragment" />

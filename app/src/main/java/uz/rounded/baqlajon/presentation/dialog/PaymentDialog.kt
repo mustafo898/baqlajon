@@ -2,48 +2,39 @@ package uz.rounded.baqlajon.presentation.dialog
 
 import android.app.AlertDialog
 import android.content.Context
-import android.view.LayoutInflater
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.databinding.DialogPaymentBinding
 
-class PaymentDialog(
-    val context: Context
-) {
-    private var binding: DialogPaymentBinding? = DialogPaymentBinding.inflate(
-        LayoutInflater.from(context), null, false
-    )
-    private var dialog =
-        AlertDialog.Builder(context, R.style.SheetDialog).create()
+class PaymentDialog(context: Context) : AlertDialog(context) {
+    private var binding: DialogPaymentBinding = DialogPaymentBinding.inflate(layoutInflater)
 
-    private val bind get() = binding
+//    private var dialog =
+//        AlertDialog.Builder(context, R.style.SheetDialog).create()
 
     private var payment_type = "PAYME"
 
     init {
-        dialog.setView(binding?.root)
-        dialog.setCancelable(false)
-        dialog.setOnDismissListener {
-            binding = null
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        setView(binding.root)
+        setCancelable(false)
+
+        binding.back.setOnClickListener {
+            dismiss()
         }
-        bind?.back?.setOnClickListener {
-            dialog.dismiss()
-        }
+
         paymentMethod()
         continuePayment()
-
     }
 
-    private fun continuePayment() = bind?.apply {
+    private fun continuePayment() = binding.apply {
         card.cardView.setOnClickListener {
-
+            dismiss()
         }
     }
 
-    fun show() {
-        dialog.show()
-    }
-
-    private fun paymentMethod() = bind?.apply {
+    private fun paymentMethod() = binding.apply {
         payme.setOnClickListener {
             clearChecks()
             paymeCheck.setImageResource(R.drawable.checked)
@@ -53,11 +44,10 @@ class PaymentDialog(
             clearChecks()
             clickCheck.setImageResource(R.drawable.checked)
             payment_type = "CLICK"
-
         }
     }
 
-    private fun clearChecks() = bind?.apply {
+    private fun clearChecks() = binding.apply {
         paymeCheck.setImageResource(R.drawable.unchecked)
         clickCheck.setImageResource(R.drawable.unchecked)
     }
