@@ -293,6 +293,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             )
         )
 
+        binding.signUp.cardView.isClickable = false
+
         var string = ""
         for (i in 0 until user.password.length) {
             string += "*"

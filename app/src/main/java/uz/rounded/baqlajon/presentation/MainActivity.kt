@@ -27,10 +27,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var sharedPreference: SharedPreference
 
     private val isToolBarGone = mutableListOf(
-        R.id.homeFragment,
-        R.id.myCoursesFragment,
-        R.id.balanceFragment,
-        R.id.profileFragment
+        R.id.homeFragment, R.id.myCoursesFragment, R.id.balanceFragment, R.id.profileFragment
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +51,10 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNav.gone()
                 binding.toolbar.toolbar.visible()
             }
+
+            if (destination.id == R.id.searchFragment) binding.toolbar.search.visible()
+            else binding.toolbar.search.gone()
+
         }
         binding.toolbar.back.setOnClickListener {
             navController.popBackStack()

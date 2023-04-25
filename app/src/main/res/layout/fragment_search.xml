@@ -8,6 +8,8 @@
     android:orientation="vertical"
     tools:context=".presentation.ui.main.home.search.SearchFragment">
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView"
         android:layout_marginHorizontal="8dp"
