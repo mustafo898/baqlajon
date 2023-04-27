@@ -5,11 +5,17 @@
     <string name="balance">Balance</string>
     <string name="profile">Profile</string>
 
+    <string name="details">Properties</string>
+    <string name="share_video">Share</string>
+    <string name="delete_from_device">Delete from Device</string>
+
+
     <string name="skip">Skip</string>
     <string name="find_your_favorite_course">Find your favorite course</string>
     <string name="learn_with_fun">Learn with fun</string>
     <string name="get_good_results">Get good results</string>
     <string name="sub_label">Our new videos make it easy for you to learn anywhere, there are new videos that will be ready to help you</string>
+    <string name="more_option">More option</string>
 
     <string name="login">Login</string>
     <string name="send_code">Send Code</string>
@@ -29,6 +35,47 @@
     <string name="share_referral_code">Share referral code</string>
 
 
+<!--    <string name="delete_from_device">Delete from Device</string>-->
+<!--    <string name="share_video">Share</string>-->
+<!--    <string name="details">Properties</string>-->
+    <string name="file_provider">com.lasuak.kvplayer.fileprovider</string>
+<!--    <string name="more_option">More option</string>-->
+    <string name="location">Location</string>
+    <string name="file_name">File Name</string>
+    <string name="length">Length</string>
+    <string name="resolution">Resolution</string>
+    <string name="format">Format</string>
+    <string name="size">Size</string>
+<!--    <string name="ok">OK</string>-->
+    <string name="next">Next</string>
+    <string name="forward_10sec">forward 10sec</string>
+    <string name="play">Play</string>
+    <string name="backward_10sec">backward 10sec</string>
+    <string name="previous">Previous</string>
+    <string name="back">Back</string>
+    <string name="screen_rotation">Screen rotation</string>
+    <string name="full_screen">Full screen</string>
+    <string name="audio_track">Audio track</string>
+    <string name="mute">Mute</string>
+    <string name="sub_title">Subtitle</string>
+    <string name="lock">Lock</string>
+    <string name="delete_video_title">Delete video</string>
+    <string name="delete_video_msg">Delete this video ?</string>
+    <string name="delete">Delete</string>
+    <string name="Cancel">Cancel</string>
+    <string name="sharing_file">Sharing %s</string>
+    <string name="date">Date</string>
+    <string name="total_videos">%s videos</string>
+    <string name="subtitle_on">Subtitle turned on</string>
+    <string name="subtitle_off">Subtitle turned off</string>
+    <string name="no_recently_video_found">No recently played video found</string>
+<!--    <string name="search">Search</string>-->
+    <string name="search_video">Search video</string>
+    <string name="select_language">Select Language</string>
+    <string name="default_language">Default</string>
+    <string name="select_subtitle">Select subtitle</string>
+    <string name="off_subtitle">Off</string>
+    <string name="item_selected">%s selected</string>
     <!--    mustafo    -->
 
     <string name="confirm">Confirm</string>
@@ -102,6 +149,8 @@
     <string name="help">Help</string>
     <string name="english">English</string>
     <string name="language">Language</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--    suhrob    -->
 

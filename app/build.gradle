@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -63,6 +65,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -82,7 +85,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 
-    implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
+//    implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
 
     //kotlin coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
@@ -153,6 +156,12 @@ dependencies {
     //masked edittext
     implementation("com.github.santalu:mask-edittext:1.0.2")
 
+    // Dependency for exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.2'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.2'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.2'
+
+
     //gms auth
     implementation("com.google.android.gms:play-services-auth:20.3.0")
     implementation("com.google.android.gms:play-services-auth-api-phone:18.0.1")
@@ -162,5 +171,8 @@ dependencies {
     //hawk
     implementation("com.orhanobut:hawk:2.0.1")
     //exo
-    implementation 'com.google.android.exoplayer:exoplayer:2.13.3'
+//    implementation 'com.google.android.exoplayer:exoplayer:2.13.3'
+
+    implementation 'me.zhanghai.android.fastscroll:library:1.1.7'
+
 }

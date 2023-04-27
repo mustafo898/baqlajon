@@ -11,6 +11,8 @@
 
     <color name="bottom_nav_selected">#0D90EF</color>
     <color name="bottom_nav_unselected">#666687</color>
+    <color name="red_500">#E8535D</color>
+    <color name="background">#80000000</color>
 
 
     <color name="blue">#0D90EF</color>
