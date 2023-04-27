@@ -2,6 +2,7 @@ package uz.rounded.baqlajon.presentation
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -93,5 +94,10 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         sharedPreference.type = 0
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("DJFKNSF", "onPause: activity")
     }
 }
