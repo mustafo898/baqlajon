@@ -247,15 +247,11 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             var month1 = ""
             val month2 = month + 1
 
-            day1 += if (dayOfMonth > 10)
-                "$dayOfMonth"
-            else
-                "0$dayOfMonth"
+            day1 += if (dayOfMonth > 10) "$dayOfMonth"
+            else "0$dayOfMonth"
 
-            month1 += if (month2 > 10)
-                "$month2"
-            else
-                "0$month2"
+            month1 += if (month2 > 10) "$month2"
+            else "0$month2"
 
             binding.date.setText(dayOfMonth.toString() + month1 + year.toString())
         }
