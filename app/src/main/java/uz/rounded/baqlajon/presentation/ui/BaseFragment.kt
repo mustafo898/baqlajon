@@ -18,11 +18,6 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
     protected lateinit var binding: Binding
 
-//    @Inject
-//    lateinit var baseViewModel: BaseViewModel
-
-//    protected var reload: (() -> Unit)? = null
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,13 +39,6 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
     abstract fun createBinding(inflater: LayoutInflater, container: ViewGroup?): Binding
 
     abstract fun created(view: View, savedInstanceState: Bundle?)
-
-//    private fun loadObserver() = lifecycleScope.launchWhenStarted {
-//        baseViewModel.reload.collectLatest {
-//            Log.d("sdewofjwjqn", "loadObserver: ${it.error}")
-//            reload?.invoke()
-//        }
-//    }
 
     fun showToast(str: String) {
         requireContext().showToast(str)

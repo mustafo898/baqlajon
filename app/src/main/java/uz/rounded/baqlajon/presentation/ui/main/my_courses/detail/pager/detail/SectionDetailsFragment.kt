@@ -9,11 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.ExtractorMediaSource
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.google.android.exoplayer2.util.Util
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import uz.rounded.baqlajon.R
@@ -21,6 +17,9 @@ import uz.rounded.baqlajon.core.extensions.gone
 import uz.rounded.baqlajon.core.extensions.loadImage
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.databinding.FragmentSectionDetailsBinding
+import uz.rounded.baqlajon.presentation.customs.player.MediaPlayer
+import uz.rounded.baqlajon.presentation.customs.player.preparePlayer
+import uz.rounded.baqlajon.presentation.customs.player.setSource
 import uz.rounded.baqlajon.presentation.ui.BaseFragment
 
 @AndroidEntryPoint
@@ -28,8 +27,7 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
 
     private val viewModel: DetailsViewModel by viewModels()
 
-    private lateinit var simpleExoplayer: SimpleExoPlayer
-
+//    private lateinit var simpleExoplayer: SimpleExoPlayer
 
     override fun createBinding(
         inflater: LayoutInflater,
@@ -92,21 +90,33 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
 
     private fun setVideo(path: String) {
         Log.d("video url", "setVideo: $path")
-        simpleExoplayer = ExoPlayerFactory.newSimpleInstance(requireActivity())
-        binding.exoPlayer.player = simpleExoplayer
-        val dataSource = DefaultDataSourceFactory(
-            requireContext(), Util.getUserAgent(requireContext(), getString(R.string.app_name))
-        )
-        val mediaSource = ExtractorMediaSource.Factory(dataSource)
-            .createMediaSource(Uri.parse(path))
+//        simpleExoplayer = ExoPlayerFactory.newSimpleInstance(requireActivity())
+//        binding.exoPlayer.player = simpleExoplayer
+//        val dataSource = DefaultDataSourceFactory(
+//            requireContext(), Util.getUserAgent(requireContext(), getString(R.string.app_name))
+//        )
+//        val mediaSource = ExtractorMediaSource.Factory(dataSource)
+//            .createMediaSource(Uri.parse(path))
+//
+//        simpleExoplayer.prepare(mediaSource)
 
-        simpleExoplayer.prepare(mediaSource)
+        MediaPlayer.initialize(requireContext())
+        MediaPlayer.exoPlayer?.preparePlayer(binding.exoPlayer, true, requireActivity())
+        MediaPlayer.exoPlayer?.setSource(
+            requireContext(),
+            Uri.parse(path).toString()
+        )
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("DJFKNSF", "onPause: ")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         if (isOpen) {
-            simpleExoplayer.release()
+            MediaPlayer.stopPlayer()
         }
     }
 }
