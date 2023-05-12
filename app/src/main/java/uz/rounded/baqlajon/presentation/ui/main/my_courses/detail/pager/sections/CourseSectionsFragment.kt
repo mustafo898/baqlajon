@@ -14,25 +14,39 @@ import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.adapter.
 
 class CourseSectionsFragment(private val list: List<VideoModel>) :
     BaseFragment<FragmentCourseSectionsBinding>() {
+
+    private var id: String = ""
+
     override fun createBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
+        inflater: LayoutInflater, container: ViewGroup?
     ) = FragmentCourseSectionsBinding.inflate(inflater)
 
     private val adapter by lazy {
-        CourseSectionsAdapter()
+        CourseSectionsAdapter {
+            showToast(it)
+//            val intent = Intent(activity, VideoPlayActivity::class.java)
+//            intent.putExtra("ID", it)
+//            startActivity(intent)
+            navigateWithArgs(
+                R.id.sectionDetailsFragment, bundleOf("ID" to it)
+            )
+        }
     }
 
     override fun created(view: View, savedInstanceState: Bundle?) {
         binding.list.adapter = adapter
 
         adapter.setList(list)
-
-        adapter.setItemClickListener {
-            navigateWithArgs(
-                R.id.action_courseDetailsFragment_to_sectionDetailsFragment,
-                bundleOf("ID" to it)
-            )
-        }
+        //click()
     }
+
+    private fun click() {
+//            findNavController().navigate(
+//                R.id.action_courseDetailsFragment_to_sectionDetailsFragment,
+//                bundleOf("ID" to id)
+//            )
+        //Log.d("jkdnf", "created: $it")
+
+    }
+
 }

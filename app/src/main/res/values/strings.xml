@@ -4,6 +4,7 @@
     <string name="my_courses">My courses</string>
     <string name="balance">Balance</string>
     <string name="profile">Profile</string>
+    <string name="video_player">Video lesson</string>
 
     <string name="details">Properties</string>
     <string name="share_video">Share</string>
@@ -35,18 +36,18 @@
     <string name="share_referral_code">Share referral code</string>
 
 
-<!--    <string name="delete_from_device">Delete from Device</string>-->
-<!--    <string name="share_video">Share</string>-->
-<!--    <string name="details">Properties</string>-->
+    <!--    <string name="delete_from_device">Delete from Device</string>-->
+    <!--    <string name="share_video">Share</string>-->
+    <!--    <string name="details">Properties</string>-->
     <string name="file_provider">com.lasuak.kvplayer.fileprovider</string>
-<!--    <string name="more_option">More option</string>-->
+    <!--    <string name="more_option">More option</string>-->
     <string name="location">Location</string>
     <string name="file_name">File Name</string>
     <string name="length">Length</string>
     <string name="resolution">Resolution</string>
     <string name="format">Format</string>
     <string name="size">Size</string>
-<!--    <string name="ok">OK</string>-->
+    <!--    <string name="ok">OK</string>-->
     <string name="next">Next</string>
     <string name="forward_10sec">forward 10sec</string>
     <string name="play">Play</string>
@@ -69,7 +70,7 @@
     <string name="subtitle_on">Subtitle turned on</string>
     <string name="subtitle_off">Subtitle turned off</string>
     <string name="no_recently_video_found">No recently played video found</string>
-<!--    <string name="search">Search</string>-->
+    <!--    <string name="search">Search</string>-->
     <string name="search_video">Search video</string>
     <string name="select_language">Select Language</string>
     <string name="default_language">Default</string>

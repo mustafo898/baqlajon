@@ -71,13 +71,6 @@
         android:label="Video details"
         tools:layout="@layout/fragment_section_details">
 
-        <argument
-            android:name="folderId"
-            app:argType="long" />
-        <argument
-            android:name="folderName"
-            app:argType="string" />
-
         <action
             android:id="@+id/action_sectionDetailsFragment_to_playerFragment"
             app:destination="@id/playerFragment" />
@@ -160,16 +153,7 @@
     <fragment
         android:id="@+id/playerFragment"
         android:name="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.video.PlayerFragment"
-        android:label="fragment_player"
+        android:label="Video lesson"
         tools:layout="@layout/fragment_player">
-        <argument
-            android:name="folderId"
-            app:argType="long" />
-        <argument
-            android:name="position"
-            app:argType="integer" />
-        <argument
-            android:name="video"
-            app:argType="uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.video.Video" />
     </fragment>
 </navigation>

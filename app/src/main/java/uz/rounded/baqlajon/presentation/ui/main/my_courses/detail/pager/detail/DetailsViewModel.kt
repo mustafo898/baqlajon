@@ -1,5 +1,6 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail
 
+import android.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,6 +21,7 @@ class DetailsViewModel @Inject constructor(
 
     fun getDetailVideo(id: String) {
         getDataObject({ mainRepository.getByIdVideo(id = id) }, _detail)
+        Log.d("KJFNKJF", "getDetailVideo: viewmodel")
     }
 
     private val _finish = MutableStateFlow(UIObjectState<Boolean>())

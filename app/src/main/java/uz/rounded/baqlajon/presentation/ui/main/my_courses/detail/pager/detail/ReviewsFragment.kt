@@ -1,6 +1,7 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,9 @@ class ReviewsFragment : BaseFragment<FragmentReviewsBinding>() {
 
         arguments?.let {
             id = it.getString("ID", "")
+            Log.d("jkdnf", "created: $id")
         }
+
 
         binding.signUp.cardView.setOnClickListener {
             if (binding.txt.text.isNotEmpty() && binding.rating.progress > 0) {

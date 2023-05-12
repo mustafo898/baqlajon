@@ -14,6 +14,10 @@
     <color name="red_500">#E8535D</color>
     <color name="background">#80000000</color>
 
+    <color name="cl_color_primary">#2CCA9A</color>
+    <color name="cl_color_accent">#2CCA9A</color>
+
+    <color name="cl_background">#F7F9F6</color>
 
     <color name="blue">#0D90EF</color>
 

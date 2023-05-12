@@ -9,6 +9,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import uz.rounded.baqlajon.App.Companion.resources
+import java.net.URL
 
 fun getString(@StringRes int: Int) = resources.getString(int)
 
@@ -26,4 +27,12 @@ fun getImage(context: Context, string: Int): Drawable? {
         context,
         string
     )
+}
+
+fun URL.getFileSize(): Int? {
+    return try {
+        openConnection().contentLength
+    } catch (x: Exception) {
+        null
+    }
 }

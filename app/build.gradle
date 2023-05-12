@@ -156,11 +156,16 @@ dependencies {
     //masked edittext
     implementation("com.github.santalu:mask-edittext:1.0.2")
 
-    // Dependency for exoplayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.18.2'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.2'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.2'
+    //exoplayer
+    def exo_version = "2.9.6"
+    api "com.google.android.exoplayer:exoplayer:$exo_version"
 
+    //Work Manager
+    def work_version = "2.8.1"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // For Java
+    implementation("androidx.work:work-runtime:$work_version")
 
     //gms auth
     implementation("com.google.android.gms:play-services-auth:20.3.0")
@@ -170,9 +175,9 @@ dependencies {
     implementation("com.tuyenmonkey:mkloader:1.4.0")
     //hawk
     implementation("com.orhanobut:hawk:2.0.1")
-    //exo
-//    implementation 'com.google.android.exoplayer:exoplayer:2.13.3'
 
     implementation 'me.zhanghai.android.fastscroll:library:1.1.7'
+
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
 
 }

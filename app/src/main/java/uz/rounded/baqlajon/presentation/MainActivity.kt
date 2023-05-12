@@ -1,8 +1,11 @@
 package uz.rounded.baqlajon.presentation
 
+import android.Manifest
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.animateToolBarTittle
 import uz.rounded.baqlajon.core.extensions.gone
+import uz.rounded.baqlajon.core.extensions.showToast
 import uz.rounded.baqlajon.core.extensions.visible
 import uz.rounded.baqlajon.core.utils.ControlLanguage
 import uz.rounded.baqlajon.core.utils.SharedPreference
@@ -35,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentMain) as NavHostFragment
         navController = navHostFragment.findNavController()
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             navController.popBackStack()
         }
         setupWithNavController(binding.bottomNav, navController)
+        requestPermission()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -99,5 +103,17 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         Log.d("DJFKNSF", "onPause: activity")
+    }
+
+    private fun requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermissionLauncherResult.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
+    private val requestPermissionLauncherResult = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        showToast(isGranted.toString())
     }
 }

@@ -1,13 +1,13 @@
-package uz.rounded.baqlajon.presentation.customs.player
+package com.norulab.exofullscreen
 
 import android.content.Context
 import com.google.android.exoplayer2.SimpleExoPlayer
 
-object MediaPlayer {
+object MediaPlayer{
 
     var exoPlayer: SimpleExoPlayer? = null
 
-    fun initialize(context: Context?) {
+    fun initialize(context: Context?){
         if (context != null)
             exoPlayer = SimpleExoPlayer.Builder(context).build()
     }
