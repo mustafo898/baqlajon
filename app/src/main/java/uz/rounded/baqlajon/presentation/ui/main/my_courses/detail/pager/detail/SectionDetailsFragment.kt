@@ -55,10 +55,9 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
 
     private fun playVideo() = binding.play.setOnClickListener {
         navigateWithArgs(
-            R.id.action_sectionDetailsFragment_to_playerFragment, bundleOf("ID" to id)
+            R.id.action_sectionDetailsFragment_to_playerFragment, bundleOf("ID" to lessonUrl)
         )
     }
-
 
     private fun observe() {
         viewModel.getDetailVideo(id)
@@ -67,7 +66,6 @@ class SectionDetailsFragment : BaseFragment<FragmentSectionDetailsBinding>() {
             viewModel.detail.collectLatest {
                 it.data?.let { p ->
                     lessonUrl = buildString {
-                        append("public/uploads")
                         append(p.videoUrl)
                     }
 

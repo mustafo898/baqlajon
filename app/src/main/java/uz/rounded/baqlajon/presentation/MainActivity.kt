@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
 
             if (destination.id == R.id.searchFragment) binding.toolbar.search.visible()
             else binding.toolbar.search.gone()
-
         }
+
         binding.toolbar.back.setOnClickListener {
             navController.popBackStack()
         }

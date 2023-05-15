@@ -1,25 +1,30 @@
 package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.fullscreen
 
+import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.SimpleExoPlayer
-import kotlinx.android.synthetic.main.activity_fullscreen_player.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.exo_player_fullscreen_controller_view.view.*
-import uz.rounded.baqlajon.R
-import uz.rounded.baqlajon.presentation.ui.BaseActivity
+import uz.rounded.baqlajon.databinding.ActivityFullscreenPlayerBinding
 
-class FullScreenPlayerActivity : BaseActivity(R.layout.activity_fullscreen_player) {
-    override val canChangeTheme: Boolean
-        get() = false
+@AndroidEntryPoint
+class FullScreenPlayerActivity : AppCompatActivity() {
 
-    override fun onAfterCreate() {
+    private lateinit var binding: ActivityFullscreenPlayerBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityFullscreenPlayerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         window.decorView.setOnSystemUiVisibilityChangeListener {
             window.decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         }
-        player?.let { playerView?.player = it }
-        playerView?.exo_fullscreen_icon?.setOnClickListener { finish() }
+        player?.let { binding.playerView.player = it }
+        binding.playerView.exo_fullscreen_icon?.setOnClickListener { finish() }
     }
 
     override fun onResume() {

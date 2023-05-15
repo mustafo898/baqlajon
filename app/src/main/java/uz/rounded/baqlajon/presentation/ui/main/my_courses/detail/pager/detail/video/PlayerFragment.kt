@@ -3,6 +3,7 @@ package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,8 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(), View.OnClickListen
 
     private lateinit var player: SimpleExoPlayer
     var url = ""
+    var url_test =
+        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
 
     override fun createBinding(
         inflater: LayoutInflater, container: ViewGroup?
@@ -34,6 +37,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(), View.OnClickListen
         arguments?.let {
             url = it.getString("ID").toString()
         }
+        Log.d("KJJNDKS", "created: $url")
         hideMainProgress()
         player = ExoPlayerFactory.newSimpleInstance(context)
         binding.onClick = this
@@ -43,7 +47,9 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(), View.OnClickListen
 
         val dataSource = DefaultDataSourceFactory(context, Util.getUserAgent(context, "Baqlajon"))
         val mediaSource = ExtractorMediaSource.Factory(dataSource)
-            .setExtractorsFactory(DefaultExtractorsFactory()).createMediaSource(Uri.parse(url))
+            .setExtractorsFactory(DefaultExtractorsFactory())
+            .createMediaSource(Uri.parse(resources.getString(R.string.base_url) + "public/uploads" + url))
+        Log.d("FKJDFKS", "created: ${resources.getString(R.string.base_url) + "public/uploads" + url}")
         player.prepare(mediaSource, true, false)
     }
 
