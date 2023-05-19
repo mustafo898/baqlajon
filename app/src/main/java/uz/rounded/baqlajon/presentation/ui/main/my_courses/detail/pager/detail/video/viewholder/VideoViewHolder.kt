@@ -2,33 +2,49 @@ package uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.
 
 import android.media.MediaPlayer
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import com.downloader.*
-import kotlinx.coroutines.*
-import org.ost.avtostart.util.Prefs
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import uz.rounded.baqlajon.App.Companion.resources
 import uz.rounded.baqlajon.R
 import uz.rounded.baqlajon.core.extensions.blockClickable
 import uz.rounded.baqlajon.core.extensions.getFileSize
 import uz.rounded.baqlajon.core.utils.FileManager
+import uz.rounded.baqlajon.core.utils.SharedPreference
 import uz.rounded.baqlajon.databinding.ItemContentVideoBinding
-import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.video.ContentOfTopic
+import uz.rounded.baqlajon.domain.model.main.course.ContentItemModel
 import java.net.URL
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 class VideoViewHolder(val binding: ItemContentVideoBinding) : BaseViewHolder(binding.root),
     View.OnClickListener, OnDownloadListener, OnProgressListener {
     lateinit var url: String
-    lateinit var prefs: Prefs
     lateinit var fileManager: FileManager
     private var downloadId = 0
-    private lateinit var data: ContentOfTopic
+    private lateinit var data: ContentItemModel
 
-    override fun bindData(data: ContentOfTopic) {
+    @Inject
+    lateinit var prefs: SharedPreference
+
+    override fun bindData(data: ContentItemModel) {
+        Log.d("FKJDJFKS", "VideoViewHolder: adapter")
+        Log.d(
+            "FKJDJFKS",
+            " url = ${resources.getString(R.string.base_url) + "public/uploads" + data.content}"
+        )
         this.data = data
-        binding.videoUrl = data.content
-        prefs = Prefs(itemView.context)
+        binding.url = resources.getString(R.string.base_url) + "public/uploads" + data.content
+        Log.d("FKJDJFKS", "bindData: ${binding.url}")
+        prefs = SharedPreference.getInstance(itemView.context)
         fileManager = FileManager(itemView.context)
-        url = data.content
+        url = resources.getString(R.string.base_url) + "public/uploads" + data.content
+        Log.d("FKJDJFKS", "bindData: $url")
+
         binding.status = if (fileManager.hasOfflineFile(url, "video", true)) {
             binding.download.visibility = View.GONE
             videoLenth()
@@ -50,26 +66,28 @@ class VideoViewHolder(val binding: ItemContentVideoBinding) : BaseViewHolder(bin
 
     private fun getFileSizeFromServer(key: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            var fileSize: Int? = 0
-            val job = async { fileSize = URL(url).getFileSize() }
-            job.await()
+            var fileSize: Int?
+            withContext(Dispatchers.Default) {
+                fileSize = URL(url).getFileSize()
+            }
+
             withContext(Dispatchers.Main) {
                 fileSize?.let {
                     prefs.save(key, it)
                     val width: Float = ((it.toFloat() / 1024) / 1024)
                     val text = "%.2f Mb".format(width)
-                    binding.description = "$text"
+                    binding.description = text
                 }
             }
         }
     }
 
-    override fun onClick(p0: View?) {
-        p0.blockClickable()
+    override fun onClick(view: View?) {
+        view.blockClickable()
         when (binding.status) {
             0 -> download()
             1 -> {
-                if (p0?.id == R.id.play) return
+                if (view?.id == R.id.play) return
                 cancelDownload()
             }
             2 -> open()
@@ -107,7 +125,7 @@ class VideoViewHolder(val binding: ItemContentVideoBinding) : BaseViewHolder(bin
                 TimeUnit.MILLISECONDS.toSeconds(duration) % 60
             )
         } catch (x: Exception) {
-
+            Log.d("FKJDJFKS", "VideoVH videoLenth: $x")
         }
     }
 
@@ -145,4 +163,5 @@ class VideoViewHolder(val binding: ItemContentVideoBinding) : BaseViewHolder(bin
             binding.description = "%.2f".format(current) + "/" + "%.2f".format(total) + " Mb"
         }
     }
+
 }

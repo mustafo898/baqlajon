@@ -36,8 +36,10 @@ class CourseDetailsFragment : BaseFragment<FragmentCourseDetailsBinding>() {
 
     override fun created(view: View, savedInstanceState: Bundle?) {
         arguments?.let {
+            Log.d("FKJDJFKS", "created: $it")
             id = it.getString("ID", "")
         }
+
 
         observe()
 

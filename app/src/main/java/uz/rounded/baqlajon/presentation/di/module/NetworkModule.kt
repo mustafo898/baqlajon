@@ -1,6 +1,8 @@
 package uz.rounded.baqlajon.presentation.di.module
 
 import android.content.Context
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
@@ -20,6 +22,7 @@ import uz.rounded.baqlajon.data.repository.AuthRepositoryImpl
 import uz.rounded.baqlajon.data.repository.MainRepositoryImpl
 import uz.rounded.baqlajon.domain.repository.AuthRepository
 import uz.rounded.baqlajon.domain.repository.MainRepository
+import uz.rounded.baqlajon.presentation.ui.main.my_courses.detail.pager.detail.adapter.ContentAdapter
 import javax.inject.Singleton
 
 @Module
@@ -40,7 +43,7 @@ object NetworkModule {
     @Provides
     fun provideOkHttpClient(
         @ApplicationContext context: Context,
-        sharedPreference: SharedPreference
+        sharedPreference: SharedPreference,
     ): OkHttpClient {
         val chuckInterceptor = ChuckerInterceptor.Builder(context)
             .maxContentLength(500_000L)
@@ -96,4 +99,8 @@ object NetworkModule {
     @Provides
     fun provideMainService(retrofit: Retrofit): MainApiService =
         retrofit.create(MainApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideGlide(@ApplicationContext context: Context): RequestManager = Glide.with(context)
 }

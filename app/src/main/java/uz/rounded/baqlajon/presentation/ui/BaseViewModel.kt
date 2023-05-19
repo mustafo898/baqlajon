@@ -57,9 +57,10 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
                     }
                     is Resource.Success -> {
                         listState.value = UIObjectState(data = it.data)
+                        Log.d("FKJDJFKS", "getDataObject: success")
                     }
                 }
-            }.launchIn(CoroutineScope(Dispatchers.IO))
+            }.launchIn(viewModelScope)
         }
     }
 

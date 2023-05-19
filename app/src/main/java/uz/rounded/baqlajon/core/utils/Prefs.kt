@@ -1,4 +1,4 @@
-package org.ost.avtostart.util
+package uz.rounded.baqlajon.core.utils
 
 import android.content.Context
 import android.content.SharedPreferences

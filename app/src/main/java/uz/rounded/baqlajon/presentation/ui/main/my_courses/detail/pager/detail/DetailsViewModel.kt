@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import uz.rounded.baqlajon.domain.model.main.course.CommentModel
+import uz.rounded.baqlajon.domain.model.main.course.ContentModel
 import uz.rounded.baqlajon.domain.model.main.course.RequestCommentModel
 import uz.rounded.baqlajon.domain.model.main.course.VideoModel
 import uz.rounded.baqlajon.domain.repository.MainRepository
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(
     private val mainRepository: MainRepository
 ) : BaseViewModel() {
-    private val _detail = MutableStateFlow(UIObjectState<VideoModel>())
+    private val _detail = MutableStateFlow(UIObjectState<ContentModel>())
     val detail = _detail.asStateFlow()
 
     fun getDetailVideo(id: String) {

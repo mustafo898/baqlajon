@@ -5,6 +5,8 @@
     <string name="balance">Balance</string>
     <string name="profile">Profile</string>
     <string name="video_player">Video lesson</string>
+    <string name="night_mode">Tungi rejim</string>
+    <string name="classic">Klassik</string>
 
     <string name="details">Properties</string>
     <string name="share_video">Share</string>

@@ -12,5 +12,6 @@ data class VideoDto(
     val time: Int,
     val updatedAt: String,
     val videoUrl: String,
-    val viewCount: Int
+    val viewCount: Int,
+    val fileUrl: List<String>? = emptyList()
 )

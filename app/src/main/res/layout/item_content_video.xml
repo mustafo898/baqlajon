@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="VideoUrl"
+            name="url"
             type="String" />
 
         <variable
@@ -40,9 +40,10 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"/>
 
                 <ImageView
                     android:id="@+id/play"
@@ -50,6 +51,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:background="@drawable/play_button_back"
+                    android:onClick="@{onClick}"
                     android:scaleType="center"
                     android:src="@drawable/play" />
 
@@ -64,7 +66,8 @@
                     <FrameLayout
                         android:id="@+id/download"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:onClick="@{onClick}">
 
                         <ImageView
                             android:id="@+id/img"
@@ -80,7 +83,7 @@
                             android:layout_height="36dp"
                             android:indeterminateTint="@color/white"
                             android:max="100"
-                            android:progress="0" />
+                            android:progress="0"/>
                     </FrameLayout>
 
                     <TextView

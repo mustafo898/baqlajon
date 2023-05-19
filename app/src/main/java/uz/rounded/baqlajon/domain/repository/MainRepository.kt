@@ -3,7 +3,6 @@ package uz.rounded.baqlajon.domain.repository
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
-import uz.rounded.baqlajon.data.remote.dto.PagingMainDto
 import uz.rounded.baqlajon.domain.common.Resource
 import uz.rounded.baqlajon.domain.model.DataModel
 import uz.rounded.baqlajon.domain.model.main.course.*
@@ -33,7 +32,7 @@ interface MainRepository {
 
     suspend fun getByIdCourse(id: String): Flow<Resource<GetByIdCourseModel>>
 
-    suspend fun getByIdVideo(id: String): Flow<Resource<VideoModel>>
+    suspend fun getByIdVideo(id: String): Flow<Resource<ContentModel>>
 
     suspend fun finishVideo(id: String): Flow<Resource<Boolean>>
 

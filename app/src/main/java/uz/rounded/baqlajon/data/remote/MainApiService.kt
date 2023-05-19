@@ -5,7 +5,6 @@ import retrofit2.Response
 import retrofit2.http.*
 import uz.rounded.baqlajon.data.remote.dto.DataDto
 import uz.rounded.baqlajon.data.remote.dto.MainResponseDto
-import uz.rounded.baqlajon.data.remote.dto.PagingMainDto
 import uz.rounded.baqlajon.data.remote.dto.main.course.*
 import uz.rounded.baqlajon.data.remote.dto.main.gift.GetGiftDto
 import uz.rounded.baqlajon.data.remote.dto.main.profile.UpdateUserRequestDto
@@ -33,7 +32,7 @@ interface MainApiService {
     suspend fun getByIdCourse(@Path("id") id: String): Response<MainResponseDto<GetByIdCourseDto>>
 
     @GET("video/{id}")
-    suspend fun getByIdVideo(@Path("id") id: String): Response<MainResponseDto<VideoDto>>
+    suspend fun getByIdVideo(@Path("id") id: String): Response<MainResponseDto<ContentDto>>
 
     @GET("video/finish/{id}")
     suspend fun finishVideo(@Path("id") id: String): Response<MainResponseDto<Boolean>>
@@ -64,6 +63,6 @@ interface MainApiService {
     suspend fun searchAllCourse(
         @Query("limit") limit: Int = 10,
         @Query("page") page: Int,
-        @Query("search") search:String
-    ):Response<MainResponseDto<List<GetCourseDto>>>
+        @Query("search") search: String
+    ): Response<MainResponseDto<List<GetCourseDto>>>
 }

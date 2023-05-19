@@ -60,8 +60,21 @@ fun VideoDto.toModel(): VideoModel {
         time,
         updatedAt,
         videoUrl,
-        viewCount
+        viewCount,
+        fileUrl = fileUrl
     )
+}
+
+fun ContentDto.toModel(): ContentModel {
+    return ContentModel(
+        content = content.map { it.toModel() },
+        courseId = courseId,
+        isFree = isFree
+    )
+}
+
+fun ContentItemDto.toModel(): ContentItemModel {
+    return ContentItemModel(content = content, type = type)
 }
 
 fun FreeVideoDto.toModel(): FreeVideoModel {

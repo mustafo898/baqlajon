@@ -149,7 +149,7 @@ class MainRepositoryImpl @Inject constructor(
             }
         })
 
-    override suspend fun getByIdVideo(id: String): Flow<Resource<VideoModel>> =
+    override suspend fun getByIdVideo(id: String): Flow<Resource<ContentModel>> =
         loadResult({
             mainApiService.getByIdVideo(id)
         }, { data, flow ->

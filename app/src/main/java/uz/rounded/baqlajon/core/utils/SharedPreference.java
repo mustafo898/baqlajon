@@ -20,6 +20,10 @@ public class SharedPreference {
     private static final String KEY_LANGUAGE = "language";
     private static final String KEY_NIGHT_MODE = "nightMode";
 
+    public final String autoDownload = "autoDownload";
+    public final String theme = "theme";
+
+
     SharedPreferences prefs;
 
     private static SharedPreference sharePreference;
@@ -93,6 +97,46 @@ public class SharedPreference {
         prefs.edit().putString(KEY_LANGUAGE, language).apply();
     }
 
+    public void save(String key, Float value) {
+        prefs.edit().putFloat(key, value).apply();
+    }
+
+    public void save(String key, int value) {
+        prefs.edit().putInt(key, value).apply();
+    }
+
+    public void save(String key, String value) {
+        prefs.edit().putString(key, value).apply();
+    }
+
+    public void save(String key, Long value) {
+        prefs.edit().putLong(key, value).apply();
+    }
+
+    public void save(String key, Boolean value) {
+        prefs.edit().putBoolean(key, value).apply();
+    }
+
+    public Long get(String key, Long defValue) {
+        return prefs.getLong(key, defValue);
+    }
+
+    public String get(String key, String defValue) {
+        return prefs.getString(key, defValue);
+    }
+
+    public int get(String key, int defValue) {
+        return prefs.getInt(key, defValue);
+    }
+
+    public Float get(String key, Float defValue) {
+        return prefs.getFloat(key, defValue);
+    }
+
+    public Boolean get(String key, Boolean defValue) {
+        return prefs.getBoolean(key, defValue);
+    }
+
     public String getLanguage() {
         return prefs.getString(KEY_LANGUAGE, "");
     }
@@ -103,5 +147,9 @@ public class SharedPreference {
 
     public Boolean getNightMode() {
         return prefs.getBoolean(KEY_NIGHT_MODE, false);
+    }
+
+    public void clear() {
+        prefs.edit().clear().apply();
     }
 }

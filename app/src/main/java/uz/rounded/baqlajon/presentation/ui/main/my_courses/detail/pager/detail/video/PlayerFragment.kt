@@ -48,8 +48,10 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(), View.OnClickListen
         val dataSource = DefaultDataSourceFactory(context, Util.getUserAgent(context, "Baqlajon"))
         val mediaSource = ExtractorMediaSource.Factory(dataSource)
             .setExtractorsFactory(DefaultExtractorsFactory())
-            .createMediaSource(Uri.parse(resources.getString(R.string.base_url) + "public/uploads" + url))
-        Log.d("FKJDFKS", "created: ${resources.getString(R.string.base_url) + "public/uploads" + url}")
+            .createMediaSource(
+                Uri.parse(/*resources.getString(R.string.base_url) + "public/uploads" +*/url)
+            )
+        Log.d("FKJDFKS", "created player: $url")
         player.prepare(mediaSource, true, false)
     }
 

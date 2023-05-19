@@ -9,15 +9,19 @@
     <color name="black_alpha">#1A000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="backcolor">#FFFFFFFF</color>
+
+
+
     <color name="bottom_nav_selected">#0D90EF</color>
     <color name="bottom_nav_unselected">#666687</color>
     <color name="red_500">#E8535D</color>
     <color name="background">#80000000</color>
 
-    <color name="cl_color_primary">#2CCA9A</color>
-    <color name="cl_color_accent">#2CCA9A</color>
+<!--    <color name="cl_color_primary">#2CCA9A</color>-->
+<!--    <color name="cl_color_accent">#2CCA9A</color>-->
 
-    <color name="cl_background">#F7F9F6</color>
+<!--    <color name="cl_background">#F7F9F6</color>-->
 
     <color name="blue">#0D90EF</color>
 
@@ -66,5 +70,28 @@
     <color name="green">#B7F248</color>
     <color name="red_alpha">#1AEB5757</color>
 
+    <!--Night theme-->
+    <color name="n_color_primary">#2CCA9A</color>
+    <color name="n_color_primary_dark">#313335</color>
+    <color name="n_color_accent">#F2F2F2</color>
+    <color name="n_background">#2B2B2B</color>
+    <color name="n_background_light">#313335</color>
+    <color name="n_def_text_color">#CACACA</color>
+    <color name="n_secondary_text_color">#A3A3A3</color>
+    <color name="n_separate_text_color">#E0E0E0</color>
+    <color name="m_content_item_back">#2A2D32</color>
+    <!--End Classic theme-->
+
+    <!--Classic theme-->
+    <color name="cl_color_primary">#2CCA9A</color>
+    <color name="cl_color_primary_dark">#16764C</color>
+    <color name="cl_color_accent">#2CCA9A</color>
+    <color name="cl_background">#F7F9F6</color>
+    <color name="cl_background_light">@color/white</color>
+    <color name="cl_def_text_color">#333333</color>
+    <color name="cl_secondary_text_color">#A3A3A3</color>
+    <color name="cl_separate_text_color">#2BA579</color>
+    <color name="cl_content_item_back">#F9F9F9</color>
+    <!--End Classic theme-->
 
 </resources>

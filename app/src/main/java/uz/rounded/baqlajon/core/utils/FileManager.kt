@@ -24,7 +24,7 @@ class FileManager @Inject constructor(val context: Context) {
     var cancel: Boolean = false
 
     val APP_FILE_DIRECTORY_PATH: String =
-        "${context.filesDir}/Avtostart/"
+        "${context.filesDir}/Baqlajon/"
 
     fun hasOfflineFile(url: String, dir: String, isEncrypt: Boolean): Boolean {
         return try {

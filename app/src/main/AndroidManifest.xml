@@ -9,7 +9,7 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:protectionLevel="dangerous" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
     <application
         android:name=".App"

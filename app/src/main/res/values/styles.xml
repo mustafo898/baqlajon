@@ -7,6 +7,27 @@
         <item name="android:navigationBarColor">@color/blue</item>
     </style>
 
+    <style name="NightTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="colorPrimary">@color/n_color_primary</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="colorPrimaryDark">@color/n_color_primary_dark</item>
+        <item name="colorAccent">@color/n_color_accent</item>
+        <item name="android:textColorSecondary">@color/n_secondary_text_color</item>
+    </style>
+
+    <style name="ClassicTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/cl_color_primary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/cl_color_accent</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:textColorSecondary">@color/cl_secondary_text_color</item>
+    </style>
+
     <style name="Theme.MyTheme" parent="Theme.Baqlajon">
         <!-- Status bar color. -->
         <item name="android:windowLightStatusBar">true</item>
