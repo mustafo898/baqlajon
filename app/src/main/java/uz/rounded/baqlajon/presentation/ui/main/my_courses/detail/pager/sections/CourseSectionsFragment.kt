@@ -27,7 +27,6 @@ class CourseSectionsFragment(private val list: List<VideoModel>) :
             )
         }
     }
-
     override fun created(view: View, savedInstanceState: Bundle?) {
         binding.list.adapter = adapter
         adapter.setList(list)
